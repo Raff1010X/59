@@ -1,12 +1,14 @@
 .wrapper {
     position: relative;
     width: 100%;
-    height: min(90vh, 60vw);
+    aspect-ratio: 16/9;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10vw;
     pointer-events: none;
+    max-width: 1920px;
+    margin: auto;
 }
 
 .backTexts {
@@ -20,7 +22,7 @@
 }
 
 .backText {
-    font-size: 15vw;
+    font-size: min(15vw, 300px);
     color: var(--color-secondary);
     text-transform: lowercase;
     font-family: var(--font-galano-bold);
@@ -39,13 +41,13 @@
 }
 
 .frontText {
-    font-size: 4.5vw;
+    font-size: min(4.5vw, 80px);
     color: var(--color-text);
     font-family: var(--font-galano-bold);
 }
 
 .logo {
-    transform: translateY(-10vw);
+    transform: translateY(-100%);
     color: var(--color-accent);
     pointer-events: auto;
     transition: opacity 0.5s;
