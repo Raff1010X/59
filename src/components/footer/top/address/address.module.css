@@ -1,0 +1,60 @@
+.adress {
+    width: 50%;
+    height: 100%;
+    padding: 10vh 0 0 5vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.adressTitle {
+    font-size: 33px;
+    font-family: var(--font-galano-bold);
+    color: var(--color-text);
+    margin-bottom: 30px;
+}
+
+.adressText {
+    font-size: 18px;
+    font-family: var(--font-galano);
+    color: var(--color-text);
+}
+
+.adressEmail {
+    font-size: 22px;
+    font-family: var(--font-galano-bold);
+    color: var(--color-accent);
+    margin-top: 33px;
+}
+.adressEmail a {
+    color: var(--color-accent);
+    transition: 0.25s;
+}
+
+.adressEmail a:hover {
+    color: var(--color-accent-light);
+}
+
+@media (min-width: 1470px) {
+    .adress {
+        padding: 10vh 0 5vh 0;
+    }
+}
+
+@media (max-width: 961px) {
+     .adress {
+        width: 44%;
+        padding: 0;
+        padding: 10vw 0 0 5vw;
+    }
+}
+
+@media (max-width: 681px) {
+    .adress {
+        width: 100%;
+        height: auto;
+        padding: 10vw 0 0 5vw;
+    }
+}

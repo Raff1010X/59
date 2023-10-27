@@ -1,0 +1,42 @@
+.burger {
+    min-width: 44px;
+    min-height: 44px;
+    background-color: var(--color-accent);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin: 20px;
+    border: 3px solid var(--color-accent);
+}
+
+.line {
+    position: absolute;
+    width: 25px;
+    height: 5px;
+    background-color: var(--color-primary);
+    transition: .25s;
+}
+
+.top {
+    transform: translateY(5px);
+}
+
+.bottom {
+    transform: translateY(-5px);
+}
+
+.open {
+    background-color: var(--color-pimary);
+}
+
+.opentop {
+    transform: translateY(0) rotate(135deg);
+    background-color: var(--color-accent);
+}
+
+.openbottom {
+    transform: translateY(0) rotate(225deg);
+    background-color: var(--color-accent);
+}

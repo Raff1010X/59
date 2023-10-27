@@ -1,0 +1,36 @@
+.socialLinks {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 5vh;
+    gap: 50px;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: space-between;
+    flex-wrap: wrap;
+    gap:  20px;
+    width: 90%;
+}
+
+.socialLinksTitle {
+    font-size: max(min(66px, 5vw), 20px);
+    font-family: var(--font-galano-bold);
+}
+
+.socialLink {
+    margin: 0;
+    height: 50px;
+    width: 50px;
+    max-height: 50px;
+    max-width: 50px;
+}
+
+.socialLink > button {
+    border-radius: 50%;
+    font-size: 25px;
+}

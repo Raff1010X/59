@@ -1,0 +1,45 @@
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 3px;
+    transition: 0.1s;
+}
+
+.wrapper:hover {
+    padding: 0;
+}
+
+.button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 23px;
+    width: 100%;
+    height: 100%;
+    transition: 0.1s;
+    background-color: var(--color-secondary);
+    cursor: pointer;
+    border: none;
+    border-radius: 20px;
+    font-size: inherit;
+    font-family: var(--font-galano-bold);
+    color: var(--color-text);
+    text-align: center;
+    white-space: nowrap;
+    padding: 0 22px;
+}
+
+.wrapper:hover .button {
+    padding: 0 25px;
+    border-radius: 26px;
+    background-color: var(--color-accent-light);
+    color: var(--color-primary);
+}
+
+.selected {
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+}
