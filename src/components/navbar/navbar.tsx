@@ -85,16 +85,16 @@ export default function Navbar() {
 
     return (
         <>
-            <div className={`${style.spacer}`} />
-            <nav ref={divRef} className={`${style.navbar}`}>
-                <div className={`${style.wrapper}`}>
-                    <Link href="/" className={`${style.logo}`}>
+            <div className={style.spacer} />
+            <nav ref={divRef} className={style.navbar}>
+                <div className={style.wrapper}>
+                    <Link href="/" className={style.logo}>
                         <Image src={logo} alt="logo" width="133" height="55" priority={false} />
                     </Link>
                     <div className={`${style.menu} ${open ? style.menuOpen : ''}`}>
-                        <ul className={`${style.list}`}>
+                        <ul className={style.list}>
                             {links.map((link, index) =>
-                                <li key={index} className={`${style.listItem}`}>
+                                <li key={index} className={style.listItem}>
                                     {!link.submenus
                                         ?
                                         <Link href={link.path}
@@ -105,15 +105,15 @@ export default function Navbar() {
                                         :
                                         <>
                                             <p className={`${style.link} ${pathname === link.path && style.linkActive}`}>
-                                                {link.name} {link.submenus && <Arrow className={`${style.menuarrow}`} />}
+                                                {link.name} {link.submenus && <Arrow className={style.menuarrow} />}
                                             </p>
-                                            <ul className={`${style.sublist}`}>
+                                            <ul className={style.sublist}>
                                                 {link.submenus.map((submenu, index) =>
-                                                    <li key={index} className={`${style.subitem}`}>
+                                                    <li key={index} className={style.subitem}>
                                                         <Link href={submenu.path}
                                                             className={`${style.sublink} ${pathname === submenu.path && style.sublinkActive}`}
                                                             onClick={handleCloseClick}>
-                                                            <Arrow className={`${style.subarrow}`} /> {submenu.name}
+                                                            <Arrow className={style.subarrow} /> {submenu.name}
                                                         </Link>
                                                     </li>
                                                 )}
@@ -123,9 +123,9 @@ export default function Navbar() {
                                 </li>
                             )}
                         </ul>
-                        <Button selected className={`${style.button}`} onClick={handleButtonClick}>
+                        <Button selected className={style.button} onClick={handleButtonClick}>
                             bezpłatna konsultacja
-                            <Arrow className={`${style.arrow}`} />
+                            <Arrow className={style.arrow} />
                         </Button>
                     </div>
                     <Burger open={open} setOpen={setOpen} className={style.burger} />

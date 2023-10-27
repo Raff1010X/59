@@ -40,11 +40,17 @@ export const links = [
     },
 ]
 
-export default function NavLinks() {
-    return  <div className={`${style.navLinks}`}>
+interface NavLinksProps {
+    className?: string
+}
+
+export default function NavLinks(props: NavLinksProps) {
+    const { className } = props
+
+    return  <div className={`${style.navLinks} ${className}`}>
     {links.map((link) => {
         return (
-            <Link href={link.path} key={link.name} className={`${style.navLink}`}>
+            <Link href={link.path} key={link.name} className={style.navLink}>
                 {link.name}
             </Link>
         )

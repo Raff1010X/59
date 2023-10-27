@@ -6,7 +6,7 @@ import Top from '@/components/footer/top/top';
 
 export default function Footer() {
     return (
-        <footer className={`${style.footer}`}>
+        <footer className={style.footer}>
             <Line />
             <Top />
             <Line />

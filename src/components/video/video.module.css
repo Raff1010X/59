@@ -1,0 +1,90 @@
+.wrapper {
+    width: min(100%, 1430px);
+    height: auto;
+    aspect-ratio: 16/9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1430px;
+    margin-top: min(10vw, 100px);
+    margin-bottom: min(10vw, 100px);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.video {
+    width: 100%;
+    aspect-ratio: 16/9;
+    z-index: -1;
+}
+
+.image {
+    position: absolute;
+    width: min(100%, 1430px);
+    aspect-ratio: 16/9;
+    height: auto;
+    object-fit: contain;
+    opacity: 1;
+    transition: .5s;
+}
+
+.button {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+    border: none;
+    z-index: 1;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .5s;
+}
+
+.button:hover {
+    width: 160px;
+    height: 160px;
+}
+
+.button::before {
+    content: "";
+    position: absolute;
+    width: 159px;
+    height: 159px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 1px solid var(--color-accent);
+}
+
+.hide {
+    opacity: 0;
+}
+
+.arrow {
+    width: 11px;
+    height: 11px;
+}
+
+@media (max-width: 1470px) {
+    .video, .image {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+
+@media (max-width: 400px) {
+    .button {
+        width: 60px;
+        height: 60px;
+    }
+    .button:hover {
+        width: 120px;
+        height: 120px;
+    }
+    .button::before {
+        width: 119px;
+        height: 119px;
+    }
+}

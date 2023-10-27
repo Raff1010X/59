@@ -1,25 +1,32 @@
 import style from './address.module.css'
 import Image from "next/image";
 import logo from "@/assets/images/logo.svg"
+import { Address } from 'cluster';
 
-export default function Address() {
-    return <div className={`${style.adress}`}>
-        <div className={`${style.adressTitle}`}>
+interface AddressProps {
+    className?: string
+}
+
+export default function Address(props: AddressProps) {
+    const { className } = props
+
+    return <address className={`${style.address} ${className}`}>
+        <div className={style.addressTitle}>
             <Image src={logo} alt="logo" width="200" height="55" priority={false} />
         </div>
-        <div className={`${style.adressText}`}>
+        <div className={style.addressText}>
             Webdev s.c.
         </div>
-        <div className={`${style.adressText}`}>
-            1234 Street Adress City
+        <div className={style.addressText}>
+            1234 Street Address City
         </div>
-        <div className={`${style.adressText}`}>
+        <div className={style.addressText}>
             State 00000
         </div>
-        <div className={`${style.adressEmail}`}>
+        <div className={style.addressEmail}>
             <a href='mailto:'>
                 webdev@webdev.priv.pl
             </a>
         </div>
-    </div>
+    </address>
 }

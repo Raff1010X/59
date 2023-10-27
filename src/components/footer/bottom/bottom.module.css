@@ -12,7 +12,7 @@
     font-size: 14px;
     font-family: var(--font-galano-bold);
     color: var(--color-text);
-    padding-left: 5vw;
+    padding-left: 30px;
 }
 
 .link {
@@ -33,7 +33,7 @@
     justify-content: flex-start;
     align-items: center;
     width: 33%;
-    padding-left: 5vw;
+    padding-left: 60px;
 }
 
 @media (min-width: 1470px) {

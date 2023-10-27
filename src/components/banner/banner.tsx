@@ -14,20 +14,20 @@ export default function Banner(props: BannerProps) {
     return (
         <div className={`${style.wrapper} ${className}`}>
 
-            <div className={`${style.backTexts}`}>
+            <div className={style.backTexts}>
                 {backText?.map((text, index) => (
-                    <div key={index} className={`${style.backText}`}>{text}</div>
+                    <div key={index} className={style.backText}>{text}</div>
                 ))}
             </div>
 
-            <div className={`${style.frontTexts}`}>
+            <div className={style.frontTexts}>
                 {frontText?.map((text, index) => (
-                    <div key={index} className={`${style.frontText}`}>{text}</div>
+                    <div key={index} className={style.frontText}>{text}</div>
                 ))}
             </div>
 
-            <div className={`${style.logo}`}>
-                <Image src={logo} alt="logo" width="200" height="200" priority={false} />
+            <div className={style.logo}>
+                <Image src={logo} alt="logo" priority={false} className={style.image}/>
             </div>
         </div>
     )
