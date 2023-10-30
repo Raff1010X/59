@@ -97,7 +97,7 @@
 .menuarrow {
     transform: rotate(45deg);
     transition: 0.25s;
-    border-color: var(--color-accent);
+    border-color: var(--color-accent) !important;
 }
 
 .link:hover .menuarrow {
@@ -179,7 +179,7 @@
 .subarrow {
     opacity: 0;
     transition: 0.25s;
-    border-color: var(--color-accent);
+    border-color: var(--color-accent) !important;
 }
 
 @media (min-width: 1470px) {
@@ -316,6 +316,7 @@
         justify-content: flex-start;
         align-items: flex-start;
         gap: 10px;
+        left: -10px;
         top: 0;
         min-width: 250px;
         min-height: 85vh;

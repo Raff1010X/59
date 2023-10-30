@@ -8,6 +8,13 @@
     flex-basis: 25%;
     column-gap: 30px;
     row-gap: 20px;
+    overflow-x: hidden;
+}
+
+
+.navLinks > :nth-child(4) {
+    min-height: 100px;
+    max-width: 150px;
 }
 
 .navLink {
@@ -22,4 +29,10 @@
 
 .navLink:hover {
     color: var(--color-accent);
+}
+
+@media screen and (max-width: 350px) {
+    .navLinks > *:nth-child(4) {
+        min-height: 0;
+    }
 }
