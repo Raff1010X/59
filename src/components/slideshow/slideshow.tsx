@@ -77,6 +77,10 @@ export default function Slideshow(props: SlideshowProps) {
 
             </div>
 
+            <div className={style.rightFront}>
+
+            </div>
+
             <div className={style.center}>
 
             </div>
