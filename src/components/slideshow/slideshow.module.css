@@ -12,17 +12,66 @@
 }
 
 .right {
+    position: relative;
     width: 50%;
     height: 100%;
-    background-color: antiquewhite;
 }
+
+.right > img {
+    animation: showArrowBackground 15s ease-in-out infinite;
+    opacity: 0;
+}
+
+.right > img:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.right > img:nth-child(2) {
+    animation-delay: 5s;
+}
+
+.right > img:nth-child(3) {
+    animation-delay: 10s;
+}
+
+
+.rightBackground {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
 
 .rightFront {
     position: absolute;
-    width: 65%;
+    width: 60%;
     right: 0;
+    height: 120%;
+    opacity: .2;
+    transform: rotate(-8deg);
+}
+
+.rightFront > img {
+    position: absolute;
+    width: 35%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.212);
+    object-fit: cover;
+    animation: showArrowBackground 15s ease-in-out infinite;
+    opacity: 0;
+}
+
+.rightFront > img:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.rightFront > img:nth-child(2) {
+    animation-delay: 5s;
+}
+
+.rightFront > img:nth-child(3) {
+    animation-delay: 10s;
 }
 
 .left {
@@ -45,6 +94,39 @@
     color: var(--color-accent);
     font-family: var(--font-galano-bold);
     font-size: min(10vw, 180px);
+    transition: 0.25s;
+    transform: translateX(-100%);
+    animation: showNumber 15s ease-in-out infinite;
+}
+
+.numbers > .number:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.numbers > .number:nth-child(2) {
+    animation-delay: 5s;
+}
+
+.numbers > .number:nth-child(3) {
+    animation-delay: 10s;
+}
+
+@keyframes showNumber {
+    0% {
+        transform: translateX(-100%);
+    }
+    5% {
+        transform: translateX(0%);
+    }
+    33% {
+        transform: translateX(0%);
+    }
+    38% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
 }
 
 .links {
@@ -85,12 +167,44 @@
     justify-content: center;
     align-items: center;
     left: min(6vw, 120px);
-    animation: moveArrowBackground alternate 1s infinite;
+    animation: moveArrowBackground alternate 3s infinite, showArrowBackground 15s ease-in-out infinite;
+    opacity: 0;
+}
+
+.link:nth-child(1) .linkArrowBackground {
+    animation-delay: 0s;
+}
+
+.link:nth-child(2) .linkArrowBackground {
+    animation-delay: 5s;
+}
+
+.link:nth-child(3) .linkArrowBackground {
+    animation-delay: 10s;
+}
+
+@keyframes showArrowBackground {
+    0% {
+        opacity: 0;
+    }
+    5% {
+        opacity: 1;
+    }
+    33% {
+        opacity: 1;
+    }
+    38% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
 }
 
 .linkArrowBackground > span {
-    min-width: 35%;
-    min-height: 35%;
+    transform: translateX(-10%) rotate(-45deg);
+    min-width: 30%;
+    min-height: 30%;
     border-width: 8px;
 }
 
@@ -102,10 +216,10 @@
 
 @keyframes moveArrowBackground {
     0% {
-        transform: translateX(-140%);
+        transform: translateX(-160%);
     }
     100% {
-        transform: translateX(-160%);
+        transform: translateX(-140%);
     }
 }
 
@@ -120,10 +234,24 @@
     align-items: center;
 }
 
-.descriptionText {
+.description > p {
     position: absolute;
     left: 0;
     width: 70%;
+    opacity: 0;
+    animation: showArrowBackground 15s ease-in-out infinite;
+}
+
+.description > p:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.description > p:nth-child(2) {
+    animation-delay: 5s;
+}
+
+.description > p:nth-child(3) {
+    animation-delay: 10s;
 }
 
 .button {
@@ -190,7 +318,7 @@
         font-size: 20px;
     }
 
-    .descriptionText {
+    .description > p {
         left: 30px;
         width: 90%;
     }
@@ -216,6 +344,7 @@
     .right {
         width: 100%;
         height: 100%;
+        opacity: 0.4;
     }
 
     .rightFront {
@@ -274,7 +403,7 @@
         top: 10%;
     }
 
-    .descriptionText {
+    .description > p {
         font-size: 15px;
         width: 80%;
     }

@@ -1,33 +1,35 @@
 "use client"
 
-import { useRef } from 'react'
+import sync from '@/utils/sync'
 import Arrow from '../arrow/arrow'
 import style from './slideshow.module.css'
 import Link from 'next/link'
 import Button from '../button/button'
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
+import { use, useEffect } from 'react'
 
 const slides = [
     {
         text: 'web design',
         image: 'image1',
-        background: 'red',
+        background: 'sb1.jpg',
         link: '/link1',
-        description: 'Łączymy idealnie projektowanie UX/UI ze sztuką tworzenia animacji, grafiki 3d i dobrym wizerunkiem.',
+        description: 'Minus quibusdam deserunt aperiam alias eligendi, possimus, veniam laudantium, earum veritatis nihil.',
     },
     {
         text: '3d & animation',
         image: 'image2',
-        background: 'red',
+        background: 'sb2.jpg',
         link: '/link2',
-        description: 'Łączymy idealnie projektowanie UX/UI ze sztuką tworzenia animacji, grafiki 3d i dobrym wizerunkiem.',
+        description: 'Laboriosam quam vitae, enim doloribus nulla aliquid nihil aut, aspernatur, illo eligendi et saepe.',
     },
     {
         text: 'branding',
         image: 'image1',
-        background: 'red',
+        background: 'sb3.jpg',
         link: '/link3',
-        description: 'Łączymy idealnie projektowanie UX/UI ze sztuką tworzenia animacji, grafiki 3d i dobrym wizerunkiem.',
+        description: 'Reiciendis doloribus, eveniet esse deserunt officia ipsam, harum, praesentium enim consequatur illum!',
     }
 ]
 
@@ -39,12 +41,15 @@ export default function Slideshow(props: SlideshowProps) {
     const { className } = props
 
     const router = useRouter()
-    const numbersRef = useRef<HTMLDivElement[]>([])
+
+    useEffect(() => {
+        sync(['showArrowBackground', 'showNumber', 'moveArrowBackground'])
+    }, [])
 
     const descriptions = slides.map((slide, index) => {
-        return <div key={index} className={style.descriptionText}>
+        return <p key={index} className={style.descriptionText}>
             {slide.description}
-        </div>
+        </p>
     })
 
     const links = slides.map((slide, index) => {
@@ -57,9 +62,9 @@ export default function Slideshow(props: SlideshowProps) {
     })
 
     const numbers = slides.map((slide, index) => {
-        return <div key={index} className={style.number} ref={ref => numbersRef.current[index] = ref!}>
+        return <p key={index} className={style.number}>
             {`0${index + 1}`}
-        </div>
+        </p>
     })
 
     const handleButtonClick = () => {
@@ -73,13 +78,19 @@ export default function Slideshow(props: SlideshowProps) {
 
             </div>
 
-            <div className={style.right}>
-
-            </div>
-
             <div className={style.rightFront}>
-
+                <Image src="/images/sb3.jpg" alt="image1" className={style.rightBackground} width={1000} height={1000} />
+                <Image src="/images/sb1.jpg" alt="image1" className={style.rightBackground} width={1000} height={1000} />
+                <Image src="/images/sb2.jpg" alt="image1" className={style.rightBackground} width={1000} height={1000} />
             </div>
+
+            <div className={style.right}>
+                <Image src="/images/sb1.jpg" alt="image1" className={style.rightBackground} width={1000} height={1000} />
+                <Image src="/images/sb2.jpg" alt="image1" className={style.rightBackground} width={1000} height={1000} />
+                <Image src="/images/sb3.jpg" alt="image1" className={style.rightBackground} width={1000} height={1000} />
+            </div>
+
+
 
             <div className={style.center}>
 
