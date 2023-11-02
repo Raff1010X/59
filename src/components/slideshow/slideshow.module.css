@@ -63,15 +63,15 @@
 }
 
 .rightFront > img:nth-child(1) {
-    animation-delay: 0s;
+    animation-delay: 10s;
 }
 
 .rightFront > img:nth-child(2) {
-    animation-delay: 5s;
+    animation-delay: 0s;
 }
 
 .rightFront > img:nth-child(3) {
-    animation-delay: 10s;
+    animation-delay: 5s;
 }
 
 .left {
@@ -299,7 +299,11 @@
         height: auto;
     }
     .numbers {
-        display: none;
+        /* display: none; */
+        opacity: 0;
+        width: 0;
+        height: 0;
+        pointer-events: none;
     }
 
     .links {
@@ -338,7 +342,11 @@
 
 @media (max-width: 740px) {
     .left {
-        display: none;
+        /* display: none; */
+        opacity: 0;
+        width: 0;
+        height: 0;
+        pointer-events: none;
     }
 
     .right {
@@ -348,11 +356,19 @@
     }
 
     .rightFront {
-        display: none;
+        /* display: none; */
+        opacity: 0;
+        width: 0;
+        height: 0;
+        pointer-events: none;
     }
 
     .scroll {
-        display: none;
+        /* display: none; */
+        opacity: 0;
+        width: 0;
+        height: 0;
+        pointer-events: none;
     }
 
     .button {
@@ -409,15 +425,27 @@
     }
 
     .right {
-        display: none;
+        /* display: none; */
+        opacity: 0;
+        width: 0;
+        height: 0;
+        pointer-events: none;
     }
 
     .rightFront {
-        display: none;
+        /* display: none; */
+        opacity: 0;
+        width: 0;
+        height: 0;
+        pointer-events: none;
     }
 
     .left {
-        display: none;
+        /* display: none; */
+        opacity: 0;
+        width: 0;
+        height: 0;
+        pointer-events: none;
     }
 
     .linkArrowBackground > span {

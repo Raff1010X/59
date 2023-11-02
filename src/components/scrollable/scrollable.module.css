@@ -1,0 +1,14 @@
+.wrapper {
+    height: 50vh;
+    max-height: 500px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.mover {
+    position: absolute;
+    height: 50vh;
+    background-color: var(--color-accent);
+    transition: .5s;
+}

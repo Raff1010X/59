@@ -11,6 +11,7 @@ type BannerProps = {
 
 export default function Banner(props: BannerProps) {
     const { className, backText, frontText } = props;
+
     return (
         <div className={`${style.wrapper} ${className}`}>
 
@@ -22,7 +23,7 @@ export default function Banner(props: BannerProps) {
 
             <div className={style.frontTexts}>
                 {frontText?.map((text, index) => (
-                    <div key={index} className={style.frontText}>{text}</div>
+                    <div key={index} className={style.frontText}>{text.replace(/i /g, "i\u00A0")}</div>
                 ))}
             </div>
 
