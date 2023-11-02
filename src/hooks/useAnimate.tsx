@@ -8,24 +8,25 @@ interface UseObserverProps {
 export default function UseAnimate(props: UseObserverProps) {
     const { ref, className } = props;
 
-    const callbackFunction = (entries: any) => {
-        const [entry] = entries;
-        if (entry.isIntersecting) ref.current?.classList.add(className);
-    }
-
-    const options = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.001
-    }
-
     useEffect(() => {
+        const callbackFunction = (entries: any) => {
+            const [entry] = entries;
+            if (entry.isIntersecting) ref.current?.classList.add(className);
+        }
+        const options = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.001
+        }
+
         const observer = new IntersectionObserver(callbackFunction, options);
         if (ref.current) observer.observe(ref.current);
+
+        const refcurrent = ref.current;
         return () => {
-            if (ref.current) observer.unobserve(ref.current);
+            if (refcurrent) observer.unobserve(refcurrent);
         }
-    }, [ref.current])
+    }, [className, ref])
 
 
 }

@@ -16,7 +16,7 @@ const useResize = (callback: Function) => {
         return () => {
             window.removeEventListener('resize', handleResize);
         };
-    }, []);
+    }, [callback]);
 
 };
 

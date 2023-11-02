@@ -24,9 +24,9 @@
 
 .numbers {
     position: absolute;
-    left: 10vw;
+    left: 10%;
     top: 15%;
-    height: 20vw;
+    height: min(20vw, 500px);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -51,7 +51,7 @@
 .number {
     position: relative;
     color: var(--color-accent);
-    font-size: 20vw;
+    font-size: min(20vw, 500px);
     font-family: var(--font-galano-bold);
 }
 
@@ -60,7 +60,7 @@
         transform: translateY(0);
     }
     100% {
-        transform: translateY(calc(-100% + 20vw));
+        transform: translateY(calc(-100% + min(20vw, 500px)));
     }
 }
 

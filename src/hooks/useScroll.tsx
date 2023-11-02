@@ -15,15 +15,15 @@ export default function UseScroll(props: UseScrollProps) {
     const callbackFunction = (entries: any) => {
         const [entry] = entries;
 
-        if (entry.isIntersecting) {
-            const percent = Math.floor(entry.intersectionRatio * 100);
+        if (entry.isIntersecting && entry.boundingClientRect.y >= 0) {
+            const percent = Math.ceil(entry.intersectionRatio * 100);
             setPercent(percent);
         }
     }
 
     function buildThresholdList() {
         let thresholds = [];
-        let numSteps = 50;
+        let numSteps = 100;
 
         for (let i = 1.0; i <= numSteps; i++) {
             let ratio = i / numSteps;
@@ -34,19 +34,21 @@ export default function UseScroll(props: UseScrollProps) {
         return thresholds;
     }
 
-    const options = {
-        root: null,
-        rootMargin: '0px',
-        threshold: buildThresholdList(),
-    }
-
     useEffect(() => {
-        const observer = new IntersectionObserver(callbackFunction, options);
-        if (ref.current) observer.observe(ref.current);
-        return () => {
-            if (ref.current) observer.unobserve(ref.current);
+        const options = {
+            root: null,
+            rootMargin: '0px',
+            threshold: buildThresholdList(),
         }
-    }, [ref.current])
+        const observer = new IntersectionObserver(callbackFunction, options);
+
+        if (ref.current) observer.observe(ref.current);
+
+        const refcurrent = ref.current;
+        return () => {
+            if (refcurrent) observer.unobserve(refcurrent!);
+        }
+    }, [ref])
 
     return percent;
 }

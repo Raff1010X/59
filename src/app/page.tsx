@@ -29,7 +29,9 @@ export default function Home() {
 
       <BannerNum step={1} number={15} frontText={['lat istnienia naszej agencji', 'to ocean doświadczeń,', 'które przekuwamy na sukcesy', 'naszych klientów']} />
       
-      <Scrollable />
+      <Scrollable direction='left' image='/images/sb2.jpg' text='Nawiązywanie nowych kontaktów biznesowych przychodzi Ci z łatwością? Świetnie! Jako new business manager będziesz mógł budować relacje z nowymi kontrahentami.' header='New Business Manager'/>
+      
+      <Scrollable direction='right' image='/images/sb2.jpg' text='Nawiązywanie nowych kontaktów biznesowych przychodzi Ci z łatwością? Świetnie! Jako new business manager będziesz mógł budować relacje z nowymi kontrahentami.' header='New Business Manager'/>
 
       <BannerNum step={5} afterText="%" number={80} frontText={['naszych klientów', 'zaufało nam na podstawie rekomendacji']} />
 

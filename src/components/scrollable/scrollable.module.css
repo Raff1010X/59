@@ -1,14 +1,57 @@
 .wrapper {
-    height: 50vh;
-    max-height: 500px;
+    height: 40vh;
+    min-height: 250px;
+    max-height: 400px;
     overflow: hidden;
     position: relative;
     width: 100%;
+    max-width: 1920px;
+    margin: 50px auto;
 }
 
 .mover {
     position: absolute;
-    height: 50vh;
+    height: 100%;
     background-color: var(--color-accent);
     transition: .5s;
+}
+
+.image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 45%;
+    max-width: 500px;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: .5s;
+}
+
+.textWrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    width: 25%;
+    transition: .75s;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+}
+
+.header {
+    font-family: var(--font-galano-bold);
+    font-size: 27px;
+    transition: .5s;
+    width: 80%;
+}
+
+.text {
+    font-size: 18px;
+    transition: .5s;
+    width: 80%;
+    line-height: 1.2;
 }
