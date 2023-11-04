@@ -69,32 +69,32 @@ export default function Scrollable(props: ScrollableProps) {
 
     return (
         <div className={style.wrapper} ref={ref}>
-            <Image
-                src={image}
-                alt={header}
-                className={style.image}
-                width={500}
-                height={500}
-                style={{...styles.image, opacity}}
-            />
-            <div className={style.textWrapper}
-                style={{...styles.textWrapper, opacity}}
-            >
-                <h1
-                    className={style.header}
-                    style={styles.header as CSSProperties}
-                >{header}</h1>
-                <p
-                    className={style.text}
-                    style={styles.text as CSSProperties}
+                <Image
+                    src={image}
+                    alt={header}
+                    className={style.image}
+                    width={500}
+                    height={500}
+                    style={{ ...styles.image, opacity }}
+                />
+                <div className={style.textWrapper}
+                    style={{ ...styles.textWrapper, opacity }}
                 >
-                    {text}
-                </p>
-            </div>
-            <div
-                className={style.mover}
-                style={styles.mover}
-            />
+                    <h1
+                        className={style.header}
+                        style={styles.header as CSSProperties}
+                    >{header}</h1>
+                    <p
+                        className={style.text}
+                        style={styles.text as CSSProperties}
+                    >
+                        {text}
+                    </p>
+                </div>
+                <div
+                    className={style.mover}
+                    style={styles.mover}
+                />
         </div>
     )
 }
