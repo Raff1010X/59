@@ -29,13 +29,15 @@ export default function Scrollable(props: ScrollableProps) {
                     width={1000}
                     height={1000}
                     style={{
-                        left: `${- 7 + scroll / 6}%`,
+                        left: 0,
+                        transform: `translateX(${scroll / 9}%)`,
                         opacity: `${scroll}%`
                     }}
                 />
                 <div className={style.textWrapper}
                     style={{
-                        left: `${85 - scroll / 4}%`,
+                        left: '65%',
+                        transform: `translateX(${-scroll / 7}%)`,
                         opacity: `${scroll}%`
                     }}
                 >
@@ -43,7 +45,7 @@ export default function Scrollable(props: ScrollableProps) {
                     <p
                         className={style.text}
                         style={{
-                            margin: `${20 - scroll / 5}%`
+                            transform: `translateX(${100 - scroll}%)`,
                         }}
                     >
                         {text}
@@ -52,8 +54,8 @@ export default function Scrollable(props: ScrollableProps) {
                 <div
                     className={style.mover}
                     style={{
-                        left: `${5 + scroll / 2 + 3 + (scroll - 100) / 4}%`,
-                        width: `${109 / 4 - (scroll + 10) / 4 + (101 - scroll) / 4}%`
+                        left: '-45%',
+                        transform: `translateX(${scroll/2}%) scaleX(${1 - scroll/100})`,
                     }} />
             </div>
         )
@@ -67,14 +69,17 @@ export default function Scrollable(props: ScrollableProps) {
                     width={1000}
                     height={1000}
                     style={{
-                        left: `${70 - scroll / 5}%`,
+                        left: '55%',
+                        transform: `translateX(${-scroll / 9}%)`,
                         opacity: `${scroll}%`
                     }}
                 />
                 <div className={style.textWrapper}
                     style={{
-                        left: `${scroll / 6}%`,
-                        opacity: `${scroll}%`
+                        left: 0,
+                        transform: `translateX(${scroll / 7}%)`,
+                        opacity: `${scroll}%`,
+                        alignItems: 'flex-end'
                     }}
                 >
                     <h1
@@ -88,8 +93,7 @@ export default function Scrollable(props: ScrollableProps) {
                     <p
                         className={style.text}
                         style={{
-                            marginLeft: `${-20 + scroll / 5}%`,
-                            marginTop: `${20 - scroll / 5}%`,
+                            transform: `translateX(${-100 + scroll}%)`,
                             textAlign: "right"
                         }}
                     >
@@ -99,8 +103,8 @@ export default function Scrollable(props: ScrollableProps) {
                 <div
                     className={style.mover}
                     style={{
-                        left: `${65 - scroll / 4}%`,
-                        width: `${109 / 3 - (scroll + 10) / 3 + (101 - scroll) / 3}%`
+                        left: '45%',
+                        transform: `translateX(${-scroll / 2}%) scaleX(${1 - scroll/100})`,
                     }} />
             </div>
         )

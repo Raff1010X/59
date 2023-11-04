@@ -1,7 +1,7 @@
 .wrapper {
     height: 40vh;
     min-height: 250px;
-    max-height: 400px;
+    /* max-height: 350px; */
     overflow: hidden;
     position: relative;
     width: 100%;
@@ -12,16 +12,15 @@
 .mover {
     position: absolute;
     height: 100%;
+    width: 100%;
     background-color: var(--color-accent);
     transition: .5s;
 }
 
 .image {
     position: absolute;
-    left: 0;
     top: 0;
     width: 45%;
-    max-width: 500px;
     height: 100%;
     object-fit: cover;
     object-position: center;
@@ -30,11 +29,9 @@
 
 .textWrapper {
     position: absolute;
-    width: 100%;
+    width: 35%;
     height: 100%;
-    width: 25%;
     transition: .75s;
-    padding: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -44,13 +41,13 @@
 
 .header {
     font-family: var(--font-galano-bold);
-    font-size: 27px;
+    font-size: min(5vw, 27px);
     transition: .5s;
     width: 80%;
 }
 
 .text {
-    font-size: 18px;
+    font-size: min(3vw, 18px);
     transition: .5s;
     width: 80%;
     line-height: 1.2;
