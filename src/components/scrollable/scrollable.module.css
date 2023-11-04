@@ -1,11 +1,11 @@
 .wrapper {
-    height: 40vh;
-    min-height: 250px;
-    /* max-height: 350px; */
-    overflow: hidden;
     position: relative;
+    overflow: hidden;
     width: 100%;
     max-width: 1920px;
+    height: 35vw;
+    max-height: 768px;
+    min-height: 300px;
     margin: 50px auto;
 }
 
