@@ -2,9 +2,9 @@
     position: relative;
     overflow: hidden;
     width: 100%;
-    max-width: 1920px;
+    max-width: 1300px;
     height: 35vw;
-    max-height: 768px;
+    max-height: 350px;
     min-height: 300px;
     margin: 50px auto;
 }
@@ -44,11 +44,13 @@
     font-size: min(5vw, 27px);
     transition: .5s;
     width: 80%;
+    max-width: 300px;
 }
 
 .text {
     font-size: min(3vw, 18px);
     transition: .5s;
     width: 80%;
-    line-height: 1.2;
+    max-width: 300px;
+    line-height: 1.4;
 }
