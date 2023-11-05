@@ -12,6 +12,7 @@ export default function UseAnimate(props: UseObserverProps) {
         const callbackFunction = (entries: any) => {
             const [entry] = entries;
             if (entry.isIntersecting) ref.current?.classList.add(className);
+            else ref.current?.classList.remove(className);
         }
         const options = {
             root: null,

@@ -7,10 +7,10 @@ import Banner from '@/components/banner/banner'
 import Footer from '@/components/footer/footer'
 import Video from '@/components/video/video'
 
-import image from "@/assets/images/video1.jpg";
 import Slideshow from '@/components/slideshow/slideshow'
 import BannerNum from '@/components/bannerNum/bannerNum'
 import Scrollable from '@/components/scrollable/scrollable'
+import BannerText from '@/components/bannerText/bannerText'
 
 
 export default function Home() {
@@ -24,37 +24,42 @@ export default function Home() {
   return (
     <main>
       <Slideshow className={style.slideshow} />
-      
-      <Video src="https://www.webidea.pl/media/reel_demo_low.mp4" image={image}/>
 
-      <BannerNum step={1} number={15} frontText={['lat istnienia naszej agencji', 'to ocean doświadczeń,', 'które przekuwamy na sukcesy', 'naszych klientów']} />
-      
-      <Scrollable direction='left' image='/images/1.jpeg' text='Nawiązywanie nowych kontaktów biznesowych przychodzi Ci z łatwością? Świetnie! Jako new business manager będziesz mógł budować relacje z nowymi kontrahentami.' header='New Business Manager'/>
-      
-      <Scrollable direction='right' image='/images/2.jpeg' text='Nawiązywanie nowych kontaktów biznesowych przychodzi Ci z łatwością? Świetnie! Jako new business manager będziesz mógł budować relacje z nowymi kontrahentami.' header='New Business Manager'/>
+      <Video src="/images/demo.mp4" image='/images/demo.jpeg' />
 
-      <Scrollable direction='left' image='/images/3.jpeg' text='Nawiązywanie nowych kontaktów biznesowych przychodzi Ci z łatwością? Świetnie! Jako new business manager będziesz mógł budować relacje z nowymi kontrahentami.' header='New Business Manager'/>
-      
-      <Scrollable direction='right' image='/images/4.jpeg' text='Nawiązywanie nowych kontaktów biznesowych przychodzi Ci z łatwością? Świetnie! Jako new business manager będziesz mógł budować relacje z nowymi kontrahentami.' header='New Business Manager'/>
+      <BannerNum number={15} step={1} header={['lat istnienia naszej agencji', 'to ocean doświadczeń,', 'które przekuwamy na sukcesy', 'naszych klientów']} />
 
-      <Scrollable direction='left' image='/images/5.jpeg' text='Nawiązywanie nowych kontaktów biznesowych przychodzi Ci z łatwością? Świetnie! Jako new business manager będziesz mógł budować relacje z nowymi kontrahentami.' header='New Business Manager'/>
+      <Scrollable direction='left' image='/images/1.jpeg' text='Nawiązywanie nowych kontaktów biznesowych przychodzi Ci z łatwością? Świetnie! Jako new business manager będziesz mógł budować relacje z nowymi kontrahentami.' header='New Business Manager' />
 
-      <Scrollable direction='right' image='/images/6.jpeg' text='Nawiązywanie nowych kontaktów biznesowych przychodzi Ci z łatwością? Świetnie! Jako new business manager będziesz mógł budować relacje z nowymi kontrahentami.' header='New Business Manager'/>
+      <Scrollable direction='right' image='/images/2.jpeg' text='Nawiązywanie nowych kontaktów biznesowych przychodzi Ci z łatwością? Świetnie! Jako new business manager będziesz mógł budować relacje z nowymi kontrahentami.' header='New Business Manager' />
 
-      <Scrollable direction='left' image='/images/7.jpeg' text='Nawiązywanie nowych kontaktów biznesowych przychodzi Ci z łatwością? Świetnie! Jako new business manager będziesz mógł budować relacje z nowymi kontrahentami.' header='New Business Manager'/>
+      <Scrollable direction='left' image='/images/3.jpeg' text='Nawiązywanie nowych kontaktów biznesowych przychodzi Ci z łatwością? Świetnie! Jako new business manager będziesz mógł budować relacje z nowymi kontrahentami.' header='New Business Manager' />
 
-      <Scrollable direction='right' image='/images/8.jpeg' text='Nawiązywanie nowych kontaktów biznesowych przychodzi Ci z łatwością? Świetnie! Jako new business manager będziesz mógł budować relacje z nowymi kontrahentami.' header='New Business Manager'/>
-      
-      <Scrollable direction='left' image='/images/9.jpeg' text='Nawiązywanie nowych kontaktów biznesowych przychodzi Ci z łatwością? Świetnie! Jako new business manager będziesz mógł budować relacje z nowymi kontrahentami.' header='New Business Manager'/>
+      <Scrollable direction='right' image='/images/4.jpeg' text='Nawiązywanie nowych kontaktów biznesowych przychodzi Ci z łatwością? Świetnie! Jako new business manager będziesz mógł budować relacje z nowymi kontrahentami.' header='New Business Manager' />
+
+      <BannerText number={3} step={1}
+        header={['Profesjonalny wizerunek Twojej marki']}
+        text={['Dobrze postrzegany, skuteczny branding to taki, o który stale dbamy. Nad którym pracujemy każdego dnia. Tym właśnie zajmujemy się dla naszych Klientów.']}
+      />
+
+      <Scrollable direction='left' image='/images/5.jpeg' text='Nawiązywanie nowych kontaktów biznesowych przychodzi Ci z łatwością? Świetnie! Jako new business manager będziesz mógł budować relacje z nowymi kontrahentami.' header='New Business Manager' />
+
+      <Scrollable direction='right' image='/images/6.jpeg' text='Nawiązywanie nowych kontaktów biznesowych przychodzi Ci z łatwością? Świetnie! Jako new business manager będziesz mógł budować relacje z nowymi kontrahentami.' header='New Business Manager' />
+
+      <Scrollable direction='left' image='/images/7.jpeg' text='Nawiązywanie nowych kontaktów biznesowych przychodzi Ci z łatwością? Świetnie! Jako new business manager będziesz mógł budować relacje z nowymi kontrahentami.' header='New Business Manager' />
+
+      <Scrollable direction='right' image='/images/8.jpeg' text='Nawiązywanie nowych kontaktów biznesowych przychodzi Ci z łatwością? Świetnie! Jako new business manager będziesz mógł budować relacje z nowymi kontrahentami.' header='New Business Manager' />
+
+      <Scrollable direction='left' image='/images/9.jpeg' text='Nawiązywanie nowych kontaktów biznesowych przychodzi Ci z łatwością? Świetnie! Jako new business manager będziesz mógł budować relacje z nowymi kontrahentami.' header='New Business Manager' />
 
 
 
 
-      <BannerNum step={5} afterText="%" number={80} frontText={['naszych klientów', 'zaufało nam na podstawie rekomendacji']} />
+      <BannerNum number={80} step={5} afterNumber="%" header={['naszych klientów', 'zaufało nam na podstawie rekomendacji']} />
 
       <Banner
         backText={['branding', 'animation', 'web design']}
-        frontText={['Cześć! Cenisz dobry visual content, user experience i przyjazny model współpracy?','My też! Fajnie, że jesteś ;)']} />
+        frontText={['Cześć! Cenisz dobry visual content, user experience i przyjazny model współpracy?', 'My też! Fajnie, że jesteś ;)']} />
       <Footer />
     </main>
   )

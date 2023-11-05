@@ -1,18 +1,18 @@
 "use client"
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import style from "./bannerNum.module.css";
 import useAnimate from "@/hooks/useAnimate";
 
 interface BannerNumProps {
     number: number,
-    frontText?: string[],
+    step: number,
+    afterNumber?: string,
+    header: string[],
     className?: string,
-    afterText?: string,
-    step: number
 }
 
 export default function BannerNum(props: BannerNumProps) {
-    const { className, frontText, number, afterText, step } = props;
+    const { number, step, afterNumber, header, className } = props;
 
     const numberWrapperRef = useRef<HTMLDivElement>(null);
 
@@ -24,17 +24,17 @@ export default function BannerNum(props: BannerNumProps) {
             <div className={style.numbers}>
                 <div className={style.numberWrapper} ref={numberWrapperRef}>
                     {Array.from(Array(Math.floor(number / step) + 1).keys()).map((num, index) => (
-                        <div key={index} className={style.number}>{num * step}{afterText}</div>
+                        <div key={index} className={style.number}>{num * step < 10 && '0'}{num * step}{afterNumber}</div>
                     ))}
                 </div>
             </div>
 
-
-            <div className={style.frontTexts}>
-                {frontText?.map((text, index) => (
-                    <div key={index} className={style.frontText}>{text}</div>
+            <div className={style.headers}>
+                {header?.map((text, index) => (
+                    <div key={index} className={style.header}>{text}</div>
                 ))}
             </div>
+
         </div>
     )
 

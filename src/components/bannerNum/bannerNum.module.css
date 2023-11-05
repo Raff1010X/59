@@ -2,21 +2,19 @@
     position: relative;
     width: 100%;
     aspect-ratio: 16/9;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     max-width: 1920px;
     margin: auto;
 }
 
-.frontTexts {
+.headers {
     position: absolute;
+    top: 35%;
     width: 70%;
     height: auto;
     left: 20%;
 }
 
-.frontText {
+.header {
     font-size: min(4.5vw, 80px);
     color: var(--color-text);
     font-family: var(--font-galano-bold);
@@ -45,12 +43,13 @@
 }
 
 .animate {
-    animation: animateNumbers 3s ease-out forwards;
+    animation: animateNumbers 2.5s ease-out forwards;
 }
 
 .number {
     position: relative;
     color: var(--color-accent);
+    font-size: inherit;
     font-size: min(20vw, 500px);
     font-family: var(--font-galano-bold);
 }
@@ -58,15 +57,17 @@
 @keyframes animateNumbers {
     0% {
         transform: translateY(0);
+        opacity: 0;
     }
     100% {
         transform: translateY(calc(-100% + min(20vw, 500px)));
+        opacity: 1;
     }
 }
 
 @media (max-width: 768px) {
-    .frontTexts {
+    .headers {
         height: auto;
-        line-height: 1.5;
+        line-height: 1.25;
     }
 }

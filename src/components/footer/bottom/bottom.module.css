@@ -12,7 +12,7 @@
     font-size: 14px;
     font-family: var(--font-galano-bold);
     color: var(--color-text);
-    padding-left: 30px;
+    padding-left: var(--padding);
 }
 
 .link {
@@ -52,6 +52,6 @@
 
     .copyright {
         width: 67%;
-        padding-left: 30px;
+        padding-left: var(--padding);
     }
 }

@@ -254,12 +254,12 @@
 
     .burger {
         display: flex;
-        margin-right: 30px;
+        margin-right: var(--padding);
         z-index: 102;
     }
 
     .logo {
-        padding: 3px 10px 0px 30px;
+        padding: 3px 10px 0px var(--padding);
         z-index: 102;
     }
 

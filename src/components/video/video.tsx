@@ -7,7 +7,7 @@ import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 
 interface VideoProps {
     src: string;
-    image: string | StaticImport;
+    image: string;
     className?: string;
 }
 
@@ -37,6 +37,8 @@ export default function Video(props: VideoProps) {
                 ref={imageRef}
                 className={style.image} 
                 src={image}
+                width={1800}
+                height={900}
                 alt="video"
                 priority={false}
                 />

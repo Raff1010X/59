@@ -38,8 +38,8 @@ export default function Scrollable(props: ScrollableProps) {
             transform: `translateX(${100 - scroll}%)`,
         },
         mover: {
-            left: '-60%',
-            transform: `translateX(${scroll / 1.5}%) scaleX(${1 - scroll / 100})`,
+            left: '-65%',
+            transform: `translateX(${scroll / 1.54}%) scaleX(${1 - scroll / 100})`,
         }
     }
     const styleLeft = {
@@ -60,8 +60,8 @@ export default function Scrollable(props: ScrollableProps) {
             textAlign: "right"
         },
         mover: {
-            left: '60%',
-            transform: `translateX(${-scroll / 1.5}%) scaleX(${1 - scroll / 100})`,
+            left: '65%',
+            transform: `translateX(${-scroll / 1.54}%) scaleX(${1 - scroll / 100})`,
         }
     }
 

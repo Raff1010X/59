@@ -228,7 +228,7 @@
     top: 67.5%;
     left: 12%;
     font-size: min(2.6vw, 26px);
-    width: calc(50% - 30px);
+    width: calc(50% - var(--padding));
     display: flex;
     justify-content: center;
     align-items: center;
@@ -307,7 +307,7 @@
     }
 
     .links {
-        left: 30px;
+        left: var(--padding);
         width: 90%;
     }
 
@@ -323,12 +323,12 @@
     }
 
     .description > p {
-        left: 30px;
+        left: var(--padding);
         width: 90%;
     }
 
     .button {
-        left: 30px;
+        left: var(--padding);
         top: 90%;
         min-width: 250px;
         height: 46px;
