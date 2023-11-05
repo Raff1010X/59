@@ -12,19 +12,19 @@ import { useEffect } from 'react'
 const slides = [
     {
         text: 'web design',
-        image: '/images/sb1.jpg',
+        image: '/images/11.jpeg',
         link: '/webdesign',
         description: 'Minus quibusdam deserunt aperiam alias eligendi, possimus, veniam laudantium, earum veritatis nihil.',
     },
     {
         text: '3d & animation',
-        image: '/images/sb2.jpg',
+        image: '/images/12.jpeg',
         link: '/animation',
         description: 'Laboriosam quam vitae, enim doloribus nulla aliquid nihil aut, aspernatur, illo eligendi et saepe.',
     },
     {
         text: 'branding',
-        image: '/images/sb3.jpg',
+        image: '/images/13.jpeg',
         link: '/branding',
         description: 'Reiciendis doloribus, eveniet esse deserunt officia ipsam, harum, praesentium enim consequatur illum!',
     }

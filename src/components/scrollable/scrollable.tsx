@@ -69,12 +69,14 @@ export default function Scrollable(props: ScrollableProps) {
 
     return (
         <div className={style.wrapper} ref={ref}>
+            <div className={style.extender}>
+
                 <Image
                     src={image}
                     alt={header}
                     className={style.image}
-                    width={500}
-                    height={500}
+                    width={600}
+                    height={600}
                     style={{ ...styles.image, opacity }}
                 />
                 <div className={style.textWrapper}
@@ -95,6 +97,8 @@ export default function Scrollable(props: ScrollableProps) {
                     className={style.mover}
                     style={styles.mover}
                 />
+            
+            </div>
         </div>
     )
 }
