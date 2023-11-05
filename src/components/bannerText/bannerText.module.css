@@ -1,16 +1,16 @@
 .wrapper {
     position: relative;
     width: 100%;
-    height: fit-content;
     max-width: 1920px;
+    height: fir-content;
+    margin-bottom: -5vw;
 }
 
 .headers {
     position: relative;
     left: 20%;
     width: 65%;
-    height: auto;
-    transform: translateY(-25%);
+    transform: translateY(-45%);
 }
 
 .header {
@@ -41,7 +41,6 @@
     justify-content: flex-start;
     align-items: center;
     overflow: hidden;
-    transform: translateY(25%);
     left: 10%;
 }
 
@@ -79,6 +78,9 @@
 }
 
 @media (max-width: 768px) {
+    .wrapper {
+        margin-bottom: -20vw;
+    }
     .numbers {
         left: -20vw;
         height: 50vw;
