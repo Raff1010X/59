@@ -3,13 +3,14 @@
     width: 100%;
     max-width: 1920px;
     height: fit-content;
+    margin: 0 auto;
 }
 
 .headers {
     position: relative;
     left: 20%;
     width: 65%;
-    padding-top: 11vw;
+    padding-top: min(11vw, 275px);
 }
 
 .header {
