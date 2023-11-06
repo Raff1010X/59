@@ -7,7 +7,7 @@ interface UseScrollProps {
     ref: React.MutableRefObject<HTMLElement | null>
 }
 
-export default function UseScroll(props: UseScrollProps) {
+export default function useScroll(props: UseScrollProps) {
     const { ref } = props;
 
     const [percent, setPercent] = useState(0);

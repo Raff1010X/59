@@ -1,0 +1,46 @@
+.wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 21/9;
+    max-width: 1430px;
+    margin: auto;
+    display: flex;
+}
+
+.headers {
+    position: absolute;
+    width: 70%;
+    height: auto;
+    left: 0;
+    align-self: center;
+}
+
+.header {
+    font-size: min(5vw, 90px);
+    color: var(--color-text);
+    font-family: var(--font-galano-bold);
+    line-height: 1.1;
+}
+
+.video {
+    position: absolute;
+    left: 45%;
+    width: 45%;
+    aspect-ratio: 9/9;
+    filter: invert(1) hue-rotate(430deg);
+    opacity: 0.5;
+    align-self: center;
+}
+
+@media (max-width: 1470px) {
+    .wrapper {
+        max-width: calc(100% - 2 * var(--padding));
+    }
+}
+
+@media (max-width: 768px) {
+    .headers {
+        height: auto;
+        line-height: 1.25;
+    }
+}

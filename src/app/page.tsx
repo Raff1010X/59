@@ -11,6 +11,7 @@ import Slideshow from '@/components/slideshow/slideshow'
 import BannerNum from '@/components/bannerNum/bannerNum'
 import Scrollable from '@/components/scrollable/scrollable'
 import BannerText from '@/components/bannerText/bannerText'
+import BannerScan from '@/components/bannerScan/bannerScan'
 
 
 export default function Home() {
@@ -26,6 +27,8 @@ export default function Home() {
       <Slideshow className={style.slideshow} />
 
       <Video src="/images/demo.mp4" image='/images/demo.jpeg' />
+
+      <BannerScan header={['Stała współpraca z klientami to okazja do wzajemnego uczenia się, pomagania i rozwoju.']} />
 
       <BannerNum number={15} step={1} header={['lat istnienia naszej agencji', 'to ocean doświadczeń,', 'które przekuwamy na sukcesy', 'naszych klientów']} />
 

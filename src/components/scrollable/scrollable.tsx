@@ -1,4 +1,4 @@
-import UseScroll from "@/hooks/useScroll";
+import useScroll from "@/hooks/useScroll";
 import { useRef } from "react";
 import style from "./scrollable.module.css";
 import Image from "next/image";
@@ -18,7 +18,7 @@ export default function Scrollable(props: ScrollableProps) {
 
     const ref = useRef<HTMLDivElement>(null);
 
-    const scroll = UseScroll({ ref });
+    const scroll = useScroll({ ref });
 
     const opacity = Math.pow(scroll / 100, 2);
 

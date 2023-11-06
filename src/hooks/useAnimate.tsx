@@ -5,7 +5,7 @@ interface UseObserverProps {
     className: string,
 }
 
-export default function UseAnimate(props: UseObserverProps) {
+export default function useAnimate(props: UseObserverProps) {
     const { ref, className } = props;
 
     useEffect(() => {

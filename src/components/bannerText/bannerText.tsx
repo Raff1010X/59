@@ -15,15 +15,15 @@ interface BannerTextProps {
 export default function BannerText(props: BannerTextProps) {
     const { number, step, afterNumber, header, text, className } = props;
 
-    const numberWrapperRef = useRef<HTMLDivElement>(null);
+    const ref = useRef<HTMLDivElement>(null);
 
-    useAnimate({ ref: numberWrapperRef, className: style.animate });
+    useAnimate({ ref: ref, className: style.animate });
 
     return (
         <div className={`${style.wrapper} ${className}`}>
 
             <div className={style.numbers}>
-                <div className={style.numberWrapper} ref={numberWrapperRef}>
+                <div className={style.numberWrapper} ref={ref}>
                     {Array.from(Array(Math.floor(number / step) + 1).keys()).map((num, index) => (
                         <div key={index} className={style.number}>{num * step < 10 && '0'}{num * step}{afterNumber}</div>
                     ))}

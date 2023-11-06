@@ -3,8 +3,6 @@ import { useRef } from 'react';
 import style from './video.module.css';
 import Image from 'next/image';
 import Arrow from '../arrow/arrow';
-import { StaticImport } from 'next/dist/shared/lib/get-img-props';
-
 interface VideoProps {
     src: string;
     image: string;
