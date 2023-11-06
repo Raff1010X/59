@@ -1,5 +1,5 @@
 "use client";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import style from './sliderOpinions.module.css';
 import Dots from './dots/dots';
 import Slider from './slider/slider';
@@ -32,21 +32,43 @@ export default function SliderOpinions(props: SliderOpinionsProps) {
         }
     }
 
+    const width = window.innerWidth >= 1430 ? 1 : 0;
+
+    const [redraw, setRedraw] = useState(false);
+    
+    useEffect(() => {
+        const redrawSlider = () => {
+            setRedraw(!redraw);
+        }
+        window.addEventListener('resize', redrawSlider);
+        return () => window.removeEventListener('resize', redrawSlider);
+    }, [redraw]);
+
+
     return (
         <div className={`${style.wrapper} ${styleName}`}>
+            
             <div className={style.title}>
                 {title}
             </div>
+
             <div className={style.container}>
+
                 <Slider className={style.slider} data={opinions} selected={selected} />
+
+                {selected < opinions.length - 1 - width
+                    && <Button className={style.buttonRight} onClick={next} selected>
+                        <Arrow />
+                    </Button>}
+                {selected > 0
+                    && <Button className={style.buttonLeft} onClick={prev} selected>
+                        <Arrow className={style.arrowLeft} />
+                    </Button>}
+
             </div>
-            <Button className={style.buttonRight} onClick={next} selected>
-                <Arrow />
-            </Button>
-            <Button className={style.buttonLeft} onClick={prev} selected>
-                <Arrow className={style.arrowLeft}/>
-            </Button>
-            <Dots numberOfDots={opinions.length} selected={selected} setSelected={setSelected} />
+
+            <Dots numberOfDots={opinions.length - width} selected={selected} setSelected={setSelected} />
+        
         </div>
     )
 }
@@ -117,6 +139,15 @@ const opinions = [
     },
     {
         id: 8,
+        name: 'Jane Smith',
+        role: 'CEO',
+        foto: 'images/jane-smith.jpg',
+        logo: 'images/logo.png',
+        opinion:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quamvelit, vulputate eu pharetra nec, mattis ac neque.',
+    },
+    {
+        id: 9,
         name: 'Jane Smith',
         role: 'CEO',
         foto: 'images/jane-smith.jpg',

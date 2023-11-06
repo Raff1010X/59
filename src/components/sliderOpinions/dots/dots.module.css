@@ -1,5 +1,4 @@
-
-.dots {
+.wrapper {
     position: relative;
     width: 70%;
     height: 10%;
@@ -9,6 +8,12 @@
     align-items: center;
 }
 
+.dots {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
+
 .dot {
     width: 10px;
     height: 10px;
@@ -16,11 +21,17 @@
     background-color: var(--color-accent);
     margin: 0 5px;
     cursor: pointer;
-    transition: .5s;
+    transition: 0.5s;
 }
 
 .dot:hover {
     background-color: var(--color-accent-light);
+}
+
+.mover {
+    position: absolute;
+    background-color: var(--color-accent-light);
+    transition: 0.5s;
 }
 
 .selected {

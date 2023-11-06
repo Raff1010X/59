@@ -24,7 +24,13 @@ export default function Slider(props: sliderProps) {
                 return (
                     <div
                         key={item.id}
-                        className={`${style.slide} ${selected > index ? style.selectedLeft : selected < index ? style.selectedRight : style.selectedMiddle}`}
+                        className={`${style.slide} ${index === selected ? style.selectedLeft :
+                                index === selected + 1 ? style.selectedRight :
+                                    index === selected - 1 ? style.left :
+                                        index === selected + 2 ? style.right :
+                                            style.deselected
+                            }`}
+                        style={window.innerWidth >= 1430 ? { width: '50%' } : { width: '100%' }}
                     >
                         <div className={style.header}>
                             {item.id}
@@ -39,7 +45,7 @@ export default function Slider(props: sliderProps) {
                             </div>
                         </div>
                         <div className={style.content}>
-                            <div className={style.quote}>"</div>
+                            <div className={style.quote}>&quot;</div>
                             <div className={style.opinion}>
                                 {item.opinion}
                             </div>

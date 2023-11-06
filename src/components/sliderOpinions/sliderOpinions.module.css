@@ -3,7 +3,7 @@
     width: 100%;
     max-width: 1430px;
     margin: 0 auto;
-    height: 80vh;
+    height: 95vh;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -36,17 +36,16 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
-    margin-top: 8vw;
+    margin-top: 5vw;
 }
 
 .buttonLeft {
     position: absolute;
-    left: 12%;
-    width: 66px;
-    height: 66px;
-    max-height: 66px;
-    max-width: 66px;
+    left: -25px;
+    width: 50px;
+    height: 50px;
+    max-height: 50px;
+    max-width: 50px;
 }
 
 .buttonLeft > button, .buttonRight > button {
@@ -59,10 +58,10 @@
 
 .buttonRight {
     position: absolute;
-    right: 12%;
-    width: 66px;
-    height: 66px;
-    max-height: 66px;
-    max-width: 66px;
+    right: -25px;
+    width: 50px;
+    height: 50px;
+    max-height: 50px;
+    max-width: 50px;
 }
 
