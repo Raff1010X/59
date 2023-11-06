@@ -3,7 +3,6 @@ import style from './button.module.css'
 type ButtonProps = {
     selected?: boolean;
     className?: string;
-    // classNameButton?: string;
     children?: React.ReactNode;
     onClick?: () => void;
 }

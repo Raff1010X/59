@@ -1,0 +1,175 @@
+.wrapper {
+    position: relative;
+    width: 100%;
+    opacity: 0.5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.radar {
+    position: absolute;
+    width: 40%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    border: 1px solid var(--color-accent);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.circle {
+    position: absolute;
+    width: 75%;
+    height: 75%;
+    border-radius: 50%;
+    border: 1px solid var(--color-accent);
+}
+
+.circle1 {
+    width: 50%;
+    height: 50%;
+}
+
+.circle2 {
+    width: 25%;
+    height: 25%;
+}
+
+.dot {
+    position: absolute;
+    width: 1vw;
+    height: 1vw;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+    opacity: 0;
+    animation: dotBlink 2s linear infinite;
+}
+
+.dot::before {
+    content: "";
+    position: absolute;
+    width: 25%;
+    height: 25%;
+    border-radius: 50%;
+    background-color: white;
+    transform: translate(150%, 150%);
+}
+
+.dot1 {
+    opacity: 1;
+    animation: none;
+}
+
+.dot2 {
+    top: 15%;
+    left: 15%;
+    animation-delay: calc(330/360 * 2s);
+}
+
+.dot3 {
+    top: 65%;
+    left: 15%;
+    animation-delay: calc(270/360 * 2s);
+}
+
+.dot4 {
+    top: 17%;
+    left: 67%;
+    animation-delay: calc(45/360 * 2s);
+}
+
+.dot5 {
+    top: 55%;
+    left: 70%;
+    animation-delay: calc(100/360 * 2s);
+}
+
+.dot6 {
+    top: 70%;
+    left: 30%;
+    animation-delay: calc(230/360 * 2s);
+}
+
+.dot7 {
+    top: 80%;
+    left: 66%;
+    animation-delay: calc(150/360 * 2s);
+}
+
+.dot8 {
+    top: 65%;
+    left: 55%;
+    animation-delay: calc(170/360 * 2s);
+}
+
+.dot9 {
+    top: 38%;
+    left: 88%;
+    animation-delay: calc(80/360 * 2s);
+}
+
+.dot10 {
+    top: 30%;
+    left: 40%;
+    animation-delay: calc(350/360 * 2s);
+}
+
+.dot11 {
+    top: 12%;
+    left: 42%;
+    animation-delay: calc(355/360 * 2s);
+}
+
+.dot12 {
+    top: 85%;
+    left: 45%;
+    animation-delay: calc(190/360 * 2s);
+}
+
+.line {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-accent);
+}
+
+.line2 {
+    transform: rotate(90deg);
+}
+
+.radarLine {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: conic-gradient(
+        transparent 325deg,
+        var(--color-accent) 360deg
+    );
+    animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes dotBlink {
+    0% {
+        opacity: 1;
+        scale: 1;
+    }
+    45% {
+        opacity: 0;
+        scale: .5;
+    }
+    100% {
+        opacity: 0;
+        scale: 1;
+    }
+}

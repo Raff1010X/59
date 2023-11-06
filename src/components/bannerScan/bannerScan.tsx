@@ -2,6 +2,7 @@
 import { useRef } from "react";
 import style from "./bannerScan.module.css";
 import useAnimate from "@/hooks/useAnimate";
+import Radar from "../radar/radar";
 
 interface BannerScanProps {
     header: string[],
@@ -18,9 +19,7 @@ export default function BannerScan(props: BannerScanProps) {
     return (
         <div className={`${style.wrapper} ${className}`}>
 
-            <video className={style.video} autoPlay loop muted playsInline>
-                <source src="/images/scaner.mp4" type="video/mp4" />
-            </video>
+            <Radar className={style.radar}/>
 
             <div className={style.headers}>
                 {header?.map((text, index) => (

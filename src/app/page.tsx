@@ -13,6 +13,8 @@ import Scrollable from '@/components/scrollable/scrollable'
 import BannerText from '@/components/bannerText/bannerText'
 import BannerScan from '@/components/bannerScan/bannerScan'
 
+import SliderOpinions from '@/components/sliderOpinions/sliderOpinions'
+
 
 export default function Home() {
   const router = useRouter()
@@ -24,6 +26,9 @@ export default function Home() {
 
   return (
     <main>
+
+      <SliderOpinions title='Referencje' />
+
       <Slideshow className={style.slideshow} />
 
       <Video src="/images/demo.mp4" image='/images/demo.jpeg' />

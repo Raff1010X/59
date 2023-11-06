@@ -5,13 +5,14 @@
     max-width: 1430px;
     margin: auto;
     display: flex;
+    overflow: hidden;
 }
 
 .headers {
     position: absolute;
     width: 70%;
     height: auto;
-    left: 0;
+    left: 10%;
     align-self: center;
 }
 
@@ -22,7 +23,11 @@
     line-height: 1.1;
 }
 
-.video {
+.radar {
+    transform: translateX(20%);
+}
+
+/* .video {
     position: absolute;
     left: 45%;
     width: 45%;
@@ -30,7 +35,7 @@
     filter: invert(1) hue-rotate(430deg);
     opacity: 0.5;
     align-self: center;
-}
+} */
 
 @media (max-width: 1470px) {
     .wrapper {

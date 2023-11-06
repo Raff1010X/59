@@ -1,0 +1,68 @@
+.wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1430px;
+    margin: 0 auto;
+    height: 80vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: min(15vw, 300px);
+    color: var(--color-secondary);
+    text-transform: lowercase;
+    font-family: var(--font-galano-bold);
+    z-index: -1;
+}
+
+.container {
+    position: relative;
+    border: 1px solid var(--color-secondary);
+    border-radius: 10px;
+    width: 70%;
+    height: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin-top: 8vw;
+}
+
+.buttonLeft {
+    position: absolute;
+    left: 12%;
+    width: 66px;
+    height: 66px;
+    max-height: 66px;
+    max-width: 66px;
+}
+
+.buttonLeft > button, .buttonRight > button {
+    border-radius: 50%;
+}
+
+.arrowLeft {
+    rotate: 180deg;
+}
+
+.buttonRight {
+    position: absolute;
+    right: 12%;
+    width: 66px;
+    height: 66px;
+    max-height: 66px;
+    max-width: 66px;
+}
+
