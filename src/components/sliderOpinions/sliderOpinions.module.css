@@ -37,6 +37,14 @@
     margin-top: 5vw;
 }
 
+@media (min-width: 1430px) {
+    .container {
+        height: 80%;
+        width: 90%;
+        margin-top: 1vw;
+    }
+}
+
 .buttonLeft {
     position: absolute;
     left: -25px;
@@ -44,6 +52,8 @@
     height: 50px;
     max-height: 50px;
     max-width: 50px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
 }
 
 .buttonLeft > button, .buttonRight > button {
@@ -61,6 +71,8 @@
     height: 50px;
     max-height: 50px;
     max-width: 50px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
 }
 
 .dots {

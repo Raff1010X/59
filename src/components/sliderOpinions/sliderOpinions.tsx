@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import style from './sliderOpinions.module.css';
 import Button from '../button/button';
 import Arrow from '../arrow/arrow';
@@ -72,6 +72,24 @@ export default function SliderOpinions(props: SliderOpinionsProps) {
         return () => window.removeEventListener('resize', redrawSlider);
     }, []);
 
+    // Auto change slide
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (state.selected === opinions.length - 1 - state.width) {
+                setState((state) => ({
+                    ...state,
+                    selected: 0,
+                }));
+            } else {
+                setState((state) => ({
+                    ...state,
+                    selected: state.selected + 1,
+                }));
+            }
+        }, 5000);
+        return () => clearInterval(interval);
+    }, [state.selected, state.width]);
+
     return (
         <div className={`${style.wrapper} ${styleName}`}>
 
@@ -83,26 +101,45 @@ export default function SliderOpinions(props: SliderOpinionsProps) {
 
                 {state.width === 2
                     ? <Loader />
-                    : <Slider className={style.slider} data={opinions} selected={state.selected} width={state.width === 0 ? 100 : 50} />}
+                    : <Slider className={style.slider} data={opinions} selected={state.selected} width={state.width === 0 ? 99.75 : 49.75} />}
 
-                {state.selected < opinions.length - 1 - state.width && state.width !== 2
-                    && <Button className={style.buttonRight} onClick={next} selected>
-                        <Arrow />
-                    </Button>}
-                {state.selected > 0 && state.width !== 2
-                    && <Button className={style.buttonLeft} onClick={prev} selected>
-                        <Arrow className={style.arrowLeft} />
-                    </Button>}
+
+                <Button
+                    className={style.buttonRight}
+                    onClick={next}
+                    selected
+                    styles={
+                        state.selected < opinions.length - 1 - state.width && state.width !== 2
+                            ? { opacity: 1, pointerEvents: 'all' }
+                            : { opacity: 0, pointerEvents: 'none' }
+                    }
+                >
+                    <Arrow />
+                </Button>
+
+                <Button
+                    className={style.buttonLeft}
+                    onClick={prev}
+                    selected
+                    styles={
+                        state.selected > 0 && state.width !== 2
+                            ? { opacity: 1, pointerEvents: 'all' }
+                            : { opacity: 0, pointerEvents: 'none' }
+                    }
+                >
+                    <Arrow className={style.arrowLeft} />
+                </Button>
 
             </div>
 
             {state.width === 2
-                ? <Dots numberOfDots={1} selected={0} setSelected={()=>{}} />
+                ? <div className={style.dots} />
                 : <Dots numberOfDots={opinions.length - state.width} selected={state.selected} setSelected={setSelected} />
             }
         </div>
     )
 }
+
 
 const opinions = [
     {

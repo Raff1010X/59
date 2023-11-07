@@ -23,24 +23,26 @@ export default function Slider(props: sliderProps) {
                     <div
                         key={item.id}
                         className={`${style.slide} ${index === selected ? style.selectedLeft :
-                                index === selected + 1 ? style.selectedRight :
-                                    index === selected - 1 ? style.left :
-                                        index === selected + 2 ? style.right :
-                                            style.deselected
+                            index === selected + 1 ? style.selectedRight :
+                                index === selected - 1 ? style.left :
+                                    index === selected + 2 ? style.right :
+                                        index > selected ? style.deselectedRight :
+                                            style.deselectedLeft
                             }`}
                         style={
-                            width === 100 && index === selected + 1 ? {
+                            width === 99.75 && index === selected + 1 ? {
                                 transform: `translateX(200%) rotateY(90deg) scale(0.5)`,
                                 width: `${width}%`,
                                 opacity: 0,
-                            } : 
-                            {
-                                width: `${width}%`,
-                            }
+                            } :
+                                {
+                                    width: `${width}%`,
+                                }
                         }
                     >
-                        {item.id}
-                        {/* <div className={style.header}>
+                        <div className={style.container}>
+                            {item.id}
+                            {/* <div className={style.header}>
                             {item.id}
                             <div className={style.foto}>
                                 <img src={item.foto} alt={item.name} />
@@ -61,6 +63,7 @@ export default function Slider(props: sliderProps) {
                         <div className={style.logo}>
                             <img src={item.logo} alt={item.name} />
                         </div> */}
+                        </div>
                     </div>
                 );
             })}
