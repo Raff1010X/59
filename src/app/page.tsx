@@ -15,7 +15,6 @@ import BannerScan from '@/components/bannerScan/bannerScan'
 
 import SliderOpinions from '@/components/sliderOpinions/sliderOpinions'
 
-
 export default function Home() {
   const router = useRouter()
 

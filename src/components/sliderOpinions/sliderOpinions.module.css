@@ -63,3 +63,8 @@
     max-width: 50px;
 }
 
+.dots {
+    position: relative;
+    width: 70%;
+    height: 10%;
+}

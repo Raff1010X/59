@@ -1,74 +1,105 @@
-"use client";
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import style from './sliderOpinions.module.css';
-import Dots from './dots/dots';
-import Slider from './slider/slider';
 import Button from '../button/button';
 import Arrow from '../arrow/arrow';
+import Dots from './dots/dots';
+import Slider from './slider/slider';
+import Loader from './loader/loader';
+// import dynamic from 'next/dynamic'
+// const Slider = dynamic(() => import('./slider/slider'), { ssr: false })
+// const Dots = dynamic(() => import('./dots/dots'), { ssr: false })
 
 interface SliderOpinionsProps {
     styleName?: string;
     title?: string;
 }
 
+const initialState = {
+    selected: 0,
+    width: 2,
+}
+
 export default function SliderOpinions(props: SliderOpinionsProps) {
     const { styleName, title } = props;
 
-    const [selected, setSelected] = useState(0);
+    const [state, setState] = useState(initialState);
 
     const next = () => {
-        if (selected === opinions.length - 1) {
-            setSelected(0);
+        if (state.selected === opinions.length - 1) {
+            setState((state) => ({
+                ...state,
+                selected: 0,
+            }));
         } else {
-            setSelected(selected + 1);
+            setState((state) => ({
+                ...state,
+                selected: state.selected + 1,
+            }));
         }
     }
 
     const prev = () => {
-        if (selected === 0) {
-            setSelected(opinions.length - 1);
+        if (state.selected === 0) {
+            setState((state) => ({
+                ...state,
+                selected: opinions.length - 1,
+            }));
         } else {
-            setSelected(selected - 1);
+            setState((state) => ({
+                ...state,
+                selected: state.selected - 1,
+            }));
         }
     }
 
-    const width = window.innerWidth >= 1430 ? 1 : 0;
+    const setSelected = (selected: number) => {
+        setState((state) => ({
+            ...state,
+            selected,
+        }));
+    }
 
-    const [redraw, setRedraw] = useState(false);
-    
     useEffect(() => {
         const redrawSlider = () => {
-            setRedraw(!redraw);
+            const width = window.innerWidth >= 1430 ? 1 : 0;
+            setState((state) => ({
+                selected: 0,
+                width,
+            }));
         }
+        redrawSlider();
         window.addEventListener('resize', redrawSlider);
         return () => window.removeEventListener('resize', redrawSlider);
-    }, [redraw]);
-
+    }, []);
 
     return (
         <div className={`${style.wrapper} ${styleName}`}>
-            
+
             <div className={style.title}>
                 {title}
             </div>
 
             <div className={style.container}>
 
-                <Slider className={style.slider} data={opinions} selected={selected} />
+                {state.width === 2
+                    ? <Loader />
+                    : <Slider className={style.slider} data={opinions} selected={state.selected} width={state.width === 0 ? 100 : 50} />}
 
-                {selected < opinions.length - 1 - width
+                {state.selected < opinions.length - 1 - state.width && state.width !== 2
                     && <Button className={style.buttonRight} onClick={next} selected>
                         <Arrow />
                     </Button>}
-                {selected > 0
+                {state.selected > 0 && state.width !== 2
                     && <Button className={style.buttonLeft} onClick={prev} selected>
                         <Arrow className={style.arrowLeft} />
                     </Button>}
 
             </div>
 
-            <Dots numberOfDots={opinions.length - width} selected={selected} setSelected={setSelected} />
-        
+            {state.width === 2
+                ? <Dots numberOfDots={1} selected={0} setSelected={()=>{}} />
+                : <Dots numberOfDots={opinions.length - state.width} selected={state.selected} setSelected={setSelected} />
+            }
         </div>
     )
 }

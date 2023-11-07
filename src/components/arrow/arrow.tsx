@@ -1,4 +1,3 @@
-import { LegacyRef } from 'react';
 import style from './arrow.module.css'
 
 interface ArrowProps {

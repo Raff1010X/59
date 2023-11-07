@@ -1,7 +1,4 @@
-
-
 import style from './slider.module.css';
-
 interface sliderProps {
     className?: string;
     data: {
@@ -13,10 +10,11 @@ interface sliderProps {
         opinion: string;
     }[];
     selected: number;
+    width?: number;
 }
 
 export default function Slider(props: sliderProps) {
-    const { className, data, selected } = props;
+    const { className, data, selected, width } = props;
 
     return (
         <div className={`${style.wrapper} ${className}`}>
@@ -31,19 +29,18 @@ export default function Slider(props: sliderProps) {
                                             style.deselected
                             }`}
                         style={
-                            window.innerWidth < 1430 && index === selected + 1 ? {
+                            width === 100 && index === selected + 1 ? {
                                 transform: `translateX(200%) rotateY(90deg) scale(0.5)`,
-                                width: `100%`,
+                                width: `${width}%`,
                                 opacity: 0,
                             } : 
-                             window.innerWidth >= 1430 ? {
-                                width: `50%`,
-                            } : {
-                                width: `100%`,
+                            {
+                                width: `${width}%`,
                             }
                         }
                     >
-                        <div className={style.header}>
+                        {item.id}
+                        {/* <div className={style.header}>
                             {item.id}
                             <div className={style.foto}>
                                 <img src={item.foto} alt={item.name} />
@@ -63,7 +60,7 @@ export default function Slider(props: sliderProps) {
                         </div>
                         <div className={style.logo}>
                             <img src={item.logo} alt={item.name} />
-                        </div>
+                        </div> */}
                     </div>
                 );
             })}

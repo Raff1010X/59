@@ -1,4 +1,3 @@
-"use client";
 import { useEffect, useRef } from 'react';
 import style from './dots.module.css';
 

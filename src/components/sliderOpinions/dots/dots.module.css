@@ -37,4 +37,14 @@
 .selected {
     background-color: var(--color-accent-light);
     scale: 1.5;
+    animation: select 1.5s ease-in-out forwards;
+}
+
+@keyframes select {
+    from {
+        scale: 0;
+    }
+    to {
+        scale: 1.5;
+    }
 }
