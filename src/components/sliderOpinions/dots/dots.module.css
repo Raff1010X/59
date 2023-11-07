@@ -20,6 +20,7 @@
 .dot {
     width: 10px;
     height: 10px;
+    border: 1px solid var(--color-accent);
     border-radius: 50%;
     background-color: var(--color-accent);
     margin: 0 5px;
@@ -55,10 +56,16 @@
 }
 
 @keyframes select {
-    from {
-        scale: 0;
+    0% {
+        background-color: var(--color-accent);
+        scale: 1;
     }
-    to {
+    10% {
+        background-color: var(--color-primary);
+        scale: 1;
+    }
+    100% {
+        background-color: var(--color-accent-light);
         scale: 1.5;
     }
 }
