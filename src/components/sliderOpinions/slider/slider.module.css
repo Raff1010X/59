@@ -5,7 +5,7 @@
     overflow: hidden;
     max-width: 1430px;
     margin: 0 auto;
-    overflow: hidden;
+    perspective: 1000px;
 }
 
 .slide {
@@ -14,7 +14,7 @@
     height: 100%;
     border: 1px solid var(--color-secondary);
     border-radius: 10px;
-    transition: .5s;
+    transition: .65s;
     background-color: var(--color-primary);
     display: flex;
     flex-direction: column;
@@ -23,22 +23,27 @@
 }
 
 .right {
-    transform: translateX(200%);
+    transform: translateX(200%) rotateY(90deg) scale(0.5);
+    opacity: 0; 
 }
 
 .left {
-    transform: translateX(-100%);
+    transform: translateX(-100%) rotateY(-90deg) scale(0.5);
+    opacity: 0;
 }
 
 .selectedLeft {
-    transform: translateX(0%);
+    transform: translateX(0%) rotateY(0deg) scale(1);
+    opacity: 1;
 }
 
 .selectedRight {
-    transform: translateX(100%);
+    transform: translateX(100%) rotateY(0deg) scale(1);
+    opacity: 1;
 }
 
 .deselected {
-    transform: translateX(300%);
+    transform: translateX(200%) rotateY(90deg) scale(0.5);
+    opacity: 0;
 }
 

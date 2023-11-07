@@ -30,7 +30,18 @@ export default function Slider(props: sliderProps) {
                                         index === selected + 2 ? style.right :
                                             style.deselected
                             }`}
-                        style={window.innerWidth >= 1430 ? { width: '50%' } : { width: '100%' }}
+                        style={
+                            window.innerWidth < 1430 && index === selected + 1 ? {
+                                transform: `translateX(200%) rotateY(90deg) scale(0.5)`,
+                                width: `100%`,
+                                opacity: 0,
+                            } : 
+                             window.innerWidth >= 1430 ? {
+                                width: `50%`,
+                            } : {
+                                width: `100%`,
+                            }
+                        }
                     >
                         <div className={style.header}>
                             {item.id}
