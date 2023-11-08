@@ -12,11 +12,15 @@
     position: relative;
     display: flex;
     flex-direction: row;
+    opacity: 0;
+    scale: 0;
+    animation: fadeIn 0.5s ease-in-out forwards;
 }
 
 .dot {
     width: 10px;
     height: 10px;
+    border: 1px solid var(--color-accent);
     border-radius: 50%;
     background-color: var(--color-accent);
     margin: 0 5px;
@@ -24,8 +28,19 @@
     transition: 0.5s;
 }
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        scale: 0;
+    }
+    to {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
 .dot:hover {
-    background-color: var(--color-accent-light);
+    background-color: transparent;
 }
 
 .mover {
@@ -37,14 +52,16 @@
 .selected {
     background-color: var(--color-accent-light);
     scale: 1.5;
-    animation: select 1.5s ease-in-out forwards;
+    animation: select 1.5s ease-in-out forwards !important;
 }
 
 @keyframes select {
-    from {
-        scale: 0;
+    0% {
+        background-color: transparent;
+        scale: 1;
     }
-    to {
+    100% {
+        background-color: var(--color-accent-light);
         scale: 1.5;
     }
 }

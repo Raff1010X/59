@@ -44,6 +44,8 @@
     height: 50px;
     max-height: 50px;
     max-width: 50px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
 }
 
 .buttonLeft > button, .buttonRight > button {
@@ -61,10 +63,62 @@
     height: 50px;
     max-height: 50px;
     max-width: 50px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
 }
 
 .dots {
     position: relative;
     width: 70%;
     height: 10%;
+}
+
+.swipe {
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    right: 50%;
+    transform: translateX(50%);
+    bottom: 30%;
+    animation: swipe 1s ease-in-out infinite;
+    display: none;
+    transition: opacity 0.5s ease-in-out;
+}
+
+@keyframes swipe {
+    0% {
+        transform: translateX(40%);
+    }
+    50% {
+        transform: translateX(60%);
+    }
+    100% {
+        transform: translateX(40%);
+    }
+}
+
+@media (min-width: 1430px) {
+    .container {
+        height: 80%;
+        width: 90%;
+        margin-top: 1vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .swipe {
+        display: flex;
+    }
+    .container {
+        height: 80%;
+        width: 90%;
+    }
+    .buttonLeft {
+        opacity: 0 !important;
+        pointer-events: none !important;
+    }
+    .buttonRight {
+        opacity: 0 !important;
+        pointer-events: none !important;
+    }
 }

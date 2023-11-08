@@ -1,9 +1,10 @@
-import { Suspense, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import style from './sliderOpinions.module.css';
 import Button from '../button/button';
 import Arrow from '../arrow/arrow';
 import Dots from './dots/dots';
-import Slider from './slider/slider';
+import Slide from './slide/slide';
 import Loader from './loader/loader';
 // import dynamic from 'next/dynamic'
 // const Slider = dynamic(() => import('./slider/slider'), { ssr: false })
@@ -17,6 +18,7 @@ interface SliderOpinionsProps {
 const initialState = {
     selected: 0,
     width: 0,
+    touchStart: 0,
     loading: true,
 }
 
@@ -63,7 +65,8 @@ export default function SliderOpinions(props: SliderOpinionsProps) {
     useEffect(() => {
         const redrawSlider = () => {
             const width = window.innerWidth >= 1430 ? 1 : 0;
-            setState(() => ({
+            setState((state) => ({
+                ...state,
                 selected: 0,
                 width,
                 loading: false,
@@ -74,8 +77,49 @@ export default function SliderOpinions(props: SliderOpinionsProps) {
         return () => window.removeEventListener('resize', redrawSlider);
     }, []);
 
+    // Auto change slide
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (state.selected === opinions.length - 1 - state.width) {
+                setState((state) => ({
+                    ...state,
+                    selected: 0,
+                }));
+            } else {
+                setState((state) => ({
+                    ...state,
+                    selected: state.selected + 1,
+                    touchStart: 1,
+                }));
+            }
+        }, 5000);
+        return () => clearInterval(interval);
+    }, [state.selected, state.width]);
+
+    // increase selected on right to left touch move if touch move is more than 50px
+    const touchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+        setState((state) => ({
+            ...state,
+            touchStart: e.touches[0].clientX,
+        }));
+    }
+
+    const touchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
+        const touchEnd = e.changedTouches[0].clientX;
+        if (touchEnd - state.touchStart > 50) {
+            prev();
+        } else if (touchEnd - state.touchStart < -50) {
+            next();
+        }
+    }
+
+
     return (
-        <div className={`${style.wrapper} ${styleName}`}>
+        <div
+            className={`${style.wrapper} ${styleName}`}
+            onTouchStart={touchStart}
+            onTouchEnd={touchEnd}
+        >
 
             <div className={style.title}>
                 {title}
@@ -85,36 +129,68 @@ export default function SliderOpinions(props: SliderOpinionsProps) {
 
                 {state.loading
                     ? <Loader />
-                    : <Slider className={style.slider} data={opinions} selected={state.selected} width={state.width === 0 ? 100 : 50} />}
+                    : <Slide className={style.slider} data={opinions} selected={state.selected} width={state.width === 0 ? 99.75 : 49.75} />}
 
-                {state.selected < opinions.length - 1 - state.width
-                    && state.width !== 2
-                    && <Button className={style.buttonRight} onClick={next} selected>
-                        <Arrow />
-                    </Button>}
-                {state.selected > 0
-                    && state.loading
-                    && <Button className={style.buttonLeft} onClick={prev} selected>
-                        <Arrow className={style.arrowLeft} />
-                    </Button>}
+
+                <Button
+                    className={style.buttonRight}
+                    onClick={next}
+                    selected
+                    styles={
+                        state.selected < opinions.length - 1 - state.width && !state.loading
+                            ? { opacity: 1, pointerEvents: 'all' }
+                            : { opacity: 0, pointerEvents: 'none' }
+                    }
+                >
+                    <Arrow />
+                </Button>
+
+                <Button
+                    className={style.buttonLeft}
+                    onClick={prev}
+                    selected
+                    styles={
+                        state.selected > 0 && !state.loading
+                            ? { opacity: 1, pointerEvents: 'all' }
+                            : { opacity: 0, pointerEvents: 'none' }
+                    }
+                >
+                    <Arrow className={style.arrowLeft} />
+                </Button>
 
             </div>
 
             {state.loading
-                ? <Dots numberOfDots={1} selected={0} setSelected={() => { }} />
+                ? <div className={style.dots} />
                 : <Dots numberOfDots={opinions.length - state.width} selected={state.selected} setSelected={setSelected} />
             }
+            <Image
+                src="/images/swipe-horizontal.png"
+                alt="swipe"
+                className={style.swipe}
+                width={100}
+                height={100}
+                style={{
+                    opacity:
+                        state.touchStart === 0 &&
+                            state.selected === 0 &&
+                            !state.loading
+                            ? 1
+                            : 0
+                }}
+            />
         </div>
     )
 }
+
 
 const opinions = [
     {
         id: 1,
         name: 'John Doe',
         role: 'CEO',
-        foto: 'images/john-doe.jpg',
-        logo: 'images/logo.png',
+        foto: '/images/avatar.png',
+        logo: '/images/logo.png',
         opinion:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.',
     },
@@ -122,8 +198,8 @@ const opinions = [
         id: 2,
         name: 'Jane Doe',
         role: 'CEO',
-        foto: 'images/jane-doe.jpg',
-        logo: 'images/logo.png',
+        foto: '/images/avatar.png',
+        logo: '/images/logo.png',
         opinion:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.',
     },
@@ -131,8 +207,8 @@ const opinions = [
         id: 3,
         name: 'John Smith',
         role: 'CEO',
-        foto: 'images/john-smith.jpg',
-        logo: 'images/logo.png',
+        foto: '/images/avatar.png',
+        logo: '/images/logo.png',
         opinion:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quamvelit, vulputate eu pharetra nec, mattis ac neque.',
     },
@@ -140,8 +216,8 @@ const opinions = [
         id: 4,
         name: 'Jane Smith',
         role: 'CEO',
-        foto: 'images/jane-smith.jpg',
-        logo: 'images/logo.png',
+        foto: '/images/avatar.png',
+        logo: '/images/logo.png',
         opinion:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quamvelit, vulputate eu pharetra nec, mattis ac neque.',
     },
@@ -149,8 +225,8 @@ const opinions = [
         id: 5,
         name: 'John Doe',
         role: 'CEO',
-        foto: 'images/john-doe.jpg',
-        logo: 'images/logo.png',
+        foto: '/images/avatar.png',
+        logo: '/images/logo.png',
         opinion:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.',
     },
@@ -158,8 +234,8 @@ const opinions = [
         id: 6,
         name: 'Jane Doe',
         role: 'CEO',
-        foto: 'images/jane-doe.jpg',
-        logo: 'images/logo.png',
+        foto: '/images/avatar.png',
+        logo: '/images/logo.png',
         opinion:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.',
     },
@@ -167,8 +243,8 @@ const opinions = [
         id: 7,
         name: 'John Smith',
         role: 'CEO',
-        foto: 'images/john-smith.jpg',
-        logo: 'images/logo.png',
+        foto: '/images/avatar.png',
+        logo: '/images/logo.png',
         opinion:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quamvelit, vulputate eu pharetra nec, mattis ac neque.',
     },
@@ -176,8 +252,8 @@ const opinions = [
         id: 8,
         name: 'Jane Smith',
         role: 'CEO',
-        foto: 'images/jane-smith.jpg',
-        logo: 'images/logo.png',
+        foto: '/images/avatar.png',
+        logo: '/images/logo.png',
         opinion:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quamvelit, vulputate eu pharetra nec, mattis ac neque.',
     },
@@ -185,8 +261,8 @@ const opinions = [
         id: 9,
         name: 'Jane Smith',
         role: 'CEO',
-        foto: 'images/jane-smith.jpg',
-        logo: 'images/logo.png',
+        foto: '/images/avatar.png',
+        logo: '/images/logo.png',
         opinion:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quamvelit, vulputate eu pharetra nec, mattis ac neque.',
     }
