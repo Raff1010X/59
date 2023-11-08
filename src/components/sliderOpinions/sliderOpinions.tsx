@@ -16,7 +16,8 @@ interface SliderOpinionsProps {
 
 const initialState = {
     selected: 0,
-    width: 2,
+    width: 0,
+    loading: true,
 }
 
 export default function SliderOpinions(props: SliderOpinionsProps) {
@@ -62,9 +63,10 @@ export default function SliderOpinions(props: SliderOpinionsProps) {
     useEffect(() => {
         const redrawSlider = () => {
             const width = window.innerWidth >= 1430 ? 1 : 0;
-            setState((state) => ({
+            setState(() => ({
                 selected: 0,
                 width,
+                loading: false,
             }));
         }
         redrawSlider();
@@ -81,23 +83,25 @@ export default function SliderOpinions(props: SliderOpinionsProps) {
 
             <div className={style.container}>
 
-                {state.width === 2
+                {state.loading
                     ? <Loader />
                     : <Slider className={style.slider} data={opinions} selected={state.selected} width={state.width === 0 ? 100 : 50} />}
 
-                {state.selected < opinions.length - 1 - state.width && state.width !== 2
+                {state.selected < opinions.length - 1 - state.width
+                    && state.width !== 2
                     && <Button className={style.buttonRight} onClick={next} selected>
                         <Arrow />
                     </Button>}
-                {state.selected > 0 && state.width !== 2
+                {state.selected > 0
+                    && state.loading
                     && <Button className={style.buttonLeft} onClick={prev} selected>
                         <Arrow className={style.arrowLeft} />
                     </Button>}
 
             </div>
 
-            {state.width === 2
-                ? <Dots numberOfDots={1} selected={0} setSelected={()=>{}} />
+            {state.loading
+                ? <Dots numberOfDots={1} selected={0} setSelected={() => { }} />
                 : <Dots numberOfDots={opinions.length - state.width} selected={state.selected} setSelected={setSelected} />
             }
         </div>
