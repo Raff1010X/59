@@ -33,7 +33,7 @@ export default function Slide(props: sliderProps) {
                                             style.deselectedLeft
                             }`}
                         style={
-                            width === 99.75 && index === selected + 1 ? {
+                            width === 100 && index === selected + 1 ? {
                                 transform: `translateX(200%) rotateY(90deg) scale(0.5)`,
                                 width: `${width}%`,
                                 opacity: 0,

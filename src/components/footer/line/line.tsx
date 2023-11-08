@@ -1,8 +1,14 @@
 import style from './line.module.css';
 
-export default function Line() {
+
+interface LineProps {
+    className?: string;
+}
+
+export default function Line(props: LineProps) {
+    const { className } = props;
     return (
-        <div className={style.line}>
+        <div className={`${style.line} ${className}`}>
         </div>
     )
 }

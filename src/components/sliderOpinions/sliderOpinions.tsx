@@ -129,7 +129,7 @@ export default function SliderOpinions(props: SliderOpinionsProps) {
 
                 {state.loading
                     ? <Loader />
-                    : <Slide className={style.slider} data={opinions} selected={state.selected} width={state.width === 0 ? 99.75 : 49.75} />}
+                    : <Slide className={style.slider} data={opinions} selected={state.selected} width={state.width === 0 ? 100 : 47.6} />}
 
 
                 <Button

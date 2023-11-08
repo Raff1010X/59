@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import style from './container.module.css';
+import Line from '@/components/footer/line/line';
 
 interface ContainerProps {
     className?: string;
@@ -14,7 +15,7 @@ interface ContainerProps {
 }
 
 export default function Container(props: ContainerProps) {
-    const { className,  item } = props;
+    const { className, item } = props;
 
     return (
         <div className={`${style.wrapper} ${className}`}>
@@ -22,11 +23,13 @@ export default function Container(props: ContainerProps) {
                 <div className={style.foto}>
                     <Image src={item.foto} alt={item.name} width={100} height={100} />
                 </div>
-                <div className={style.name}>
-                    {item.name}
-                </div>
-                <div className={style.role}>
-                    {item.role}
+                <div className={style.person}>
+                    <div className={style.name}>
+                        {item.name}
+                    </div>
+                    <div className={style.role}>
+                        {item.role}
+                    </div>
                 </div>
             </div>
             <div className={style.content}>
@@ -35,6 +38,7 @@ export default function Container(props: ContainerProps) {
                     {item.opinion}
                 </div>
             </div>
+            <Line className={style.line} />
             <div className={style.logo}>
                 <Image src={item.logo} alt={item.name} width={100} height={100} />
             </div>
