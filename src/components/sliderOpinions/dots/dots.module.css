@@ -40,7 +40,7 @@
 }
 
 .dot:hover {
-    background-color: var(--color-accent-light);
+    background-color: transparent;
 }
 
 .mover {
@@ -57,11 +57,7 @@
 
 @keyframes select {
     0% {
-        background-color: var(--color-accent);
-        scale: 1;
-    }
-    10% {
-        background-color: var(--color-primary);
+        background-color: transparent;
         scale: 1;
     }
     100% {

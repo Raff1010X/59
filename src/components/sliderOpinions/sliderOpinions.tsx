@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import style from './sliderOpinions.module.css';
 import Button from '../button/button';
 import Arrow from '../arrow/arrow';
@@ -17,6 +18,7 @@ interface SliderOpinionsProps {
 const initialState = {
     selected: 0,
     width: 2,
+    touchStart: 0,
 }
 
 export default function SliderOpinions(props: SliderOpinionsProps) {
@@ -63,6 +65,7 @@ export default function SliderOpinions(props: SliderOpinionsProps) {
         const redrawSlider = () => {
             const width = window.innerWidth >= 1430 ? 1 : 0;
             setState((state) => ({
+                ...state,
                 selected: 0,
                 width,
             }));
@@ -90,8 +93,30 @@ export default function SliderOpinions(props: SliderOpinionsProps) {
         return () => clearInterval(interval);
     }, [state.selected, state.width]);
 
+    // increase selected on right to left touch move if touch move is more than 50px
+    const touchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+        setState((state) => ({
+            ...state,
+            touchStart: e.touches[0].clientX,
+        }));
+    }
+
+    const touchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
+        const touchEnd = e.changedTouches[0].clientX;
+        if (touchEnd - state.touchStart > 50) {
+            prev();
+        } else if (touchEnd - state.touchStart < -50) {
+            next();
+        }
+    }
+
+
     return (
-        <div className={`${style.wrapper} ${styleName}`}>
+        <div
+            className={`${style.wrapper} ${styleName}`}
+            onTouchStart={touchStart}
+            onTouchEnd={touchEnd}
+        >
 
             <div className={style.title}>
                 {title}
@@ -136,6 +161,21 @@ export default function SliderOpinions(props: SliderOpinionsProps) {
                 ? <div className={style.dots} />
                 : <Dots numberOfDots={opinions.length - state.width} selected={state.selected} setSelected={setSelected} />
             }
+            <Image
+                src="/images/swipe-horizontal.png"
+                alt="swipe"
+                className={style.swipe}
+                width={100}
+                height={100}
+                style={{
+                    opacity:
+                        state.touchStart === 0 &&
+                            state.selected === 0 &&
+                            state.width !== 2
+                            ? 1
+                            : 0
+                }}
+            />
         </div>
     )
 }
