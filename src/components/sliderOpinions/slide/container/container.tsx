@@ -35,7 +35,9 @@ export default function Container(props: ContainerProps) {
             <div className={style.content}>
                 <div className={style.quote}>&quot;</div>
                 <div className={style.opinion}>
-                    {item.opinion}
+                    <div className={style.edgeTop} />
+                    <div>{item.opinion}</div>
+                    <div className={style.edgeBottom} />
                 </div>
             </div>
             <Line className={style.line} />
