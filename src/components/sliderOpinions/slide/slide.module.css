@@ -17,12 +17,12 @@
 }
 
 .right {
-    transform: translateX(210%) rotateY(90deg) scale(0.5);
+    transform: translateX(160%) rotateY(60deg) scale(0.5);
     opacity: 0; 
 }
 
 .left {
-    transform: translateX(-100%) rotateY(-90deg) scale(0.5);
+    transform: translateX(-50%) rotateY(-60deg) scale(0.5);
     opacity: 0;
 }
 
@@ -37,11 +37,11 @@
 }
 
 .deselectedRight {
-    transform: translateX(210%) rotateY(90deg) scale(0.5);
+    transform: translateX(210%) rotateY(60deg) scale(0.5);
     opacity: 0;
 }
 
 .deselectedLeft {
-    transform: translateX(-100%) rotateY(-90deg) scale(0.5);
+    transform: translateX(-100%) rotateY(-60deg) scale(0.5);
     opacity: 0;
 }

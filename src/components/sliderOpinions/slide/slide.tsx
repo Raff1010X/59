@@ -34,7 +34,7 @@ export default function Slide(props: sliderProps) {
                             }`}
                         style={
                             width === 100 && index === selected + 1 ? {
-                                transform: `translateX(200%) rotateY(90deg) scale(0.5)`,
+                                transform: `translateX(50%) rotateY(60deg) scale(0.5)`,
                                 width: `${width}%`,
                                 opacity: 0,
                             } :

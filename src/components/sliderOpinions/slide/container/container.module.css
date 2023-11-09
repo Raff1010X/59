@@ -77,19 +77,40 @@
 
 
 .opinion {
+    position: relative;
     width: 100%;
     height: 100%;
     padding-left: 40px;
+    padding-top: 30px;
     font-size: 18px;
     line-height: 1.2;
-    margin-top: 30px;
+    overflow: hidden;
+    overflow-y: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: 0px;  /* Firefox */
 }
+
+.opinion::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  .opinion::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .opinion::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  .opinion::-webkit-scrollbar-thumb:hover {
+    background: var(--color-accent);
+  }
 
 .line {
     width: 100%;
     height: 1px;
     border-top: 1px solid var(--color-line);
-    margin-bottom: 30px;
+    height: 30px;
 }
 
 .logo {

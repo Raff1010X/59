@@ -52,7 +52,7 @@
     width: 25%;
     height: 25%;
     border-radius: 50%;
-    background-color: white;
+    background-color: red;
     transform: translate(150%, 150%);
 }
 
