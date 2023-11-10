@@ -29,6 +29,7 @@ export default function BannerText(props: BannerTextProps) {
                     ))}
                 </div>
             </div>
+            <div className={style.numbersCover} ></div>
 
             <div className={style.headers}>
                 {header?.map((text, index) => (
