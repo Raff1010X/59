@@ -1,16 +1,56 @@
+"use client";
 import Image from "next/image";
 import logo from "@/assets/images/logo_sm.svg";
 
 import style from './banner.module.css';
+import { useEffect, useRef } from "react";
 
 type BannerProps = {
     className?: string;
     backText?: string[];
     frontText?: string[];
-};
+}
 
 export default function Banner(props: BannerProps) {
     const { className, backText, frontText } = props;
+    const ref = useRef<HTMLDivElement>(null);
+
+    const texts = frontText?.join("\u00A0").replace(/i /g, "i\u00A0").split("NOTHING");
+
+    const text = texts?.map((text, index) => (
+        <div key={index} className={style.frontText}>{
+            text.split("").map((letter, index) => (
+                <span key={index}>{letter}</span>
+            ))
+        }</div>
+    ));
+
+    useEffect(() => {
+        const callbackFunction = (entries: any) => {
+            const [entry] = entries;
+            const spans = ref.current?.querySelectorAll("span");
+            if (entry.isIntersecting) {
+                spans?.forEach((span, index) => {
+                    span.style.animationDelay = `${index * 0.02 + Math.random()}s`;
+                    span.classList.add(style.spanAnimation);
+                });
+            } else 
+                spans?.forEach((span) => span.classList.remove(style.spanAnimation));
+        }
+        const options = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.001
+        }
+
+        const observer = new IntersectionObserver(callbackFunction, options);
+        if (ref.current) observer.observe(ref.current);
+
+        const refcurrent = ref.current;
+        return () => {
+            if (refcurrent) observer.unobserve(refcurrent);
+        }
+    }, [ref])
 
     return (
         <div className={`${style.wrapper} ${className}`}>
@@ -21,16 +61,18 @@ export default function Banner(props: BannerProps) {
                 ))}
             </div>
 
-            <div className={style.frontTexts}>
-                {frontText?.map((text, index) => (
-                    <div key={index} className={style.frontText}>{text.replace(/i /g, "i\u00A0")}</div>
-                ))}
+            <div className={style.frontTexts} ref={ref}>
+                {text}
             </div>
 
             <div className={style.logo}>
-                <Image src={logo} alt="logo" priority={false} className={style.image}/>
+                <Image src={logo} alt="logo" priority={false} className={style.image} />
             </div>
         </div>
     )
 
+}
+
+function useAnimete(arg0: { ref: import("react").RefObject<HTMLDivElement>; className: string; }) {
+    throw new Error("Function not implemented.");
 }

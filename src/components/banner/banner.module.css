@@ -46,6 +46,21 @@
     font-family: var(--font-galano-bold);
 }
 
+.spanAnimation {
+    opacity: 0.5;
+    animation: showtext 0.5s ease-in-out forwards;
+}
+
+@keyframes showtext {
+    0% {
+        opacity: .5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
 .logo {
     align-self: flex-start;
     width: min(10vw, 200px);

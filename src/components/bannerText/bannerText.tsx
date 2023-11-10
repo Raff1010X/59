@@ -1,4 +1,3 @@
-"use client"
 import { useRef } from "react";
 import style from "./bannerText.module.css";
 import useAnimate from "@/hooks/useAnimate";
@@ -17,7 +16,7 @@ export default function BannerText(props: BannerTextProps) {
 
     const ref = useRef<HTMLDivElement>(null);
 
-    useAnimate({ ref: ref, className: style.animate });
+    useAnimate({ ref, className: style.animate });
 
     return (
         <div className={`${style.wrapper} ${className}`}>

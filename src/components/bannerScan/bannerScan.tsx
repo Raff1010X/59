@@ -14,7 +14,7 @@ export default function BannerScan(props: BannerScanProps) {
 
     const ref = useRef<HTMLDivElement>(null);
 
-    useAnimate({ ref: ref, className: style.animate });
+    useAnimate({ ref, className: style.animate });
 
     return (
         <div className={`${style.wrapper} ${className}`}>
