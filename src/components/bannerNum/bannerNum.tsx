@@ -28,6 +28,7 @@ export default function BannerNum(props: BannerNumProps) {
                     ))}
                 </div>
             </div>
+            <div className={style.numbersCover} ></div>
 
             <div className={style.headers}>
                 {header?.map((text, index) => (
