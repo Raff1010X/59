@@ -36,8 +36,8 @@
 .numbersCover {
     position: absolute;
     left: 10%;
-    top: calc(15% - 2px);
-    height: calc(min(20vw, 500px) + 4px);
+    top: calc(15% - 1px);
+    height: calc(min(20vw, 500px) + 2px);
     width: 50vw;
     display: flex;
     flex-direction: column;

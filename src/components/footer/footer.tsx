@@ -1,6 +1,6 @@
 
 import style from './footer.module.css';
-import Line from '@/components/footer/line/line';
+import Line from '@/components/line/line';
 import Bottom from '@/components/footer/bottom/bottom';
 import Top from '@/components/footer/top/top';
 

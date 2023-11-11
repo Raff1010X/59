@@ -1,4 +1,3 @@
-import Link from "next/link";
 import style from "./socialLinks.module.css";
 import Button from "../button/button";
 

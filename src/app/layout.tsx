@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { Viewport } from 'next'
-import { fontsVariables, galanoNormal } from '@/assets/fonts/fontLoader'
+import { fontsVariables, galanoNormal } from '@/utils/fontLoader'
 import '@/styles/globals.css'
 import Navbar from '@/components/navbar/navbar'
 

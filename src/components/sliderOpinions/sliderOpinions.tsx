@@ -13,6 +13,14 @@ import Loader from './loader/loader';
 interface SliderOpinionsProps {
     styleName?: string;
     title?: string;
+    data: {
+        id: number;
+        name: string;
+        role: string;
+        foto: string;
+        logo: string;
+        opinion: string;
+    }[];
 }
 
 const initialState = {
@@ -23,12 +31,12 @@ const initialState = {
 }
 
 export default function SliderOpinions(props: SliderOpinionsProps) {
-    const { styleName, title } = props;
+    const { styleName, title, data } = props;
 
     const [state, setState] = useState(initialState);
 
     const next = () => {
-        if (state.selected === opinions.length - 1) {
+        if (state.selected === data.length - 1) {
             setState((state) => ({
                 ...state,
                 selected: 0,
@@ -45,7 +53,7 @@ export default function SliderOpinions(props: SliderOpinionsProps) {
         if (state.selected === 0) {
             setState((state) => ({
                 ...state,
-                selected: opinions.length - 1,
+                selected: data.length - 1,
             }));
         } else {
             setState((state) => ({
@@ -80,7 +88,7 @@ export default function SliderOpinions(props: SliderOpinionsProps) {
     // Auto change slide
     useEffect(() => {
         const interval = setInterval(() => {
-            if (state.selected === opinions.length - 1 - state.width) {
+            if (state.selected === data.length - 1 - state.width) {
                 setState((state) => ({
                     ...state,
                     selected: 0,
@@ -92,9 +100,9 @@ export default function SliderOpinions(props: SliderOpinionsProps) {
                     touchStart: 1,
                 }));
             }
-        }, 10000);
+        }, 15000);
         return () => clearInterval(interval);
-    }, [state.selected, state.width]);
+    }, [data.length, state.selected, state.width]);
 
     // increase selected on right to left touch move if touch move is more than 50px
     const touchStart = (e: React.TouchEvent<HTMLDivElement>) => {
@@ -129,7 +137,7 @@ export default function SliderOpinions(props: SliderOpinionsProps) {
 
                 {state.loading
                     ? <Loader />
-                    : <Slide className={style.slider} data={opinions} selected={state.selected} width={state.width === 0 ? 100 : 47.6} />}
+                    : <Slide className={style.slider} data={data} selected={state.selected} width={state.width === 0 ? 100 : 47.6} />}
 
 
                 <Button
@@ -137,7 +145,7 @@ export default function SliderOpinions(props: SliderOpinionsProps) {
                     onClick={next}
                     selected
                     styles={
-                        state.selected < opinions.length - 1 - state.width && !state.loading
+                        state.selected < data.length - 1 - state.width && !state.loading
                             ? { opacity: 1, pointerEvents: 'all' }
                             : { opacity: 0, pointerEvents: 'none' }
                     }
@@ -162,7 +170,7 @@ export default function SliderOpinions(props: SliderOpinionsProps) {
 
             {state.loading
                 ? <div className={style.dots} />
-                : <Dots numberOfDots={opinions.length - state.width} selected={state.selected} setSelected={setSelected} />
+                : <Dots numberOfDots={data.length - state.width} selected={state.selected} setSelected={setSelected} />
             }
             <Image
                 src="/images/swipe-horizontal.png"
@@ -182,88 +190,3 @@ export default function SliderOpinions(props: SliderOpinionsProps) {
         </div>
     )
 }
-
-
-const opinions = [
-    {
-        id: 1,
-        name: 'John Doe',
-        role: 'CEO',
-        foto: '/images/avatar.png',
-        logo: '/images/logo.png',
-        opinion:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.',
-    },
-    {
-        id: 2,
-        name: 'Jane Doe',
-        role: 'CEO',
-        foto: '/images/avatar.png',
-        logo: '/images/logo.png',
-        opinion:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.',
-    },
-    {
-        id: 3,
-        name: 'John Smith',
-        role: 'CEO',
-        foto: '/images/avatar.png',
-        logo: '/images/logo.png',
-        opinion:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quamvelit, vulputate eu pharetra nec, mattis ac neque.',
-    },
-    {
-        id: 4,
-        name: 'Jane Smith',
-        role: 'CEO',
-        foto: '/images/avatar.png',
-        logo: '/images/logo.png',
-        opinion:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quamvelit, vulputate eu pharetra nec, mattis ac neque.',
-    },
-    {
-        id: 5,
-        name: 'John Doe',
-        role: 'CEO',
-        foto: '/images/avatar.png',
-        logo: '/images/logo.png',
-        opinion:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.',
-    },
-    {
-        id: 6,
-        name: 'Jane Doe',
-        role: 'CEO',
-        foto: '/images/avatar.png',
-        logo: '/images/logo.png',
-        opinion:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.',
-    },
-    {
-        id: 7,
-        name: 'John Smith',
-        role: 'CEO',
-        foto: '/images/avatar.png',
-        logo: '/images/logo.png',
-        opinion:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quamvelit, vulputate eu pharetra nec, mattis ac neque.',
-    },
-    {
-        id: 8,
-        name: 'Jane Smith',
-        role: 'CEO',
-        foto: '/images/avatar.png',
-        logo: '/images/logo.png',
-        opinion:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quamvelit, vulputate eu pharetra nec, mattis ac neque.',
-    },
-    {
-        id: 9,
-        name: 'Jane Smith',
-        role: 'CEO',
-        foto: '/images/avatar.png',
-        logo: '/images/logo.png',
-        opinion:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quamvelit, vulputate eu pharetra nec, mattis ac neque.',
-    }
-];

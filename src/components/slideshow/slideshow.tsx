@@ -8,34 +8,18 @@ import Button from '../button/button'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
-
-const slides = [
-    {
-        text: 'web design',
-        image: '/images/11.jpeg',
-        link: '/webdesign',
-        description: 'Minus quibusdam deserunt aperiam alias eligendi, possimus, veniam laudantium, earum veritatis nihil.',
-    },
-    {
-        text: '3d & animation',
-        image: '/images/12.jpeg',
-        link: '/animation',
-        description: 'Laboriosam quam vitae, enim doloribus nulla aliquid nihil aut, aspernatur, illo eligendi et saepe.',
-    },
-    {
-        text: 'branding',
-        image: '/images/13.jpeg',
-        link: '/branding',
-        description: 'Reiciendis doloribus, eveniet esse deserunt officia ipsam, harum, praesentium enim consequatur illum!',
-    }
-]
-
 interface SlideshowProps {
     className?: string
+    data: {
+        text: string
+        image: string
+        link: string
+        description: string
+    }[]
 }
 
 export default function Slideshow(props: SlideshowProps) {
-    const { className } = props
+    const { className, data } = props
 
     const router = useRouter()
 
@@ -43,7 +27,7 @@ export default function Slideshow(props: SlideshowProps) {
         sync(['showArrowBackground', 'showNumber', 'moveArrowBackground'])
     }, [])
 
-    const images = slides.map((slide, index) =>
+    const images = data.map((slide, index) =>
         <Image key={index} src={slide.image} alt={slide.text} className={style.rightBackground} width={1000} height={1000} />
     )
 
@@ -63,7 +47,7 @@ export default function Slideshow(props: SlideshowProps) {
             <div className={style.center} />
 
             <div className={style.numbers}>
-                {slides.map((slide, index) =>
+                {data.map((slide, index) =>
                     <p key={index} className={style.number}>
                         {`0${index + 1}`}
                     </p>
@@ -71,7 +55,7 @@ export default function Slideshow(props: SlideshowProps) {
             </div>
 
             <div className={style.links}>
-                {slides.map((slide, index) =>
+                {data.map((slide, index) =>
                     <Link key={index} href={slide.link} className={style.link}>
                         {slide.text}
                         <div className={style.linkArrowBackground}>
@@ -82,7 +66,7 @@ export default function Slideshow(props: SlideshowProps) {
             </div>
 
             <div className={style.description}>
-                {slides.map((slide, index) =>
+                {data.map((slide, index) =>
                     <p key={index} className={style.descriptionText}>
                         {slide.description}
                     </p>

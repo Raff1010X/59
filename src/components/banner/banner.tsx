@@ -3,7 +3,8 @@ import Image from "next/image";
 import logo from "@/assets/images/logo_sm.svg";
 
 import style from './banner.module.css';
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
+import useAnimate from "@/hooks/useAnimate";
 
 type BannerProps = {
     className?: string;
@@ -25,32 +26,18 @@ export default function Banner(props: BannerProps) {
         }</div>
     ));
 
-    useEffect(() => {
-        const callbackFunction = (entries: any) => {
-            const [entry] = entries;
-            const spans = ref.current?.querySelectorAll("span");
-            if (entry.isIntersecting) {
-                spans?.forEach((span, index) => {
-                    span.style.animationDelay = `${index * 0.02 + Math.random()}s`;
-                    span.classList.add(style.spanAnimation);
-                });
-            } else 
-                spans?.forEach((span) => span.classList.remove(style.spanAnimation));
-        }
-        const options = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.001
-        }
-
-        const observer = new IntersectionObserver(callbackFunction, options);
-        if (ref.current) observer.observe(ref.current);
-
-        const refcurrent = ref.current;
-        return () => {
-            if (refcurrent) observer.unobserve(refcurrent);
-        }
-    }, [ref])
+    const callbackFunction: IntersectionObserverCallback = (entries) => {
+        const [entry] = entries;
+        const spans = ref.current?.querySelectorAll("span");
+        if (entry.isIntersecting) {
+            spans?.forEach((span, index) => {
+                span.style.animationDelay = `${index * 0.02 + Math.random()}s`;
+                span.classList.add(style.spanAnimation);
+            });
+        } else 
+            spans?.forEach((span) => span.classList.remove(style.spanAnimation));
+    }
+    useAnimate({ ref, callback: () => callbackFunction });
 
     return (
         <div className={`${style.wrapper} ${className}`}>
@@ -71,8 +58,4 @@ export default function Banner(props: BannerProps) {
         </div>
     )
 
-}
-
-function useAnimete(arg0: { ref: import("react").RefObject<HTMLDivElement>; className: string; }) {
-    throw new Error("Function not implemented.");
 }

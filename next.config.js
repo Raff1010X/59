@@ -5,11 +5,9 @@ const nextConfig = {
     swcMinify: true,
     images: {
         unoptimized: true,
+        // loader: 'custom',
+        // loaderFile: './my/image/loader.js',
     },
-    // images: {
-    //     loader: 'custom',
-    //     loaderFile: './my/image/loader.js',
-    //   },
 }
 
 module.exports = nextConfig

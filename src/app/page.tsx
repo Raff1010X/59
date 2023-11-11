@@ -8,12 +8,14 @@ import Footer from '@/components/footer/footer'
 import Video from '@/components/video/video'
 
 import Slideshow from '@/components/slideshow/slideshow'
+import slideshowData from '@/data/slideShow.json'
+
 import BannerNum from '@/components/bannerNum/bannerNum'
 import Scrollable from '@/components/scrollable/scrollable'
 import BannerText from '@/components/bannerText/bannerText'
 import BannerScan from '@/components/bannerScan/bannerScan'
-
 import SliderOpinions from '@/components/sliderOpinions/sliderOpinions'
+import sliderOpinionsData from '@/data/sliderOpinions.json'
 
 export default function Home() {
   const router = useRouter()
@@ -26,9 +28,9 @@ export default function Home() {
   return (
     <main>
 
-      <SliderOpinions title='Referencje' />
+      <SliderOpinions data={sliderOpinionsData} title='Referencje' />
 
-      <Slideshow className={style.slideshow} />
+      <Slideshow data={slideshowData} className={style.slideshow} />
 
       <Video src="/images/demo.mp4" image='/images/demo.jpeg' />
 

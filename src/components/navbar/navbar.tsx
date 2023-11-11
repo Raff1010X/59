@@ -3,53 +3,30 @@ import style from './navbar.module.css'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import Image from "next/image";
-import logo from "@/assets/images/logo.svg" 
+import logo from "@/assets/images/logo.svg"
 import Button from '../button/button';
 import Arrow from '../arrow/arrow';
 import { Burger } from '@/components/burger/burger'
 import { useEffect, useRef, useState } from 'react';
+import links from '@/data/navbarLinks.json'
 
-export const links = [
-    {
-        name: 'oferta',
-        path: '/services',
-        submenus: [
-            { name: 'web design', path: '/services/webdesign' },
-            { name: '3d & animation', path: '/services/animation' },
-            { name: 'branding', path: '/services/branding' },
-            { name: 'marketing developera', path: '/services/marketing' },
-        ]
-    },
-    {
-        name: 'realizacje',
-        path: '/projects'
-    },
-    {
-        name: 'o nas',
-        path: '/about'
-    },
-    {
-        name: 'nasi klienci',
-        path: '/clients'
-    },
-    {
-        name: 'blog',
-        path: '/blog'
-    },
-    {
-        name: 'kariera',
-        path: '/career'
-    },
-    {
-        name: 'kontakt',
-        path: '/contact'
-    },
-]
+
+type NavbarProps = {
+    data: {
+        name: string;
+        path: string;
+        submenus?: {
+            name: string;
+            path: string;
+        }[];
+    }[];
+}
 
 export default function Navbar() {
+
     const pathname = usePathname()
     const router = useRouter()
-    const divRef = useRef<HTMLDivElement>(null!);
+    const divRef = useRef<HTMLDivElement>(null!)
 
     const [open, setOpen] = useState(false)
 

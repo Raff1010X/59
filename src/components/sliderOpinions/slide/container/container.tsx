@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import style from './container.module.css';
-import Line from '@/components/footer/line/line';
+import Line from '@/components/line/line';
 
 interface ContainerProps {
     className?: string;

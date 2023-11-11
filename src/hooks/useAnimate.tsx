@@ -2,18 +2,25 @@ import { useEffect, useRef } from "react";
 
 interface UseObserverProps {
     ref: React.MutableRefObject<HTMLElement | null>,
-    className: string,
+    className?: string,
+    callback?: () => IntersectionObserverCallback
 }
 
 export default function useAnimate(props: UseObserverProps) {
-    const { ref, className } = props;
+    const { ref, className, callback } = props;
 
     useEffect(() => {
-        const callbackFunction = (entries: any) => {
-            const [entry] = entries;
-            if (entry.isIntersecting) ref.current?.classList.add(className);
-            else ref.current?.classList.remove(className);
-        }
+        if (!ref.current) return;
+
+        let callbackFunction: IntersectionObserverCallback;
+        callback
+            ? callbackFunction = callback()
+            : callbackFunction = (entries) => {
+                const [entry] = entries;
+                if (entry.isIntersecting) ref.current?.classList.add(className!);
+                else ref.current?.classList.remove(className!);
+            }
+
         const options = {
             root: null,
             rootMargin: '0px',
@@ -27,7 +34,5 @@ export default function useAnimate(props: UseObserverProps) {
         return () => {
             if (refcurrent) observer.unobserve(refcurrent);
         }
-    }, [className, ref])
-
-
+    }, [callback, className, ref]);
 }
