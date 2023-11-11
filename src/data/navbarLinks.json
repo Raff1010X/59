@@ -1,0 +1,36 @@
+[
+    {
+        "name": "oferta",
+        "path": "/services",
+        "submenus": [
+            { "name": "web design", "path": "/services/webdesign" },
+            { "name": "3d & animation", "path": "/services/animation" },
+            { "name": "branding", "path": "/services/branding" },
+            { "name": "marketing developera", "path": "/services/marketing" }
+        ]
+    },
+    {
+        "name": "realizacje",
+        "path": "/projects"
+    },
+    {
+        "name": "o nas",
+        "path": "/about"
+    },
+    {
+        "name": "nasi klienci",
+        "path": "/clients"
+    },
+    {
+        "name": "blog",
+        "path": "/blog"
+    },
+    {
+        "name": "kariera",
+        "path": "/career"
+    },
+    {
+        "name": "kontakt",
+        "path": "/contact"
+    }
+]
