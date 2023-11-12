@@ -53,7 +53,7 @@ export default function Banner(props: BannerProps) {
             </div>
 
             <div className={style.logo}>
-                <Image src={logo} alt="logo" priority={false} className={style.image} />
+                <Image src={logo} alt="logo" priority={false} className={style.image} unoptimized/>
             </div>
         </div>
     )

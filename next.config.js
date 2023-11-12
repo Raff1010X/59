@@ -4,9 +4,10 @@ const nextConfig = {
     reactStrictMode: true,
     swcMinify: true,
     images: {
-        unoptimized: true,
-        // loader: 'custom',
-        // loaderFile: './my/image/loader.js',
+        loader: 'custom',
+        path: 'https://example.com/',
+        domains: ['example.com'],
+        loaderFile: './src/utils/imageLoader.js',
     },
 }
 

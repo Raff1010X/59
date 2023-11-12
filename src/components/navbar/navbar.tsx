@@ -8,7 +8,7 @@ import Button from '../button/button';
 import Arrow from '../arrow/arrow';
 import { Burger } from '@/components/burger/burger'
 import { useEffect, useRef, useState } from 'react';
-import links from '@/data/navbarLinks.json'
+import links from '@/data/navBar/navbarLinks.json'
 
 
 type NavbarProps = {
@@ -66,7 +66,7 @@ export default function Navbar() {
             <nav ref={divRef} className={style.navbar}>
                 <div className={style.wrapper}>
                     <Link href="/" className={style.logo}>
-                        <Image src={logo} alt="logo" width="133" height="55" priority={false} />
+                        <Image src={logo} alt="logo" width="133" height="55" priority={false} unoptimized/>
                     </Link>
                     <div className={`${style.menu} ${open ? style.menuOpen : ''}`}>
                         <ul className={style.list}>

@@ -1,0 +1,22 @@
+[
+    {
+        "name": "in",
+        "icon": "in",
+        "path": "https://www.linkedin.com/"
+    },
+    {
+        "name": "f",
+        "icon": "f",
+        "path": "https://www.facebook.com/"
+    },
+    {
+        "name": "yt",
+        "icon": "yt",
+        "path": "https://www.youtube.com/"
+    },
+    {
+        "name": "Bē",
+        "icon": "Bē",
+        "path": "https://www.behance.net/"
+    }
+]

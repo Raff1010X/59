@@ -1,19 +1,19 @@
 [
     {
         "text": "web design",
-        "image": "/images/11.jpeg",
+        "image": "/images/slideshow/1.jpeg",
         "link": "/webdesign",
         "description": "Minus quibusdam deserunt aperiam alias eligendi, possimus, veniam laudantium, earum veritatis nihil."
     },
     {
         "text": "3d & animation",
-        "image": "/images/12.jpeg",
+        "image": "/images/slideshow/2.jpeg",
         "link": "/animation",
         "description": "Laboriosam quam vitae, enim doloribus nulla aliquid nihil aut, aspernatur, illo eligendi et saepe."
     },
     {
         "text": "branding",
-        "image": "/images/13.jpeg",
+        "image": "/images/slideshow/3.jpeg",
         "link": "/branding",
         "description": "Reiciendis doloribus, eveniet esse deserunt officia ipsam, harum, praesentium enim consequatur illum!"
     }

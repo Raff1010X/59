@@ -1,6 +1,6 @@
 import Link from "next/link"
 import style from "./navLinks.module.css"
-import links from "@/data/navLinks.json"
+import links from "@/data/footer/navLinks.json"
 interface NavLinksProps {
     className?: string
 }

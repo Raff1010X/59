@@ -21,7 +21,7 @@ export default function Container(props: ContainerProps) {
         <div className={`${style.wrapper} ${className}`}>
             <div className={style.header}>
                 <div className={style.foto}>
-                    <Image src={item.foto} alt={item.name} width={100} height={100} />
+                    <Image src={item.foto} alt={item.name} width={300} height={300} />
                 </div>
                 <div className={style.person}>
                     <div className={style.name}>

@@ -173,7 +173,7 @@ export default function SliderOpinions(props: SliderOpinionsProps) {
                 : <Dots numberOfDots={data.length - state.width} selected={state.selected} setSelected={setSelected} />
             }
             <Image
-                src="/images/swipe-horizontal.png"
+                src="/images/slideropinions/swipe.png"
                 alt="swipe"
                 className={style.swipe}
                 width={100}
