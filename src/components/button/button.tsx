@@ -16,7 +16,10 @@ export default function Button(props: ButtonProps) {
             style={styles}
             onClick={onClick}
         >
-            <button className={`${style.button} ${selected && style.selected}`}>
+            <button 
+            aria-label='button'
+            type='button' 
+            className={`${style.button} ${selected && style.selected}`}>
                 {children}
             </button>
         </div>

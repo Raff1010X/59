@@ -1,7 +1,8 @@
 "use client"
 import { useRef } from 'react';
 import style from './video.module.css';
-import Image from 'next/image';
+import { ImageNoSRR } from '@/components/image';
+
 import Arrow from '../arrow/arrow';
 interface VideoProps {
     src: string;
@@ -31,16 +32,17 @@ export default function Video(props: VideoProps) {
             >
                 <source src={src} />
             </video>
-            <Image
-                ref={imageRef}
-                className={style.image} 
+            <ImageNoSRR
+                // ref={imageRef}
+                className={style.image}
                 src={image}
                 width={1800}
                 height={900}
                 alt="video"
-                priority={false}
-                />
+            />
             <button
+                aria-label='play video'
+                type='button'
                 ref={buttonRef}
                 className={style.button}
                 onClick={handlePlay}>

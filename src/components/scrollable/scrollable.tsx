@@ -1,7 +1,7 @@
 import useScroll from "@/hooks/useScroll";
 import { useRef } from "react";
 import style from "./scrollable.module.css";
-import Image from "next/image";
+import { ImageNoSRR } from '@/components/image';
 import { CSSProperties } from "react";
 
 
@@ -71,7 +71,7 @@ export default function Scrollable(props: ScrollableProps) {
         <div className={style.wrapper} ref={ref}>
             <div className={style.extender}>
 
-                <Image
+                <ImageNoSRR
                     src={image}
                     alt={header}
                     className={style.image}

@@ -1,6 +1,7 @@
-import Image from 'next/image';
+"use client"
 import style from './container.module.css';
 import Line from '@/components/line/line';
+import { ImageNoSRR } from '@/components/image';
 
 interface ContainerProps {
     className?: string;
@@ -21,7 +22,7 @@ export default function Container(props: ContainerProps) {
         <div className={`${style.wrapper} ${className}`}>
             <div className={style.header}>
                 <div className={style.foto}>
-                    <Image src={item.foto} alt={item.name} width={300} height={300} />
+                    <ImageNoSRR src={item.foto} alt={item.name} width={400} height={400} />
                 </div>
                 <div className={style.person}>
                     <div className={style.name}>
@@ -42,7 +43,7 @@ export default function Container(props: ContainerProps) {
             </div>
             <Line className={style.line} />
             <div className={style.logo}>
-                <Image src={item.logo} alt={item.name} width={100} height={100} />
+                <ImageNoSRR src={item.logo} alt={item.name} width={100} height={100} />
             </div>
         </div>
     )

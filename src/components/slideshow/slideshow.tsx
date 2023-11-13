@@ -5,9 +5,9 @@ import Arrow from '../arrow/arrow'
 import style from './slideshow.module.css'
 import Link from 'next/link'
 import Button from '../button/button'
-import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
+import { ImageNoSRR } from '../image'
 interface SlideshowProps {
     className?: string
     data: {
@@ -28,7 +28,7 @@ export default function Slideshow(props: SlideshowProps) {
     }, [])
 
     const images = data.map((slide, index) =>
-        <Image key={index} src={slide.image} alt={slide.text} className={style.rightBackground} width={1000} height={1000} />
+        <ImageNoSRR key={index} src={slide.image} alt={slide.text} className={style.rightBackground} width={1000} height={1000} />
     )
 
     return (
