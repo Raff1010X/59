@@ -2,6 +2,7 @@
 import { useRef } from 'react';
 import style from './video.module.css';
 import { ImageNoSRR } from '@/components/image';
+import base64blurTXT from '../../assets/images/base64.txt';
 
 import Arrow from '../arrow/arrow';
 interface VideoProps {
@@ -39,6 +40,8 @@ export default function Video(props: VideoProps) {
                 width={1800}
                 height={900}
                 alt="video"
+                blurDataURL={base64blurTXT}
+                placeholder='blur'
             />
             <button
                 aria-label='play video'
