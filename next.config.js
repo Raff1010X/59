@@ -5,10 +5,16 @@ const nextConfig = {
     swcMinify: true,
     images: {
         loader: 'custom',
-        path: 'https://example.com/',
-        domains: ['example.com'],
         loaderFile: './src/utils/imageLoader.js',
     },
+    webpack: (config, options) => {
+        config.module.rules.push({
+          test: /\.txt$/,
+          use: 'raw-loader',
+        });
+    
+        return config;
+      },
 }
 
 module.exports = nextConfig

@@ -7,7 +7,7 @@ import Link from 'next/link'
 import Button from '../button/button'
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
-import { ImageNoSRR } from '../image'
+import { ImageNextNoSRR } from '../image/imageNoSRR'
 interface SlideshowProps {
     className?: string
     data: {
@@ -28,7 +28,7 @@ export default function Slideshow(props: SlideshowProps) {
     }, [])
 
     const images = data.map((slide, index) =>
-        <ImageNoSRR key={index} src={slide.image} alt={slide.text} className={style.rightBackground} width={1000} height={1000} />
+        <ImageNextNoSRR key={index} src={slide.image} alt={slide.text} className={style.rightBackground} width={1000} height={1000} />
     )
 
     return (

@@ -6,10 +6,12 @@ const fs = require('fs');
 const path = require('path');
 
 
-const imagesDir = path.join(__dirname, '../../public/images-src');
+const imagesDir = path.join(__dirname, '../../src/assets/images-src');
 const imagesOut = path.join(__dirname, '../../public/images');
+const jsonDir = path.join(__dirname, '../../src/assets/images/blurred');
 const widths = [300, 600, 900, 1200];
 const types = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+let couter = 0;
 
 function createDirectory(directory) {
     if (!fs.existsSync(directory)) {
@@ -23,7 +25,9 @@ function deleteDirectory(directory) {
     }
 }
 
-(function createDirectoriesStructure() {
+(function prosessImages() {
+    deleteDirectory(jsonDir);
+    createDirectory(jsonDir);
     deleteDirectory(imagesOut);
     createDirectory(imagesOut);
     fs.readdir(imagesDir, (err, items) => {
@@ -51,9 +55,11 @@ function deleteDirectory(directory) {
             });
         });
     });
+    processDirectory(imagesDir)
+    console.log('Images processed');
 })();
 
-(function processDirectory(directory) {
+function processDirectory(directory) {
     fs.readdir(directory, (err, items) => {
         if (err) {
             console.error('Błąd odczytu katalogu:', err);
@@ -79,8 +85,8 @@ function deleteDirectory(directory) {
                 }
             });
         });
-    });
-})(imagesDir);
+    })
+};
 
 async function processFile(file, directory = imagesOut) {
 
@@ -90,28 +96,40 @@ async function processFile(file, directory = imagesOut) {
     const extension = path.extname(file).toLowerCase().replace('.', '');
 
     if (types.includes(extension)) {
+
+        // remove __dirname one level up from path
+        let path = file.replace(imagesDir, '');
+        console.log(path);
+
+
         let outPath = file.replace(imagesDir, directory).replace(extension, 'webp');
+        const jsonPath =
+            // save file as base64 data 10px wide for lazy loading
+            await sharp(file)
+                .resize(10)
+                .toBuffer()
+                .then(data => {
+                    const base64 = `data:image/${extension};base64,${data.toString('base64')}`;
+                    // save to json file for lazy loading
+                    const jsonPath = jsonDir + '/' + couter + '.json';
+                    couter++;
+                    const json = JSON.stringify({ path, base64 });
 
-        // save file as base64 data 10px wide for lazy loading
-        await sharp(file)
-            .resize(10)
-            .toBuffer()
-            .then(data => {
-                const base64 = `data:image/${extension};base64,${data.toString('base64')}`;
-                const base64Path = outPath.replace('.webp', '.txt');
-                fs.writeFileSync(base64Path, base64, err => {
-                    if (err) {
-                        console.error('Błąd przy zapisie pliku:', err);
-                        return;
-                    }
-                    console.log('Plik zapisany:', base64Path);
+                    fs.writeFileSync(jsonPath, json, err => {
+                        if (err) {
+                            console.error('Błąd przy zapisie pliku:', err);
+                            return;
+                        }
+                        //console.log('Plik zapisany:', jsonPath);
+                    });
+
+
+                })
+                .catch(err => {
+                    console.error('Błąd przy przetwarzaniu pliku:', err);
                 });
-            })
-            .catch(err => {
-                console.error('Błąd przy przetwarzaniu pliku:', err);
-            });
 
-            // save file as webp
+        // save file as webp
         widths.forEach(async (width) => {
             let aspectRatio = fileWidth;
             let path = outPath;
@@ -128,7 +146,7 @@ async function processFile(file, directory = imagesOut) {
                         console.error('Błąd przy przetwarzaniu pliku:', err);
                         return;
                     }
-                    console.log('Plik przetworzony:', info);
+                    //console.log('Plik przetworzony:', info);
                 });
 
             if (fileWidth < minImageWidth && width > widths[0]) {

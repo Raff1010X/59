@@ -1,7 +1,7 @@
 "use client"
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import style from './video.module.css';
-import { ImageNoSRR } from '@/components/image';
+import { ImageNextNoSRR } from '@/components/image/imageNoSRR';
 
 import Arrow from '../arrow/arrow';
 interface VideoProps {
@@ -22,6 +22,7 @@ export default function Video(props: VideoProps) {
         imageRef.current?.classList.add(style.hide);
     };
 
+
     return (
         <div className={`${style.wrapper} ${className}`}>
             <video
@@ -32,7 +33,7 @@ export default function Video(props: VideoProps) {
             >
                 <source src={src} />
             </video>
-            <ImageNoSRR
+            <ImageNextNoSRR
                 // ref={imageRef}
                 className={style.image}
                 src={image}

@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "images": "node src/utils/imageResize.js"
+    "images": "node src/utils/imageResize.js && node src/utils/mergeJSON.js"
   },
   "dependencies": {
     "next": "^14.0.2",
@@ -20,6 +20,7 @@
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "^14.0.2",
+    "raw-loader": "^4.0.2",
     "sharp": "^0.32.6",
     "typescript": "^5"
   }
