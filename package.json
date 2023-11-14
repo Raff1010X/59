@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "images": "node src/utils/imageResize.js"
+    "images": "node src/utils/imageResize.js && node src/utils/mergeJSON.js"
   },
   "dependencies": {
     "next": "^14.0.2",

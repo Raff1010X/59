@@ -7,10 +7,7 @@ export default function imageLoader({ src, width, quality }) {
 
     if (width >= 300) {
         let size = '-1200'
-        let windowWidth = 1500;
-        if (typeof window !== 'undefined') {
-            windowWidth = window.innerWidth;
-        }
+        const windowWidth = window.innerWidth;
         if (windowWidth <= 600)
             size = '-300'
         else if (windowWidth <= 900)

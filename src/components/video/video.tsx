@@ -1,8 +1,8 @@
 "use client"
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import style from './video.module.css';
-import { ImageNoSRR } from '@/components/image';
-import base64blurTXT from '../../assets/images/base64.txt';
+// import { ImageNextNoSRR } from '@/components/image/imageNoSRR';
+import Image from '@/components/image/image';
 
 import Arrow from '../arrow/arrow';
 interface VideoProps {
@@ -23,6 +23,7 @@ export default function Video(props: VideoProps) {
         imageRef.current?.classList.add(style.hide);
     };
 
+
     return (
         <div className={`${style.wrapper} ${className}`}>
             <video
@@ -33,16 +34,23 @@ export default function Video(props: VideoProps) {
             >
                 <source src={src} />
             </video>
-            <ImageNoSRR
+            {/* <ImageNextNoSRR
                 // ref={imageRef}
                 className={style.image}
                 src={image}
                 width={1800}
                 height={900}
                 alt="video"
-                blurDataURL={base64blurTXT}
-                placeholder='blur'
+            /> */}
+            <Image
+                // ref={imageRef}
+                className={style.image}
+                src={image}
+                width={1800}
+                height={900}
+                alt="video"
             />
+
             <button
                 aria-label='play video'
                 type='button'
