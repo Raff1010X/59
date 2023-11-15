@@ -4,6 +4,7 @@ import findImageBase64 from "@/utils/imageBase64";
 import { useEffect, useRef, useState } from "react";
 
 interface ImageProps {
+    ref?: React.Ref<HTMLImageElement>;
     className?: string;
     style?: React.CSSProperties;
     src: string;
@@ -14,9 +15,8 @@ interface ImageProps {
 }
 
 export default function Image(props: ImageProps) {
-    const { src, alt, className, width, height, style, onClick } = props;
+    const { ref, src, alt, className, width, height, style, onClick } = props;
     const divBlur = useRef<HTMLDivElement>(null);
-    const img = useRef<HTMLImageElement>(null);
 
     let srcFileName = src.replace(/\.[^/.]+$/, "");
 
@@ -46,6 +46,7 @@ export default function Image(props: ImageProps) {
     return (
         <>
             <img
+                ref={ref ? ref : null}
                 className={className}
                 src={srcBase}
                 alt={alt}

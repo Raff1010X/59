@@ -1,3 +1,4 @@
+"use client"
 import useScroll from "@/hooks/useScroll";
 import { useRef } from "react";
 import style from "./scrollable.module.css";
@@ -70,15 +71,14 @@ export default function Scrollable(props: ScrollableProps) {
     return (
         <div className={style.wrapper} ref={ref}>
             <div className={style.extender}>
-
-                <ImageNextNoSRR
-                    src={image}
-                    alt={header}
-                    className={style.image}
-                    width={600}
-                    height={600}
-                    style={{ ...styles.image, opacity }}
-                />
+                    <ImageNextNoSRR
+                        src={image}
+                        alt={header}
+                        className={style.image}
+                        width={600}
+                        height={600}
+                        style={{ ...styles.image, opacity }}
+                    />
                 <div className={style.textWrapper}
                     style={{ ...styles.textWrapper, opacity }}
                 >
