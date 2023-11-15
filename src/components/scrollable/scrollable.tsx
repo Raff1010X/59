@@ -2,7 +2,7 @@
 import useScroll from "@/hooks/useScroll";
 import { useRef } from "react";
 import style from "./scrollable.module.css";
-import { ImageNextNoSRR } from '@/components/image/imageNoSRR';
+import { ImageNext } from '@/components/image/imageDynamic';
 import { CSSProperties } from "react";
 
 
@@ -71,14 +71,16 @@ export default function Scrollable(props: ScrollableProps) {
     return (
         <div className={style.wrapper} ref={ref}>
             <div className={style.extender}>
-                    <ImageNextNoSRR
-                        src={image}
-                        alt={header}
-                        className={style.image}
-                        width={600}
-                        height={600}
-                        style={{ ...styles.image, opacity }}
-                    />
+                <ImageNext
+                    src={image}
+                    alt={header}
+                    className={style.image}
+                    width={600}
+                    height={600}
+                    style={{ ...styles.image, opacity }}
+                    placeholder="blur"
+                    blurDataURL='data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAGAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAQF/8QAIhAAAQMDAwUAAAAAAAAAAAAAAQIDBAARIQUGEhUxQWHR/8QAFQEBAQAAAAAAAAAAAAAAAAAAAQP/xAAYEQEBAQEBAAAAAAAAAAAAAAABAgASMf/aAAwDAQACEQMRAD8AwdCY6kzORHlvw4zrKUucU81OBSgMi4Ayew8VONiw7YnSLe0D7SlE0vulwMjv/9k='
+                />
                 <div className={style.textWrapper}
                     style={{ ...styles.textWrapper, opacity }}
                 >
@@ -97,7 +99,7 @@ export default function Scrollable(props: ScrollableProps) {
                     className={style.mover}
                     style={styles.mover}
                 />
-            
+
             </div>
         </div>
     )

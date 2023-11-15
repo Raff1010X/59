@@ -26,11 +26,11 @@
     animation-delay: 0s;
 }
 
-.right > img:nth-child(2) {
+.right > img:nth-child(3) {
     animation-delay: 5s;
 }
 
-.right > img:nth-child(3) {
+.right > img:nth-child(5) {
     animation-delay: 10s;
 }
 

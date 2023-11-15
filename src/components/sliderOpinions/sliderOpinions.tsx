@@ -5,7 +5,7 @@ import Arrow from '../arrow/arrow';
 import Dots from './dots/dots';
 import Slide from './slide/slide';
 import Loader from './loader/loader';
-import { ImageNextNoSRR } from '../image/imageNoSRR';
+import { Image } from '../image/imageDynamic';
 // import dynamic from 'next/dynamic'
 // const Slider = dynamic(() => import('./slider/slider'), { ssr: false })
 // const Dots = dynamic(() => import('./dots/dots'), { ssr: false })
@@ -172,7 +172,7 @@ export default function SliderOpinions(props: SliderOpinionsProps) {
                 ? <div className={style.dots} />
                 : <Dots numberOfDots={data.length - state.width} selected={state.selected} setSelected={setSelected} />
             }
-            <ImageNextNoSRR
+            <Image
                 src="/images/slideropinions/swipe.png"
                 alt="swipe"
                 className={style.swipe}
