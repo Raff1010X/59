@@ -18,7 +18,6 @@ export default function SocialLinks(props: SocialLinksProps) {
         <div className={`${style.socialLinks} ${className}`}>
             <p className={style.socialLinksTitle}>odwiedź <br /> nas na:</p>
             <div className={style.wrapper}>
-                {/* render frpm data */}
                 {data.map((link) => {
                     return (
                         <a href={link.path} key={link.name} >

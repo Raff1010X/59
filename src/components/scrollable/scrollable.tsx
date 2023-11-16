@@ -76,7 +76,6 @@ export default function Scrollable(props: ScrollableProps) {
                     alt={header}
                     className={style.image}
                     width={600}
-                    height={600}
                     style={{ ...styles.image, opacity }}
                 />
                 <div className={style.textWrapper}

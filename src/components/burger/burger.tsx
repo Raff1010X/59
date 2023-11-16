@@ -1,4 +1,3 @@
-"use client"
 import style from './burger.module.css';
 
 type BurgerProps = {

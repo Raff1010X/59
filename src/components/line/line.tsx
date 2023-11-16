@@ -1,6 +1,5 @@
 import style from './line.module.css';
 
-
 interface LineProps {
     className?: string;
 }

@@ -2,31 +2,30 @@
 "use client";
 import findImageBase64 from "@/utils/imageBase64";
 import { useEffect, useRef } from "react";
+import styles from "./image.module.css";
+import React from "react";
 
 interface ImageProps {
-    ref?: React.Ref<HTMLImageElement>;
     className?: string;
     style?: React.CSSProperties;
     src: string;
     alt: string;
     width?: number;
-    height?: number;
     onClick?: () => void;
+    blur?: boolean;
 }
 
-export default function Image(props: ImageProps) {
-    const { ref, src, alt, className, width, height, style, onClick } = props;
-    const divBlur = useRef<HTMLDivElement>(null);
+const Image = React.forwardRef((props: ImageProps, ref: React.Ref<HTMLDivElement>) => {
+    const { src, alt, className, width, style, onClick, blur = true } = props;
+    const divBlur = useRef<HTMLImageElement>(null);
 
     let srcFileName = src.replace(/\.[^/.]+$/, "");
 
     let blurDataURL = findImageBase64(srcFileName);
 
     let blurStyle = {
-        backgroundImage: `url(${blurDataURL})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
         transition: 'opacity 0.5s',
+        opacity: '1',
     };
 
     let srcBase = `${srcFileName}-1200.webp`;
@@ -49,25 +48,31 @@ export default function Image(props: ImageProps) {
 
     useEffect(() => {
         if (divBlur.current)
-            divBlur.current.style.opacity = '0 !important';
+            divBlur.current.style.opacity = '0';
     }, []);
 
     return (
-        <>
+        <div ref={ref} className={`${styles.wrapper} ${className}`} style={style}>
             <img
                 src={srcBase}
                 alt={alt}
                 srcSet={srcSet}
                 sizes={sizes}
                 loading="lazy"
-                className={className}
-                style={style}
+                className={styles.image}
                 onClick={onClick}
             />
-            <div ref={divBlur}
-                className={className}
-                style={{ ...style, ...blurStyle}}
-            />
-        </>
+            {blur &&
+                <img ref={divBlur}
+                    src={blurDataURL}
+                    className={styles.blur}
+                    style={blurStyle}
+                    alt={''}
+                />}
+        </ div>
     );
-}
+})
+
+Image.displayName = 'Image';
+
+export default Image;

@@ -1,3 +1,4 @@
+"use client";
 import { useRef } from "react";
 import style from "./bannerText.module.css";
 import useAnimate from "@/hooks/useAnimate";

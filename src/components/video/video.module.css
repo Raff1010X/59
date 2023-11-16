@@ -21,19 +21,6 @@
     z-index: -1;
 }
 
-.imageWrapper {
-    position: absolute;
-    width: 100%;
-    max-width: var(--max-width);
-    aspect-ratio: 16/9;
-    height: auto;
-    opacity: 1;
-    transition: opacity .5s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .image {
     position: absolute;
     width: 100%;
@@ -83,10 +70,6 @@
 }
 
 @media (max-width: 1470px) {
-    .imageWrapper {
-        padding-left:  var(--padding);
-        padding-right:  var(--padding);
-    }
     .image, .video {
         width: calc(100% - var(--padding) * 2);
     }

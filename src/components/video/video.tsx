@@ -1,7 +1,7 @@
 "use client"
 import { useEffect, useRef, useState } from 'react';
 import style from './video.module.css';
-import Image  from '../image/image'
+import Image from '../image/image'
 
 import Arrow from '../arrow/arrow';
 interface VideoProps {
@@ -33,15 +33,13 @@ export default function Video(props: VideoProps) {
             >
                 <source src={src} />
             </video>
-            <div ref={imageRef} className={style.imageWrapper}>
-                <Image
-                    className={style.image}
-                    src={image}
-                    width={1800}
-                    height={900}
-                    alt="video"
-                />
-            </div>
+            <Image
+                ref={imageRef}
+                className={style.image}
+                src={image}
+                width={1800}
+                alt="video"
+            />
             <button
                 aria-label='play video'
                 type='button'

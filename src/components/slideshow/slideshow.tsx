@@ -29,7 +29,13 @@ export default function Slideshow(props: SlideshowProps) {
     }, [])
 
     const images = data.map((slide, index) =>
-        <Image key={index} src={slide.image} alt={slide.text} className={style.rightBackground} width={1000} height={1000} />
+        <Image
+            key={index}
+            src={slide.image}
+            alt={slide.text}
+            className={style.rightBackground}
+            width={1000}
+        />
     )
 
     return (

@@ -1,0 +1,30 @@
+.wrapper {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image, .blur {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.blur {
+    animation: lighten 1s ease-in-out alternate infinite;
+    border: 1px solid white;
+    transform: scale(1.01);
+}
+
+@keyframes lighten {
+    0% {
+        filter: grayscale(1) brightness(1.1);
+    }
+    100% {
+        filter: grayscale(0) brightness(.9);
+    }
+}
