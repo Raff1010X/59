@@ -5,10 +5,8 @@ import Arrow from '../arrow/arrow';
 import Dots from './dots/dots';
 import Slide from './slide/slide';
 import Loader from './loader/loader';
-import { Image } from '../image/imageDynamic';
-// import dynamic from 'next/dynamic'
-// const Slider = dynamic(() => import('./slider/slider'), { ssr: false })
-// const Dots = dynamic(() => import('./dots/dots'), { ssr: false })
+import Image from 'next/image'
+
 
 interface SliderOpinionsProps {
     styleName?: string;

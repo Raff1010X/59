@@ -7,7 +7,8 @@ import Link from 'next/link'
 import Button from '../button/button'
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
-import { Image } from '../image/imageDynamic'
+import Image from '../image/image'
+
 interface SlideshowProps {
     className?: string
     data: {

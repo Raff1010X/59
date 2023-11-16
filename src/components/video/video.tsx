@@ -1,8 +1,7 @@
 "use client"
 import { useEffect, useRef, useState } from 'react';
 import style from './video.module.css';
-import { Image } from '@/components/image/imageDynamic';
-// import Image from '@/components/image/image';
+import Image  from '../image/image'
 
 import Arrow from '../arrow/arrow';
 interface VideoProps {

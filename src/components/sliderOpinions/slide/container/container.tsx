@@ -1,7 +1,7 @@
 "use client"
 import style from './container.module.css';
 import Line from '@/components/line/line';
-import { Image } from '@/components/image/imageDynamic';
+import Image from 'next/image';
 
 interface ContainerProps {
     className?: string;

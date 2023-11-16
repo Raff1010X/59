@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
-"use client"
+"use client";
 import findImageBase64 from "@/utils/imageBase64";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 interface ImageProps {
     ref?: React.Ref<HTMLImageElement>;
@@ -30,8 +30,17 @@ export default function Image(props: ImageProps) {
     };
 
     let srcBase = `${srcFileName}-1200.webp`;
-    let sizes = '(max-width: 600px) 300px, (max-width: 900px) 600px, (max-width: 1200px) 900px, 1200px';
-    let srcSet = `${srcFileName}-300.webp 300w, ${srcFileName}-600.webp 600w, ${srcFileName}-900.webp 900w, ${srcFileName}-1200.webp 1200w`;
+
+    let sizes = `(max-width: 600px) 300px,
+                (max-width: 900px) 600px,
+                (max-width: 1200px) 900px,
+                1200px`;
+
+    let srcSet = `${srcFileName}-300.webp 300w, 
+                ${srcFileName}-600.webp 600w, 
+                ${srcFileName}-900.webp 900w, 
+                ${srcFileName}-1200.webp 1200w`;
+
     if (width! < 300) {
         srcBase = `${srcFileName}.webp`;
         sizes = '';
@@ -40,24 +49,25 @@ export default function Image(props: ImageProps) {
 
     useEffect(() => {
         if (divBlur.current)
-            divBlur.current.style.opacity = '0';
-    },);
+            divBlur.current.style.opacity = '0 !important';
+    }, []);
 
     return (
         <>
             <img
-                ref={ref ? ref : null}
-                className={className}
                 src={srcBase}
                 alt={alt}
                 srcSet={srcSet}
                 sizes={sizes}
-                width={width}
-                height={height}
                 loading="lazy"
+                className={className}
+                style={style}
                 onClick={onClick}
             />
-            <div ref={divBlur} className={className} style={blurStyle} />
+            <div ref={divBlur}
+                className={className}
+                style={{ ...style, ...blurStyle}}
+            />
         </>
     );
 }
