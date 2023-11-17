@@ -1,19 +1,19 @@
 "use client";
 
-export default function imageLoader({ src, width, quality }) {
-    const types = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+import widths from "@/utils/imagesWidths";
+
+export default function imageLoader({ src, width }) {
 
     let returnSrc = src.replace(/\.[^/.]+$/, '.webp')
-
-    if (width >= 300) {
-        let size = '-1200'
+    if (width >= widths[1]) {
+        let size = `-${widths[3]}`
         const windowWidth = window.innerWidth;
-        if (windowWidth <= 600)
-            size = '-300'
-        else if (windowWidth <= 900)
-            size = '-600'
-        else if (windowWidth <= 1200)
-            size = '-900'
+        if (windowWidth <= widths[1])
+            size = `-${widths[0]}`
+        else if (windowWidth <= widths[2])
+            size = `-${widths[1]}`
+        else if (windowWidth <= widths[3])
+            size = `-${widths[2]}`
 
         returnSrc = src.replace(/\.[^/.]+$/, `${size}.webp`)
     }

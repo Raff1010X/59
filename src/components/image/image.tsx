@@ -1,9 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
+import React from "react";
 import findImageBase64 from "@/utils/imageBase64";
 import { useEffect, useRef } from "react";
 import styles from "./image.module.css";
-import React from "react";
+
+import widths from "@/utils/imagesWidths";
 
 interface ImageProps {
     className?: string;
@@ -28,19 +30,19 @@ const Image = React.forwardRef((props: ImageProps, ref: React.Ref<HTMLDivElement
         opacity: '1',
     };
 
-    let srcBase = `${srcFileName}-1200.webp`;
+    let srcBase = `${srcFileName}-${widths[3]}.webp`;
 
-    let sizes = `(max-width: 600px) 300px,
-                (max-width: 900px) 600px,
-                (max-width: 1200px) 900px,
-                1200px`;
+    let sizes = `(max-width: ${widths[1]}px) ${widths[0]}px,
+                (max-width: ${widths[2]}px) ${widths[1]}px,
+                (max-width: ${widths[3]}px) ${widths[2]}px,
+                ${widths[3]}px`;
 
-    let srcSet = `${srcFileName}-300.webp 300w, 
-                ${srcFileName}-600.webp 600w, 
-                ${srcFileName}-900.webp 900w, 
-                ${srcFileName}-1200.webp 1200w`;
+    let srcSet = `${srcFileName}-${widths[0]}.webp ${widths[0]}w, 
+                ${srcFileName}-${widths[1]}.webp ${widths[1]}w, 
+                ${srcFileName}-${widths[2]}.webp ${widths[2]}w, 
+                ${srcFileName}-${widths[3]}.webp ${widths[3]}w`;
 
-    if (width! < 300) {
+    if (width! < widths[0]) {
         srcBase = `${srcFileName}.webp`;
         sizes = '';
         srcSet = '';

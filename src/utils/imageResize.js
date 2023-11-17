@@ -5,12 +5,13 @@ const sharp = require('sharp');
 const fs = require('fs');
 const path = require('path');
 
+const widths = require("./imagesWidths");
+const types = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
 
 const imagesDir = path.join(__dirname, '../../src/assets/images-src');
 const imagesOut = path.join(__dirname, '../../public/images');
 const jsonDir = path.join(__dirname, '../../src/assets/images/blurred');
-const widths = [300, 600, 900, 1200];
-const types = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+
 let couter = 0;
 
 function createDirectory(directory) {
