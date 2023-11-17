@@ -17,6 +17,8 @@ import BannerScan from '@/components/bannerScan/bannerScan'
 import SliderOpinions from '@/components/sliderOpinions/sliderOpinions'
 import sliderOpinionsData from '@/data/sliderOpinions.json'
 
+import ClientsLogos from '@/components/clientsLogos/clientsLogos'
+
 export default function Home() {
   const router = useRouter()
 
@@ -119,6 +121,8 @@ export default function Home() {
         text='Nawiązywanie nowych kontaktów biznesowych przychodzi Ci z łatwością? Świetnie! Jako new business manager będziesz mógł budować relacje z nowymi kontrahentami.'
         header='New Business Manager'
       />
+
+      <ClientsLogos />
 
       <BannerNum
         number={80}
