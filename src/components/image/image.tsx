@@ -10,32 +10,27 @@ import widths from "@/utils/imagesWidths";
 interface ImageProps {
     className?: string;
     style?: React.CSSProperties;
-    src: string;
+    src: string; // original image path with any extension - will be converted to webp with different sizes
     alt: string;
-    width?: number;
+    width?: number; // width of the original image if < widths[0] then use the original image name without any changes
+    size?: number; // size of image on screen: 1-full, 2-half, 3-third, 4-quarter of the screen
+    blur?: boolean; // show blur image
     onClick?: () => void;
-    blur?: boolean;
 }
 
 const Image = React.forwardRef((props: ImageProps, ref: React.Ref<HTMLDivElement>) => {
-    const { src, alt, className, width, style, onClick, blur = true } = props;
+    const { src, alt, className, width, style, onClick, blur = true, size = 2 } = props;
+
     const divBlur = useRef<HTMLImageElement>(null);
 
     let srcFileName = src.replace(/\.[^/.]+$/, "");
-
     let blurDataURL = findImageBase64(srcFileName);
-
-    let blurStyle = {
-        transition: 'opacity 0.5s',
-        opacity: '1',
-    };
-
     let srcBase = `${srcFileName}-${widths[3]}.webp`;
 
-    let sizes = `(max-width: ${widths[1]}px) ${widths[0]}px,
-                (max-width: ${widths[2]}px) ${widths[1]}px,
-                (max-width: ${widths[3]}px) ${widths[2]}px,
-                ${widths[3]}px`;
+    let sizes = `(max-width: ${widths[1]}px) ${widths[0] / size}px,
+                (max-width: ${widths[2]}px) ${widths[1] / size}px,
+                (max-width: ${widths[3]}px) ${widths[2] / size}px,
+                ${widths[3] / size}px`;
 
     let srcSet = `${srcFileName}-${widths[0]}.webp ${widths[0]}w, 
                 ${srcFileName}-${widths[1]}.webp ${widths[1]}w, 
@@ -64,13 +59,18 @@ const Image = React.forwardRef((props: ImageProps, ref: React.Ref<HTMLDivElement
                 className={styles.image}
                 onClick={onClick}
             />
-            {blur &&
+            {
+                blur &&
                 <img ref={divBlur}
                     src={blurDataURL}
                     className={styles.blur}
-                    style={blurStyle}
+                    style={{
+                        transition: 'opacity 0.5s',
+                        opacity: '1',
+                    }}
                     alt={''}
-                />}
+                />
+            }
         </ div>
     );
 })

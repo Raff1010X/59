@@ -35,6 +35,7 @@ export default function Slideshow(props: SlideshowProps) {
             alt={slide.text}
             className={style.rightBackground}
             width={1000}
+            size={1}
         />
     )
 

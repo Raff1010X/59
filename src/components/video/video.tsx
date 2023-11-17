@@ -39,6 +39,7 @@ export default function Video(props: VideoProps) {
                 src={image}
                 width={1800}
                 alt="video"
+                size={1}
             />
             <button
                 aria-label='play video'

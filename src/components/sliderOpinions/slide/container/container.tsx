@@ -22,7 +22,12 @@ export default function Container(props: ContainerProps) {
         <div className={`${style.wrapper} ${className}`}>
             <div className={style.header}>
                 <div className={style.foto}>
-                    <Image src={item.foto} alt={item.name} width={300} height={300} />
+                    <Image
+                        src={item.foto}
+                        alt={item.name}
+                        width={300}
+                        height={300}
+                    />
                 </div>
                 <div className={style.person}>
                     <div className={style.name}>
@@ -43,7 +48,12 @@ export default function Container(props: ContainerProps) {
             </div>
             <Line className={style.line} />
             <div className={style.logo}>
-                <Image src={item.logo} alt={item.name} width={300} height={300} />
+                <Image
+                    src={item.logo}
+                    alt={item.name}
+                    width={300}
+                    height={300}
+                />
             </div>
         </div>
     )

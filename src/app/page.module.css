@@ -1,5 +1,3 @@
-.test {
-    font-family: var(--font-galano-normal);
-    font-size: 5rem;
-    color: red;
+.main {
+    opacity: 1;
 }

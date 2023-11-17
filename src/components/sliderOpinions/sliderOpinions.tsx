@@ -6,7 +6,7 @@ import Arrow from '../arrow/arrow';
 import Dots from './dots/dots';
 import Slide from './slide/slide';
 import Loader from './loader/loader';
-import Image from 'next/image'
+import Image from 'next/image';
 
 interface SliderOpinionsProps {
     styleName?: string;
