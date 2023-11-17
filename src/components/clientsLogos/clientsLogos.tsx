@@ -11,22 +11,20 @@ interface ClientsLogosProps {
 export default function ClientsLogos(props: ClientsLogosProps) {
     const { className } = props;
 
-    const clientsLogosPaths = base64blured.map((image) => {
-        // return if image.path includes 'clients-logos'
-        console.log(image.path.includes('logos'))
-            return '/images' + image.path.replace(/\\/g, '/')
-    });
-
-    console.log(clientsLogosPaths);
+    let clientsLogosPaths = base64blured.reduce<string[]>((acc, curr) => {
+        curr.path.includes('clients-logos') &&
+            acc.push('/images' + curr.path.replace(/\\/g, '/'));
+        return acc;
+    }, []);
 
     return (
         <div className={`${style.wrapper} ${className}`}>
             {clientsLogosPaths.map((image, index) => (
                 <Image
+                    className={style.image}
                     key={index}
                     src={image}
                     alt='logo'
-                    className={style.image}
                     width={300}
                 />
             ))}
