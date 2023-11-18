@@ -18,6 +18,8 @@ import SliderOpinions from '@/components/sliderOpinions/sliderOpinions'
 import sliderOpinionsData from '@/data/sliderOpinions.json'
 
 import ClientsLogos from '@/components/clientsLogos/clientsLogos'
+import Tester from '@/components/image/tester'
+
 
 export default function Home() {
   const router = useRouter()
