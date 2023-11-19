@@ -18,7 +18,8 @@ import SliderOpinions from '@/components/sliderOpinions/sliderOpinions'
 import sliderOpinionsData from '@/data/sliderOpinions.json'
 
 import ClientsLogos from '@/components/clientsLogos/clientsLogos'
-import Tester from '@/components/image/tester'
+
+import Chat from '@/components/chat/chat'
 
 
 export default function Home() {
@@ -31,6 +32,13 @@ export default function Home() {
 
   return (
     <main className={style.main}>
+
+      <Chat className={style.chat}
+        header={['porozmawiajmy', 'o Twoim projekcie']}
+        text={['Potrzebujesz doradztwa ekspertów od digital marketingu?']}
+        button='bezpłatna konsultacja'
+        linkTo='/about'
+      />
 
       <SliderOpinions
         data={sliderOpinionsData}
