@@ -20,7 +20,7 @@
 .dot {
     width: 10px;
     height: 10px;
-    border: 1px solid var(--color-accent);
+    border: 2px solid var(--color-accent);
     border-radius: 50%;
     background-color: var(--color-accent);
     margin: 0 5px;
@@ -39,10 +39,6 @@
     }
 }
 
-.dot:hover {
-    background-color: transparent;
-}
-
 .mover {
     position: absolute;
     background-color: var(--color-accent-light);
@@ -51,6 +47,7 @@
 
 .selected {
     background-color: var(--color-accent-light);
+    border: 2px solid var(--color-accent-light);
     scale: 1.5;
     animation: select 1.5s ease-in-out forwards !important;
 }

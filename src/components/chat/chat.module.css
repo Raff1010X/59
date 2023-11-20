@@ -7,8 +7,9 @@
     width: 100%;
     max-width: var(--max-width);
     margin: 0 auto;
-    height: min(80vh, 80vw);
+    height: min(100vh, 100vw);
     min-height: 400px;
+    padding-top: min(10vh, 10vw);
 }
 
 .svg {
@@ -54,7 +55,7 @@
 }
 
 .paths > * {
-    animation: circle 1s ease-in-out infinite alternate;
+    animation: path 1s ease-in-out infinite alternate;
 }
 
 .paths > *:nth-child(1) {
@@ -75,6 +76,21 @@
     }
     25% {
         transform: translateY(-2%);
+    }
+    50% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes path {
+    0% {
+        transform: translateY(0);
+    }
+    25% {
+        transform: translateY(.5%);
     }
     50% {
         transform: translateY(0);

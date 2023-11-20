@@ -17,7 +17,7 @@
 }
 
 .socialLinksTitle {
-    font-size: max(min(66px, 5vw), 20px);
+    font-size: max(min(66px, 5vw), 30px);
     font-family: var(--font-galano-bold);
 }
 

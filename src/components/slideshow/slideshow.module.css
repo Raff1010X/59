@@ -53,7 +53,7 @@
     transform: rotate(-8deg);
 }
 
-.rightFront > img {
+.rightFront > div {
     position: absolute;
     width: 35%;
     height: 100%;
@@ -62,15 +62,15 @@
     opacity: 0;
 }
 
-.rightFront > img:nth-child(1) {
+.rightFront > div:nth-child(1) {
     animation-delay: 10s;
 }
 
-.rightFront > img:nth-child(2) {
+.rightFront > div:nth-child(2) {
     animation-delay: 0s;
 }
 
-.rightFront > img:nth-child(3) {
+.rightFront > div:nth-child(3) {
     animation-delay: 5s;
 }
 

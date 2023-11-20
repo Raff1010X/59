@@ -1,0 +1,19 @@
+.header {
+    display: flex;
+    align-items: center;
+    width: 90%;
+    max-width: var(--max-width);
+    font-size: max(min(3.7vw, 88px), 35px);
+    padding: min(10vw, 140px) 0;
+    padding-right: 15%;
+    font-family: var(--font-galano-bold);
+    line-height: 1.15;
+    margin: 0 auto;
+    min-height: 45vh;
+}
+
+@media (max-width: 1470px) {
+    .header {
+        padding-left: var(--padding);
+    }
+}

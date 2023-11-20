@@ -14,9 +14,8 @@
 }
 
 .image {
-    width: calc(25% - 15px);
     aspect-ratio: 1.5/1;
-    max-width: 350px;
+    max-width: calc(25% - 15px);
     margin: 0 auto;
     border: 1px solid var(--color-secondary);
     scale: 1;
@@ -62,17 +61,17 @@
 
 @media screen and (max-width: 900px) {
     .image {
-        width: calc(33.33% - 15px);
+        max-width: calc(33.33% - 15px);
     }
 }
 
 @media screen and (max-width: 600px) {
     .image {
-        width: calc(50% - 15px);
+        max-width: calc(50% - 10px);
     }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 400px) {
     .wrapper {
         padding-top: 20%;
         padding-bottom: 20%;
@@ -80,7 +79,7 @@
         margin-bottom: -20%;
     }
     .image {
-        width: 90%;
+        max-width: 90%;
     }
     .image img {
         width: 80%;

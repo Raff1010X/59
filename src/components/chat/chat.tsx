@@ -1,3 +1,5 @@
+"use client";
+
 import Arrow from '../arrow/arrow';
 import Button from '../button/button';
 import styles from './chat.module.css';

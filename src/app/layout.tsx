@@ -3,6 +3,7 @@ import { Viewport } from 'next'
 import { fontsVariables, galanoNormal } from '@/utils/fontLoader'
 import '@/styles/globals.css'
 import Navbar from '@/components/navbar/navbar'
+import Footer from '@/components/footer/footer'
 
 export const viewport: Viewport = {
   themeColor: '#ffffff',
@@ -58,6 +59,7 @@ export default function RootLayout({
       <body className={`${galanoNormal.className} ${fontsVariables}`}>
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   )
