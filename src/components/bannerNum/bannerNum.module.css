@@ -67,7 +67,6 @@
 .number {
     position: relative;
     color: var(--color-accent);
-    font-size: inherit;
     font-size: max(min(20vw, 500px), 150px);
     font-family: var(--font-galano-bold);
 }
