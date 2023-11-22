@@ -62,7 +62,7 @@
 .hide {
     opacity: 0;
 }
-
+/* ///////////////// */
 @media (max-width: 1470px) {
     .image, .video {
         width: calc(100% - var(--padding) * 2);

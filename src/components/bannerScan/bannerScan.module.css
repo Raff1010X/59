@@ -27,16 +27,8 @@
     transform: translateX(20%);
 }
 
-/* .video {
-    position: absolute;
-    left: 45%;
-    width: 45%;
-    aspect-ratio: 9/9;
-    filter: invert(1) hue-rotate(430deg);
-    opacity: 0.5;
-    align-self: center;
-} */
 
+/* ///////////////// */
 @media (max-width: 1470px) {
     .wrapper {
         max-width: calc(100% - 2 * var(--padding));
