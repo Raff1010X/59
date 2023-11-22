@@ -45,8 +45,6 @@
     left: -25px;
     width: 50px;
     height: 50px;
-    max-height: 50px;
-    max-width: 50px;
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
 }
@@ -55,8 +53,13 @@
     border-radius: 50%;
 }
 
+.arrowRight {
+    position: absolute;
+}
+
 .arrowLeft {
     rotate: 180deg;
+    position: absolute;
 }
 
 .buttonRight {
@@ -64,8 +67,6 @@
     right: -25px;
     width: 50px;
     height: 50px;
-    max-height: 50px;
-    max-width: 50px;
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
 }

@@ -37,7 +37,7 @@ export default function Video(props: VideoProps) {
                 ref={imageRef}
                 className={style.image}
                 src={image}
-                width={1800}
+                width={1000}
                 alt="video"
                 size={1}
             />

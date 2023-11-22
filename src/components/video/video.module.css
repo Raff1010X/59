@@ -22,12 +22,11 @@
 }
 
 .image {
-    position: absolute;
+    position: relative;
     width: 100%;
     max-width: var(--max-width);
     aspect-ratio: 16/9;
     height: auto;
-    object-fit: contain;
 }
 
 .button {
@@ -62,11 +61,6 @@
 
 .hide {
     opacity: 0;
-}
-
-.arrow {
-    width: 11px;
-    height: 11px;
 }
 
 @media (max-width: 1470px) {

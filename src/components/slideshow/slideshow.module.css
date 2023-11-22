@@ -277,17 +277,15 @@
 }
 
 .scrollArrow {
-    min-width: 11px;
-    min-height: 11px;
     animation: move alternate 1s infinite;
 }
 
 @keyframes move {
     0% {
-        transform: translateY(-4px) rotate(45deg);
+        transform: translateY(-4px) rotate(90deg);
     }
     100% {
-        transform: translateY(2px) rotate(45deg);
+        transform: translateY(2px) rotate(90deg);
     }
 }
 

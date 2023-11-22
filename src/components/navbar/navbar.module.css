@@ -62,7 +62,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 15px;
+    gap: 5px;
     height: 85px;
     transition: color 0.25s;
     cursor: pointer;
@@ -96,13 +96,16 @@
 }
 
 .menuarrow {
-    transform: rotate(45deg);
     transition: 0.25s;
-    border-color: var(--color-accent) !important;
 }
 
+.menuarrow > path {
+    fill: var(--color-accent) !important;
+}
+
+
 .link:hover .menuarrow {
-    transform: rotate(135deg);
+    transform: rotate(90deg);
 }
 
 .link:hover + ul {
@@ -180,7 +183,10 @@
 .subarrow {
     opacity: 0;
     transition: 0.25s;
-    border-color: var(--color-accent) !important;
+}
+
+.subarrow > path {
+    fill: var(--color-accent) !important;
 }
 
 @media (min-width: 1470px) {

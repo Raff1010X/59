@@ -148,7 +148,7 @@ export default function SliderOpinions(props: SliderOpinionsProps) {
                             : { opacity: 0, pointerEvents: 'none' }
                     }
                 >
-                    <Arrow />
+                    <Arrow className={style.arrowRight} />
                 </Button>
 
                 <Button

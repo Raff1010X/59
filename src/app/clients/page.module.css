@@ -7,11 +7,9 @@
     margin: 0 auto;
     padding: min(10vw, 140px);
     padding-right: 15%;
+    padding-left: var(--padding);
     font-size: var(--font-size-l);
     font-family: var(--font-galano-bold);
     line-height: 1.15;
     
-    @media (max-width: 1470px) {
-        padding-left: var(--padding);
-    }
 }

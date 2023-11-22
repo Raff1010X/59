@@ -3,11 +3,10 @@
     --navbar-height-min: 62px;
     --max-width: 1430px;
     --padding: 30px;
-    --font-size-xxl: max(min(20vw, 500px), 150px)
-    --font-size-xl: max(min(5vw, 90px), 32px);
+    --font-size-xxl: max(min(20vw, 500px), 150px);
+    --font-size-xl: max(min(5vw, 90px), 25px);
     --font-size-l: max(min(3.7vw, 80px), 30px);
     --font-size-m: max(min(2.5vw, 60px), 25px);
     --font-size-s: max(min(1.5vw, 35px), 15px);
     --font-size-xs: max(min(1.2vw, 25px), 10px);
 }
-

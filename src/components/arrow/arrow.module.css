@@ -1,16 +1,15 @@
+.svg {
+    max-width: 25px;
+    max-height: 25px;
+}
+
 .arrow {
-    transform: rotate(-45deg);
-    min-width: 12px;
-    min-height: 12px;
-    border-right: 6px solid white;
-    border-bottom: 6px solid white;
+    fill: var(--color-primary);
 }
 
 @media (max-width: 540px) {
-    .arrow {
-        min-width: 10px;
-        min-height: 10px;
-        border-right: 5px solid white;
-        border-bottom: 5px solid white;
+    .svg {
+        max-width: 20px;
+        max-height: 20px;
     }
 }
