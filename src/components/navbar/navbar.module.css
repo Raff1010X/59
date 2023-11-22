@@ -97,6 +97,7 @@
 
 .menuarrow {
     transition: 0.25s;
+    transform: rotate(90deg);
 }
 
 .menuarrow > path {
@@ -105,7 +106,7 @@
 
 
 .link:hover .menuarrow {
-    transform: rotate(90deg);
+    transform: rotate(180deg);
 }
 
 .link:hover + ul {
@@ -121,6 +122,11 @@
     opacity: 1;
     transform: translateY(0px);
 }
+
+.sublist:hover > .link .menuarrow {
+    transform: rotate(180deg);
+}
+
 
 .sublist {
     pointer-events: none;
