@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 
+import ProjectList from '@/components/projectList/projectList'
+
 export const metadata: Metadata = {
     
     description: 'contacts2',
@@ -8,8 +10,9 @@ export const metadata: Metadata = {
 
 export default function Contact() {
     return (
-        <div>
-            <h1>ContactPage</h1>
-        </div>
-    )
+        <main>
+            <ProjectList />
+        </main>
+
+        )
 }

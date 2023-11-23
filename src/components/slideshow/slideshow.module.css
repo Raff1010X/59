@@ -183,6 +183,11 @@
     animation-delay: 10s;
 }
 
+.arrow {
+    min-width: 35px;
+    min-height: 35px;
+}
+
 @keyframes showArrowBackground {
     0% {
         opacity: 0;
@@ -198,19 +203,6 @@
     }
     100% {
         opacity: 0;
-    }
-}
-
-.linkArrowBackground > span {
-    transform: translateX(-10%) rotate(-45deg);
-    min-width: 30%;
-    min-height: 30%;
-    border-width: 8px;
-}
-
-@media (max-width: 1500px) {
-    .linkArrowBackground > span {
-        border-width: 6px;
     }
 }
 
@@ -278,14 +270,23 @@
 
 .scrollArrow {
     animation: move alternate 1s infinite;
+    min-width: 35px;
+    min-height: 35px;
 }
 
 @keyframes move {
     0% {
-        transform: translateY(-4px) rotate(90deg);
+        transform: translateY(-2px) rotate(90deg);
     }
     100% {
-        transform: translateY(2px) rotate(90deg);
+        transform: translateY(3px) rotate(90deg);
+    }
+}
+
+@media (max-width: 1150px) {
+    .arrow {
+        min-width: 25px;
+        min-height: 25px;
     }
 }
 
@@ -443,10 +444,6 @@
         width: 0;
         height: 0;
         pointer-events: none;
-    }
-
-    .linkArrowBackground > span {
-        border-width: 5px;
     }
     
 }

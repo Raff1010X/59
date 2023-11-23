@@ -324,10 +324,6 @@
         font-size: 25px;
     }
 
-    .menuarrow {
-        margin-top: 5px;
-    }
-
     .sublist {
         position: relative;
         flex-direction: column;

@@ -67,7 +67,7 @@ export default function Slideshow(props: SlideshowProps) {
                     <Link key={index} href={slide.link} className={style.link}>
                         {slide.text}
                         <div className={style.linkArrowBackground}>
-                            <Arrow />
+                            <Arrow className={style.arrow}/>
                         </div>
                     </Link>
                 )}
