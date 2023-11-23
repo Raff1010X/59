@@ -3,12 +3,13 @@ import { useEffect, useRef } from 'react';
 import style from './projectList.module.css';
 import Image from '@/components/image/image';
 import Arrow from '../arrow/arrow';
+import Button from '../button/button';
 
 type Project = {
     id: string;
     name: string;
     description: string;
-    aspectRatio?: number;
+    aspectRatio: number;
     image?: string;
     video?: string;
 };
@@ -28,33 +29,57 @@ export default function ProjectList(props: ProjectListProps) {
         const handleResize = () => {
             const columns = [
                 { count: 1, width: 768 },
-                { count: 2, width: 1420 },
+                { count: 2, width: 1429 },
                 { count: 3, width: 10000 },
             ]
             if (containerRef.current) {
-                const width = containerRef.current.clientWidth;
+                const width = window.innerWidth;
                 const column = columns.find((column) => width <= column.width);
                 if (column) {
                     const items = Array.from(containerRef.current.children) as HTMLDivElement[];
                     const totalHeight = items.reduce((sum, item) => sum + item.clientHeight + 170, 0);
                     const containerHeight = totalHeight / column.count;
                     containerRef.current.style.height = `${containerHeight}px`;
-                    const lowestItem = items.reduce((lowest, item) => {
-                        const value = item.offsetTop + item.clientHeight;
-                        return value > lowest ? value : lowest;
-                    }, 0);
-                    containerRef.current.style.height = `${lowestItem}px`;
+
+                    const { minTop, maxBottom } = items.reduce((acc, item) => {
+                        const itemTop = item.offsetTop;
+                        const itemBottom = itemTop + item.clientHeight;
+                        return {
+                            minTop: Math.min(acc.minTop, itemTop),
+                            maxBottom: Math.max(acc.maxBottom, itemBottom),
+                        };
+                    }, { minTop: Infinity, maxBottom: 0 });
+
+                    const newHeight = maxBottom - minTop + 150;
+                    const marginBottom = containerRef.current.clientHeight - newHeight;
+
+                    containerRef.current.style.marginBottom = `${-marginBottom}px`;
                     containerRef.current.style.opacity = '1';
                 }
             }
+            console.log('resize');
         }
         handleResize();
         window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize)
+        };
     }, [containerRef, props.projects]);
+
+    function handleButtonClick(): void {
+        throw new Error('Function not implemented.');
+    }
 
     return (
         <div className={style.wrapper}>
+            <div className={style.header}>
+                <div className={style.title}>wybrane projekty</div>
+                <Button selected className={style.button} onClick={handleButtonClick}>
+                    zobacz całe portfolio
+                    <Arrow className={style.arrowButton} />
+                </Button>
+            </div>
+
             <div ref={containerRef} className={style.list}>
                 {projects.map((project) => (
                     <ProjectItem
@@ -87,7 +112,7 @@ const ProjectItem = (props: { project: Project; }) => {
                     autoPlay
                     loop
                     muted
-                    style={{ aspectRatio: project.aspectRatio }}
+                    style={{ width: project.aspectRatio * 100 + '%' }}
                 />
             )}
             <div className={style.overlay} >
@@ -131,8 +156,8 @@ const projects: Project[] = [
         id: '4',
         name: 'Project 4',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        aspectRatio: 1 / 1.5,
-        image: '/images/projects/4.webp',
+        aspectRatio: 2 / 1,
+        video: '/videos/demo.mp4',
     },
     {
         id: '5',

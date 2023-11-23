@@ -9,6 +9,7 @@
     margin: 0 auto;
     height: min(100vh, 100vw);
     min-height: 400px;
+    max-height: 800px;
     padding-top: min(10vh, 10vw);
 }
 
