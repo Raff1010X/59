@@ -44,6 +44,7 @@ export default function ProjectList(props: ProjectListProps) {
                         return value > lowest ? value : lowest;
                     }, 0);
                     containerRef.current.style.height = `${lowestItem}px`;
+                    containerRef.current.style.opacity = '1';
                 }
             }
         }
@@ -78,7 +79,7 @@ const ProjectItem = (props: { project: Project; }) => {
                     width={1000}
                     style={{ aspectRatio: project.aspectRatio }}
                 />
-            )}
+            )}{/* TODO: test video */}
             {project.video && (
                 <video
                     className={style.video}
@@ -86,12 +87,14 @@ const ProjectItem = (props: { project: Project; }) => {
                     autoPlay
                     loop
                     muted
+                    style={{ aspectRatio: project.aspectRatio }}
                 />
             )}
             <div className={style.overlay} >
                 <div className={style.name}>{project.name}</div>
                 <div className={style.description}>{project.description}</div>
-                <div className={style.link}>zobacz projekt
+                <div className={style.link}> {/* TODO: add links */}
+                    zobacz projekt
                     <div className={style.linkArrowBackground}>
                         <Arrow className={style.arrow} />
                     </div>

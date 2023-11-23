@@ -6,12 +6,12 @@ import Slideshow from '@/components/slideshow/slideshow'
 import slideshowData from '@/data/slideShow.json'
 
 import Chat from '@/components/chat/chat'
-
+import ProjectList from '@/components/projectList/projectList'
 
 export default function Home() {
 
   return (
-    <main className={style.main}>
+    <main>
 
       <Slideshow
         data={slideshowData}
@@ -27,8 +27,9 @@ export default function Home() {
         image='/images/video/demo.jpeg'
       />
 
+      <ProjectList />
+      
       {/* 
-      Wybrane projekty
       BLOG
        */}
 
