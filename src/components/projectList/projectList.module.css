@@ -59,19 +59,8 @@
     height: auto;
     overflow: hidden;
     cursor: pointer;
-    animation: fadeUp 3s ease-in-out forwards;
     margin-bottom: 80px;
-}
-
-@keyframes fadeUp {
-    0% {
-        opacity: 0;
-        transform: rotateX(90deg);
-    }
-    100% {
-        opacity: 1;
-        transform: rotateX(0deg);
-    }
+    transition: 0.25s;
 }
 
 .image {

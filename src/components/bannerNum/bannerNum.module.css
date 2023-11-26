@@ -2,10 +2,10 @@
     position: relative;
     width: 100%;
     aspect-ratio: 16/9;
-    min-height: 40vh;
+    min-height: min(40vh, 600px);
     max-width: var(--max-width);
     margin: auto;
-    margin-top: min(10vh, 10vw);
+    margin-top: min(10vh, 100px);
 }
 
 .headers {

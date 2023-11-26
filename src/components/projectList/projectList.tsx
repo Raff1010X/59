@@ -1,9 +1,10 @@
 "use client";
-import { useEffect, useRef } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import style from './projectList.module.css';
 import Image from '@/components/image/image';
 import Arrow from '../arrow/arrow';
 import Button from '../button/button';
+import useScroll from '@/hooks/useScroll';
 
 type Project = {
     id: string;
@@ -35,29 +36,16 @@ export default function ProjectList(props: ProjectListProps) {
             if (containerRef.current) {
                 const width = window.innerWidth;
                 const column = columns.find((column) => width <= column.width);
-                if (column) {
+                containerRef.current.style.height = 'auto';
+                if (column && column.count > 1) {
+                    let height = containerRef.current.offsetHeight / column.count;
                     const items = Array.from(containerRef.current.children) as HTMLDivElement[];
-                    const totalHeight = items.reduce((sum, item) => sum + item.clientHeight + 170, 0);
-                    const containerHeight = totalHeight / column.count;
-                    containerRef.current.style.height = `${containerHeight}px`;
-
-                    const { minTop, maxBottom } = items.reduce((acc, item) => {
-                        const itemTop = item.offsetTop;
-                        const itemBottom = itemTop + item.clientHeight;
-                        return {
-                            minTop: Math.min(acc.minTop, itemTop),
-                            maxBottom: Math.max(acc.maxBottom, itemBottom),
-                        };
-                    }, { minTop: Infinity, maxBottom: 0 });
-
-                    const newHeight = maxBottom - minTop + 150;
-                    const marginBottom = containerRef.current.clientHeight - newHeight;
-
-                    containerRef.current.style.marginBottom = `${-marginBottom}px`;
-                    containerRef.current.style.opacity = '1';
+                    const highest = items.reduce((prev, curr) => Math.max(prev, curr.offsetHeight), 0);
+                    const lowest = items.reduce((prev, curr) => Math.min(prev, curr.offsetHeight), 0);
+                    containerRef.current.style.height = height + (highest + lowest) / 2 + 'px';
                 }
+                containerRef.current.style.opacity = '1';
             }
-            console.log('resize');
         }
         handleResize();
         window.addEventListener('resize', handleResize);
@@ -94,8 +82,27 @@ export default function ProjectList(props: ProjectListProps) {
 
 const ProjectItem = (props: { project: Project; }) => {
     const { project } = props;
+
+    const ref = useRef<HTMLDivElement>(null);
+
+    const scroll = useScroll({ ref });
+
+    const [randomizer, setRandomizer] = useState(1);
+    
+    useEffect(() => {
+        setRandomizer(Math.random() * 2 - 1);
+    }, []);
+
     return (
-        <div className={style.item}>
+        <div
+            ref={ref}
+            className={style.item}
+            style={{
+                transform: `translateY(${100 - scroll}px) rotate(${randomizer * (10 - scroll / 10)}deg)`,
+                opacity: .5 + scroll / 200,
+                filter: `grayscale(${100 - scroll}%) blur(${1 - scroll/100}px)`,
+            }}
+        >
             {project.image && (
                 <Image
                     className={style.image}
@@ -104,7 +111,7 @@ const ProjectItem = (props: { project: Project; }) => {
                     width={1000}
                     style={{ aspectRatio: project.aspectRatio }}
                 />
-            )}{/* TODO: test video */}
+            )}
             {project.video && (
                 <video
                     className={style.video}
@@ -214,6 +221,49 @@ const projects: Project[] = [
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
         aspectRatio: 1 / .5,
         image: '/images/projects/12.webp',
-    }
+    },
+    {
+        id: '13',
+        name: 'Project 1',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        aspectRatio: 1 / 1.5,
+        image: '/images/projects/1.webp',
+    },
+
+    {
+        id: '15',
+        name: 'Project 4',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        aspectRatio: 2 / 1,
+        video: '/videos/demo.mp4',
+    },
+    {
+        id: '14',
+        name: 'Project 3',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        aspectRatio: 1 / .5,
+        image: '/images/projects/3.webp',
+    },
+    {
+        id: '16',
+        name: 'Project 5',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        aspectRatio: 1 / .5,
+        image: '/images/projects/5.webp',
+    },
+    {
+        id: '17',
+        name: 'Project 2',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        aspectRatio: 1 / 1,
+        image: '/images/projects/2.webp',
+    },
+    {
+        id: '18',
+        name: 'Project 2',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        aspectRatio: 1 / 1,
+        image: '/images/projects/2.webp',
+    },
 ];
 

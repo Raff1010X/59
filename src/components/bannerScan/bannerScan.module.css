@@ -2,7 +2,7 @@
     position: relative;
     width: 100%;
     aspect-ratio: 21/9;
-    max-width: 1430px;
+    max-width: var(--max-width);
     margin: auto;
     display: flex;
     overflow: hidden;

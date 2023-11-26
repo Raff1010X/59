@@ -15,6 +15,10 @@ export default function useScroll(props: UseScrollProps) {
     const callbackFunction = (entries: any) => {
         const [entry] = entries;
 
+        if (entry.boundingClientRect.y < 0) {
+            setPercent(100);
+        }
+
         if (entry.isIntersecting && entry.boundingClientRect.y >= 0) {
             const percent = Math.ceil(entry.intersectionRatio * 100);
             setPercent(percent);

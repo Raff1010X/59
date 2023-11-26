@@ -3,13 +3,12 @@
     align-items: center;
     width: 90%;
     max-width: var(--max-width);
-    min-height: 45vh;
+    min-height: min(45vh, 600px);
     margin: 0 auto;
     padding: min(10vw, 140px);
-    padding-right: 15%;
+    padding-right: min(15%, 140px);
     padding-left: var(--padding);
     font-size: var(--font-size-l);
     font-family: var(--font-galano-bold);
     line-height: 1.15;
-    
 }
