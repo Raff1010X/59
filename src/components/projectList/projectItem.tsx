@@ -6,9 +6,6 @@ import Arrow from '../arrow/arrow';
 import useScroll from '@/hooks/useScroll';
 import Link from 'next/link';
 
-
-type Tags = "webdesign" | "animation" | "branding" | "other";
-
 export type Project = {
     id: string;
     name: string;
@@ -17,20 +14,16 @@ export type Project = {
     aspectRatio: number;
     image?: string;
     video?: string;
-    selected?: boolean;
+    selected: boolean;
     media?: string[];
-    tag?: Tags;
+    tag: string;
 };
 
 export default function ProjectItem(props: { project: Project; }) {
     const { project } = props;
-
     const ref = useRef<HTMLAnchorElement>(null);
-
     const scroll = useScroll({ ref });
-
     const [randomizer, setRandomizer] = useState(1);
-
     useEffect(() => {
         setRandomizer(Math.random() * 2 - 1);
     }, []);

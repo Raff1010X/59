@@ -28,12 +28,22 @@
 
 .button {
     height: 46px;
-    min-width: 200px;
+    min-width: 150px;
     font-size: 14px;
+
 }
 
 .arrowButton {
     margin-right: -5px;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
 }
 
 .list {
@@ -71,7 +81,7 @@
 
 .video {
     width: 100%;
-    aspectRatio: 16/9;
+    aspect-ratio: 16/9;
     height: auto;
     z-index: -1;
     transition: 0.25s;

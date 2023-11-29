@@ -1,18 +1,23 @@
 "use client";
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import style from './projectList.module.css';
 import Arrow from '../arrow/arrow';
 import Button from '../button/button';
 import ProjectItem from './projectItem';
+import { Project } from './projectItem';
 import projects from '@/data/projects.json';
+import { useRouter } from 'next/navigation';
 
 interface ProjectListProps {
     className?: string;
+    showSelected?: boolean;
 }
 
 export default function ProjectList(props: ProjectListProps) {
-    const { className } = props;
+    const { className, showSelected } = props;
     const containerRef = useRef<HTMLDivElement>(null);
+    const [selectedTag, setSelectedTag] = useState<string>('webdesign');
+    const router = useRouter();
 
     useEffect(() => {
         const handleResize = () => {
@@ -41,24 +46,49 @@ export default function ProjectList(props: ProjectListProps) {
         return () => {
             window.removeEventListener('resize', () => setTimeout(handleResize, 50))
         };
-    }, [containerRef]);
+    }, [containerRef, selectedTag]);
 
-    function handleButtonClick(): void {
-        throw new Error('Function not implemented.');
-    }
+    const tags = projects.map((project: Project) => project.tag);
+    const uniqueTags = tags.filter((tag, index, array) => array.indexOf(tag) === index);
+    const projectsToShow = showSelected
+        ? projects.filter(project => project.selected === true)
+        : projects.filter(project => project.tag === selectedTag);
 
     return (
         <div className={`${style.wrapper} ${className}`}>
             <div className={style.header}>
-                <div className={style.title}>wybrane projekty</div>
-                <Button selected className={style.button} onClick={handleButtonClick}>
-                    zobacz całe portfolio
-                    <Arrow className={style.arrowButton} />
-                </Button>
+                <div className={style.title}>
+                    {showSelected
+                        ? 'wybrane projekty'
+                        : 'portfolio'
+                    }
+                </div>
+                {showSelected
+                    ?
+                    <Button
+                        selected
+                        className={style.button}
+                        onClick={() => { router.push('/projects') }}>
+                        zobacz całe portfolio
+                        <Arrow className={style.arrowButton} />
+                    </Button>
+                    :
+                    <div className={style.buttons}>
+                        {uniqueTags.map((tag) => (
+                            <Button
+                                key={tag}
+                                selected={selectedTag === tag}
+                                className={style.button}
+                                onClick={() => setSelectedTag(tag)}>
+                                {tag}
+                            </Button>
+                        ))}
+                    </div>
+                }
             </div>
 
             <div ref={containerRef} className={style.list}>
-                {projects.map((project) => (
+                {projectsToShow.map((project) => (
                     <ProjectItem
                         key={project.id}
                         project={project}
