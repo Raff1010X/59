@@ -6,13 +6,20 @@ import Arrow from '../arrow/arrow';
 import useScroll from '@/hooks/useScroll';
 import Link from 'next/link';
 
-type Project = {
-    id: number;
+
+type Tags = "webdesign" | "animation" | "branding" | "other";
+
+export type Project = {
+    id: string;
     name: string;
+    shortDescription?: string;
     description: string;
     aspectRatio: number;
     image?: string;
     video?: string;
+    selected?: boolean;
+    media?: string[];
+    tag?: Tags;
 };
 
 export default function ProjectItem(props: { project: Project; }) {
@@ -23,7 +30,7 @@ export default function ProjectItem(props: { project: Project; }) {
     const scroll = useScroll({ ref });
 
     const [randomizer, setRandomizer] = useState(1);
-    
+
     useEffect(() => {
         setRandomizer(Math.random() * 2 - 1);
     }, []);
@@ -34,7 +41,7 @@ export default function ProjectItem(props: { project: Project; }) {
             ref={ref}
             className={style.item}
             style={{
-                transform: `translateY(${100 - scroll}px) rotate(${randomizer * (5 - scroll / 20)}deg)`,
+                transform: `translateY(${50 - scroll/2}%) scaleY(${1 + (100 - scroll) / 200}) rotate(${randomizer * (5 - scroll / 20)}deg)`,
                 opacity: .5 + scroll / 200,
             }}
         >

@@ -60,7 +60,7 @@
     overflow: hidden;
     cursor: pointer;
     margin-bottom: 80px;
-    transition: 0.25s;
+    transition: 0.1s;
 }
 
 .image {
@@ -161,6 +161,15 @@
 @media (min-width: 1430px) {
     .item {
         width: 25%;
+    }
+}
+
+@media (min-width: 1800px) {
+    .item {
+        width: 30%;
+    }
+    .list {
+        align-content: space-between;
     }
 }
 

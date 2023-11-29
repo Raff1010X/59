@@ -1,7 +1,9 @@
+import ProjectList from "@/components/projectList/projectList"
+
 export default function Projects() {
     return (
-        <div>
-            <h1>ProjectsPage</h1>
-        </div>
+        <main>
+            <ProjectList />
+        </main>
     )
 }

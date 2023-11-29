@@ -25,7 +25,7 @@ export default function ProjectList(props: ProjectListProps) {
                 containerRef.current.style.height = 'auto';
                 const width = window.innerWidth;
                 const column = columns.find((column) => width <= column.width);
-                
+
                 if (column && column.count > 1) {
                     let height = containerRef.current.offsetHeight / column.count;
                     const items = Array.from(containerRef.current.children) as HTMLDivElement[];
@@ -37,9 +37,9 @@ export default function ProjectList(props: ProjectListProps) {
             }
         }
         handleResize();
-        window.addEventListener('resize', handleResize);
+        window.addEventListener('resize', () => setTimeout(handleResize, 50));
         return () => {
-            window.removeEventListener('resize', handleResize)
+            window.removeEventListener('resize', () => setTimeout(handleResize, 50))
         };
     }, [containerRef]);
 

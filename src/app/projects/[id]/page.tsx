@@ -1,20 +1,13 @@
+import projects from "@/data/projects.json";
+import { Project } from "@/components/projectList/projectItem";
+
 export async function generateStaticParams() {
-    return [
-         { id: "1" } ,
-         { id: "2" } ,
-         { id: "3" } ,
-         { id: "4" } ,
-         { id: "5" } ,
-         { id: "6" } ,
-         { id: "7" } ,
-         { id: "8" } ,
-         { id: "9" } ,
-         { id: "10" } ,
-    ]
+    return projects
 }
 
-export default function Project({ params }: { params: { id: string; } }) {
-    const { id } = params;
+export default function Project({ params }: { params: Project }) {
+    const { id, name, shortDescription, description, aspectRatio, image, video, selected, media, tag } = params;
+
     return (
         <div>
             <h1>ProjectsPage {id}</h1>
