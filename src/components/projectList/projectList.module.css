@@ -168,7 +168,7 @@
     fill: var(--color-primary);
 }
 
-@media (min-width: 1430px) {
+@media (min-width: 1429px) {
     .item {
         width: 25%;
     }
@@ -189,7 +189,7 @@
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 769px) {
     .item {
         width: 90%;
     }

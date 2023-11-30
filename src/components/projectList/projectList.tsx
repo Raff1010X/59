@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import style from './projectList.module.css';
 import Arrow from '../arrow/arrow';
 import Button from '../button/button';
@@ -22,37 +22,53 @@ export default function ProjectList(props: ProjectListProps) {
     useEffect(() => {
         const handleResize = () => {
             const columns = [
-                { count: 1, width: 768 },
+                { count: 1, width: 770 },
                 { count: 2, width: 1430 },
                 { count: 3, width: 10000 },
             ]
             if (containerRef.current) {
                 containerRef.current.style.height = 'auto';
                 const width = window.innerWidth;
-                const column = columns.find((column) => width <= column.width);
+                const column = columns.find((column) => width < column.width);
 
                 if (column && column.count > 1) {
-                    let height = containerRef.current.offsetHeight / column.count;
                     const items = Array.from(containerRef.current.children) as HTMLDivElement[];
-                    const highest = items.reduce((prev, curr) => Math.max(prev, curr.offsetHeight), 0);
-                    const lowest = items.reduce((prev, curr) => Math.min(prev, curr.offsetHeight), 0);
-                    containerRef.current.style.height = height + (highest + lowest) / 2 + 'px';
+                    let height = Math.ceil(containerRef.current.offsetHeight / column.count);
+                    let totalHeights = [0];
+                    let currentIndex = 0;
+
+                    for (let i = 0; i < items.length; i++) {
+                        totalHeights[currentIndex] += items[i].offsetHeight + 80;
+                        if (totalHeights[currentIndex] >= height) {
+                            totalHeights.push(0);
+                            currentIndex++;
+                        }
+                    }
+
+                    let maxHeight = Math.max(...totalHeights);
+                    containerRef.current.style.height = `${maxHeight + 50}px`;
                 }
                 containerRef.current.style.opacity = '1';
             }
         }
         handleResize();
-        window.addEventListener('resize', () => setTimeout(handleResize, 50));
+        const resizeHandler = () => setTimeout(handleResize, 50);
+        window.addEventListener('resize', resizeHandler);
         return () => {
-            window.removeEventListener('resize', () => setTimeout(handleResize, 50))
+            window.removeEventListener('resize', resizeHandler);
         };
     }, [containerRef, selectedTag]);
 
-    const tags = projects.map((project: Project) => project.tag);
-    const uniqueTags = tags.filter((tag, index, array) => array.indexOf(tag) === index);
-    const projectsToShow = showSelected
+    const tags = useMemo(() => projects.map((project: Project) => project.tag), []);
+
+    const uniqueTags = useMemo(() => tags.filter((tag, index, array) => array.indexOf(tag) === index), [tags]);
+    const projectsToShow = useMemo(() => showSelected
         ? projects.filter(project => project.selected === true)
-        : projects.filter(project => project.tag === selectedTag);
+        : projects.filter(project => project.tag === selectedTag), [selectedTag, showSelected]);
+
+    if (!projects || projects.length === 0) {
+        return <div>No projects available</div>;
+    }
 
     return (
         <div className={`${style.wrapper} ${className}`}>
