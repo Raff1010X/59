@@ -21,14 +21,15 @@ export default function ProjectList(props: ProjectListProps) {
 
     useEffect(() => {
         const handleResize = () => {
-            const columns = [
-                { count: 1, width: 770 },
-                { count: 2, width: 1430 },
-                { count: 3, width: 10000 },
-            ]
             if (containerRef.current) {
                 containerRef.current.style.height = 'auto';
+                
                 const width = window.innerWidth;
+                const columns = [
+                    { count: 1, width: 770 },
+                    { count: 2, width: 1430 },
+                    { count: 3, width: 10000 },
+                ]
                 const column = columns.find((column) => width < column.width);
 
                 if (column && column.count > 1) {
@@ -51,9 +52,12 @@ export default function ProjectList(props: ProjectListProps) {
                 containerRef.current.style.opacity = '1';
             }
         }
+
         handleResize();
+
         const resizeHandler = () => setTimeout(handleResize, 50);
         window.addEventListener('resize', resizeHandler);
+
         return () => {
             window.removeEventListener('resize', resizeHandler);
         };
