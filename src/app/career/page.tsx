@@ -9,13 +9,13 @@ export default function Career() {
             <h1>CareerPage</h1>
 
             <BannerScan
-                header={['Stała współpraca z klientami to okazja do wzajemnego uczenia się, pomagania i rozwoju.']}
+                header={['Stała współpraca z klientami', 'to okazja do wzajemnego uczenia się,', 'pomagania i rozwoju.']}
             />
 
             <BannerNum
                 number={15}
                 step={1}
-                header={['lat istnienia naszej agencji', 'to ocean doświadczeń,', 'które przekuwamy na sukcesy', 'naszych klientów']}
+                header={['lat istnienia naszej agencji', 'to ocean doświadczeń,', 'które przekuwamy na sukcesynaszych klientów']}
             />
 
             <Scrollable

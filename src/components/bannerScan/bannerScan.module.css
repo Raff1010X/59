@@ -17,7 +17,7 @@
 }
 
 .header {
-    font-size: min(5vw, 90px);
+    font-size: var(--font-size-l);
     color: var(--color-text);
     font-family: var(--font-galano-bold);
     line-height: 1.1;
@@ -27,8 +27,6 @@
     transform: translateX(20%);
 }
 
-
-/* ///////////////// */
 @media (max-width: 1470px) {
     .wrapper {
         max-width: calc(100% - 2 * var(--padding));
