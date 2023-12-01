@@ -15,7 +15,7 @@ export default function SocialLinks(props: SocialLinksProps) {
     const { className, data } = props;
 
     return (
-        <div className={`${style.socialLinks} ${className}`}>
+        <div className={`${style.socialLinks} ${className && className}`}>
             <p className={style.socialLinksTitle}>odwiedź <br /> nas na:</p>
             <div className={style.wrapper}>
                 {data.map((link) => {

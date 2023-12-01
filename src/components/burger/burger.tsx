@@ -9,7 +9,7 @@ type BurgerProps = {
 export const Burger = (props: BurgerProps) => {
     const { open, setOpen, className } = props;
     return (
-        <div className={`${style.burger} ${open ? style.open : ''} ${className}`} onClick={() => setOpen(!open)}>
+        <div className={`${style.burger} ${open ? style.open : ''} ${className && className}`} onClick={() => setOpen(!open)}>
             <div className={`${style.line} ${style.top} ${open ? style.opentop : ''}`}></div>
             <div className={`${style.line} ${style.bottom} ${open ? style.openbottom : ''}`}></div>
         </div>

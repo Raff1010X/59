@@ -19,7 +19,7 @@ export default function Container(props: ContainerProps) {
     const { className, item } = props;
 
     return (
-        <div className={`${style.wrapper} ${className}`}>
+        <div className={`${style.wrapper} ${className && className}`}>
             <div className={style.header}>
                 <div className={style.foto}>
                     <Image

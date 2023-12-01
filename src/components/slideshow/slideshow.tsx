@@ -40,7 +40,7 @@ export default function Slideshow(props: SlideshowProps) {
     )
 
     return (
-        <div className={`${style.wrapper} ${className}`}>
+        <div className={`${style.wrapper} ${className && className}`}>
 
             <div className={style.left} />
 

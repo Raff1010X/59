@@ -12,7 +12,7 @@ export default function Button(props: ButtonProps) {
     const { selected, className, children, onClick, styles } = props
     return (
         <div
-            className={`${style.wrapper} ${className}`}
+            className={`${style.wrapper} ${className && className}`}
             style={styles}
             onClick={onClick}
         >

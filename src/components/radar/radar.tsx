@@ -15,7 +15,7 @@ export default function Radar(props: RadarProps) {
     }, [])
     
     return (
-        <div className={`${style.wrapper} ${className}`}>
+        <div className={`${style.wrapper} ${className && className}`}>
             <div className={style.radar}>
                 <div className={`${style.circle} ${style.circle1}`}></div>
                 <div className={`${style.circle} ${style.circle2}`}></div>

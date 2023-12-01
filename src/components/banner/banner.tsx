@@ -40,7 +40,7 @@ export default function Banner(props: BannerProps) {
     useAnimate({ ref, callback: () => callbackFunction });
 
     return (
-        <div className={`${style.wrapper} ${className}`}>
+        <div className={`${style.wrapper} ${className && className}`}>
 
             <div className={style.backTexts}>
                 {backText?.map((text, index) => (

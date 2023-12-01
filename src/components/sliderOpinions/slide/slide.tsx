@@ -20,7 +20,7 @@ export default function Slide(props: sliderProps) {
     const { className, data, selected, width } = props;
 
     return (
-        <div className={`${style.wrapper} ${className}`}>
+        <div className={`${style.wrapper} ${className && className}`}>
             {data.map((item, index) => {
                 return (
                     <div

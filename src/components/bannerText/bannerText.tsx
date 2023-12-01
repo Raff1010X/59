@@ -20,7 +20,7 @@ export default function BannerText(props: BannerTextProps) {
     useAnimate({ ref, className: style.animate });
 
     return (
-        <div className={`${style.wrapper} ${className}`}>
+        <div className={`${style.wrapper} ${className && className}`}>
 
             <div className={style.numbers}>
                 <div className={style.numberWrapper} ref={ref}>

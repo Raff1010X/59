@@ -11,7 +11,7 @@ export default function Arrow(props: ArrowProps) {
             width="55"
             height="55"
             viewBox="0 0 55 55"
-            className={`${style.svg} ${className}`}
+            className={`${style.svg} ${className && className}`}
         >
             <path
                 className={`${style.arrow}`}

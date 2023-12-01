@@ -49,7 +49,7 @@ const Image = React.forwardRef((props: ImageProps, ref: React.Ref<HTMLDivElement
     }, []);
 
     return (
-        <div ref={ref} className={`${styles.wrapper} ${className}`} style={style}>
+        <div ref={ref} className={`${styles.wrapper} ${className && className}`} style={style}>
             <img
                 src={srcBase}
                 alt={alt}

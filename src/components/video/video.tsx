@@ -24,7 +24,7 @@ export default function Video(props: VideoProps) {
 
 
     return (
-        <div className={`${style.wrapper} ${className}`}>
+        <div className={`${style.wrapper} ${className && className}`}>
             <video
                 ref={videoRef}
                 className={style.video}

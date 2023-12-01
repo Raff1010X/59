@@ -11,7 +11,7 @@ interface AddressProps {
 export default function Address(props: AddressProps) {
     const { className } = props
 
-    return <address className={`${style.address} ${className}`}>
+    return <address className={`${style.address} ${className && className}`}>
         <div className={style.addressTitle}>
             <Image src={logo} alt="logo" width="200" height="55" priority={false} unoptimized />
         </div>

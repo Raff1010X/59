@@ -7,7 +7,7 @@ interface LineProps {
 export default function Line(props: LineProps) {
     const { className } = props;
     return (
-        <div className={`${style.line} ${className}`}>
+        <div className={`${style.line} ${className && className}`}>
         </div>
     )
 }

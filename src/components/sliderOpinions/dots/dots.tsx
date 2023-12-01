@@ -32,7 +32,7 @@ export default function Dots(props: DotsProps) {
     }
 
     return (
-        <div className={`${style.wrapper} ${className}`}>
+        <div className={`${style.wrapper} ${className && className}`}>
             <div className={style.dots}>
                 <div className={`${style.dot} ${style.mover}`} ref={mover} />
                 {dots}

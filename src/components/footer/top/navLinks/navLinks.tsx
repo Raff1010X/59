@@ -8,7 +8,7 @@ interface NavLinksProps {
 export default function NavLinks(props: NavLinksProps) {
     const { className } = props
 
-    return  <div className={`${style.navLinks} ${className}`}>
+    return  <div className={`${style.navLinks} ${className && className}`}>
     {links.map((link) => {
         return (
             <Link href={link.path} key={link.name} className={style.navLink}>
