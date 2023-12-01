@@ -3,18 +3,18 @@ import { Project } from "@/components/projectList/projectItem";
 
 export const generateStaticParams = () => projects
 
-async function getNextProject(currentProject: Project, allProjects: Project[]): Promise<Project> {
+function getNextProject(currentProject: Project, allProjects: Project[]): Project {
     const filteredProjects = allProjects.filter(project => project.tag === currentProject.tag);
     const currentIndex = filteredProjects.findIndex(project => project.id === currentProject.id);
     const nextIndex = (currentIndex < filteredProjects.length - 1) ? currentIndex + 1 : 0;
     return filteredProjects[nextIndex];
 }
 
-export default async function Project({ params }: { params: Project }) {
+export default function Project({ params }: { params: Project }) {
     const { id } = params;
     
     const currentProject = projects.find(project => project.id === id) as Project;
-    const nextProject = await getNextProject(currentProject, projects);
+    const nextProject = getNextProject(currentProject, projects);
     
     return (
         <div>

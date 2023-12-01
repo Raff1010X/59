@@ -14,7 +14,7 @@ interface ProjectListProps {
 }
 
 export default function ProjectList(props: ProjectListProps) {
-    const { className, showSelected } = props;
+    const { className, showSelected = false } = props;
     const containerRef = useRef<HTMLDivElement>(null);
     const router = useRouter();
 

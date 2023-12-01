@@ -27,7 +27,7 @@ export default function Home() {
         image='/images/video/demo.jpeg'
       />
 
-      <ProjectList showSelected={true}/>
+      <ProjectList showSelected />
       
       {/* 
       BLOG
