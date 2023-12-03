@@ -6,7 +6,8 @@ import Slideshow from '@/components/slideshow/slideshow'
 import slideshowData from '@/data/slideShow.json'
 
 import Chat from '@/components/chat/chat'
-import ProjectList from '@/components/projectList/projectList'
+import ProjectList from '@/components/project/projectList/projectList'
+import { ProjectShowAll } from '@/components/project/projectShowAll/projectShowAll'
 
 export default function Home() {
 
@@ -27,7 +28,9 @@ export default function Home() {
         image='/images/video/demo.jpeg'
       />
 
-      <ProjectList showSelected />
+      <ProjectShowAll />
+      
+      <ProjectList selectedTag='selected' />
       
       {/* 
       BLOG

@@ -1,26 +1,23 @@
 "use client";
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import style from './projectList.module.css';
-import Arrow from '../arrow/arrow';
-import Button from '../button/button';
-import ProjectItem from './projectItem';
-import { Project } from './projectItem';
+import ProjectItem from '../projectItem/projectItem';
+import { Project } from '../projectItem/projectItem';
 import projects from '@/data/projects.json';
-import { useRouter } from 'next/navigation';
+import { ProjectGroupLinks } from '../projectGroupLinks/projectGroupLinks';
 
 interface ProjectListProps {
     className?: string;
-    showSelected?: boolean;
+    selectedTag: string;
 }
 
 export default function ProjectList(props: ProjectListProps) {
-    const { className, showSelected = false } = props;
+    const { className, selectedTag } = props;
     const containerRef = useRef<HTMLDivElement>(null);
-    const router = useRouter();
 
     // Tworzy listę unikalnych tagów z projektów.
     const tags = useMemo(() => projects.map((project: Project) => project.tag), []);
-    const uniqueTags = useMemo(() => tags.filter((tag, index, array) => array.indexOf(tag) === index), []);
+    const uniqueTags = useMemo(() => tags.filter((tag, index, array) => array.indexOf(tag) === index), [tags]);
 
     // Grupuje projekty według ich tagów.
     const projectsGroupedByTag = useMemo(() => {
@@ -33,19 +30,12 @@ export default function ProjectList(props: ProjectListProps) {
     // Decyduje, które projekty pokazać na podstawie wartości showSelected.
     const projectsToShow = useMemo(() => {
         const projectsToShow: { [key: string]: Project[] } = {};
-        if (showSelected)
+        if (selectedTag === 'selected')
             projectsToShow['selected'] = projects.filter(project => project.selected);
         else
             uniqueTags.forEach((tag) => projectsToShow[tag] = projectsGroupedByTag[tag]);
         return projectsToShow;
-    }, [uniqueTags, projectsGroupedByTag, showSelected]);
-
-    // Ustawia selectedTag na podstawie showSelected i uniqueTags.
-    const [selectedTag, setSelectedTag] = useState<string>(showSelected
-        ? 'selected'
-        : uniqueTags[0]
-            ? uniqueTags[0]
-            : 'selected');
+    }, [uniqueTags, projectsGroupedByTag, selectedTag]);
 
     // Definiuje funkcję handleResize, która dostosowuje wysokość kontenera na podstawie liczby kolumn i wysokości elementów.
     function handleResize() {
@@ -96,40 +86,9 @@ export default function ProjectList(props: ProjectListProps) {
         };
     }, []);
 
-    // Renderuje listę projektów i przyciski do przełączania między tagami.
+    // Renderuje listę projektów.
     return (
         <div className={`${style.wrapper} ${className && className}`}>
-            <div className={style.header}>
-                <div className={style.title}>
-                    {showSelected
-                        ? 'wybrane projekty'
-                        : 'portfolio'
-                    }
-                </div>
-                {showSelected
-                    ?
-                    <Button
-                        selected
-                        className={style.button}
-                        onClick={() => { router.push('/projects') }}>
-                        zobacz całe portfolio
-                        <Arrow className={style.arrowButton} />
-                    </Button>
-                    :
-                    <div className={style.buttons}>
-                        {uniqueTags.map((tag) => (
-                            <Button
-                                key={tag}
-                                selected={selectedTag === tag}
-                                className={style.button}
-                                onClick={() => setSelectedTag(tag)}>
-                                {tag}
-                            </Button>
-                        ))}
-                    </div>
-                }
-            </div>
-
             <div ref={containerRef} className={style.list}>
                 {projectsToShow[selectedTag].map(project => (
                     <ProjectItem

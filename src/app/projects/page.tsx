@@ -1,9 +1,11 @@
-import ProjectList from "@/components/projectList/projectList"
+import { ProjectGroupLinks } from "@/components/project/projectGroupLinks/projectGroupLinks"
+import ProjectList from "@/components/project/projectList/projectList"
 
 export default function Projects() {
     return (
         <main>
-            <ProjectList />
+            <ProjectGroupLinks selectedTag="webdesign" />
+            <ProjectList selectedTag="webdesign" />
         </main>
     )
 }

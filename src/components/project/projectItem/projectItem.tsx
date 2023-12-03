@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useMemo, useRef, useState } from 'react';
-import style from './projectList.module.css';
+import style from './projectItem.module.css';
 import Image from '@/components/image/image';
-import Arrow from '../arrow/arrow';
+import Arrow from '../../arrow/arrow';
 import useScroll from '@/hooks/useScroll';
 import Link from 'next/link';
 
@@ -30,7 +30,7 @@ export default function ProjectItem(props: { project: Project; }) {
 
     return (
         <Link
-            href={`/projects/${project.id}`}
+            href={`/projects/${project.tag}/${project.id}`}
             ref={ref}
             className={style.item}
             style={{
