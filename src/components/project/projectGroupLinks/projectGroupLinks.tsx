@@ -1,8 +1,7 @@
-import { Project } from "@/components/project/projectItem/projectItem";
-import projects from "@/data/projects.json";
 import Button from "@/components/button/button"
 import style from './projectGroupLinks.module.css'
 import Link from "next/link";
+import { uniqueTags } from "@/components/project/utils";
 
 interface ProjectgGroupLinksProps {
     selectedTag: string;
@@ -10,10 +9,6 @@ interface ProjectgGroupLinksProps {
 
 export const ProjectGroupLinks = (props: ProjectgGroupLinksProps) => {
     const { selectedTag } = props;
-
-    // Tworzy listę unikalnych tagów z projektów.
-    const tags = projects.map((project: Project) => project.tag);
-    const uniqueTags = tags.filter((tag, index, array) => array.indexOf(tag) === index);
 
     return (
         <div className={style.wrapper}>

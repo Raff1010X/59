@@ -1,11 +1,6 @@
-import { ProjectGroupLinks } from "@/components/project/projectGroupLinks/projectGroupLinks"
-import ProjectList from "@/components/project/projectList/projectList"
+import { redirect } from "next/navigation"
+import { uniqueTags } from "@/components/project/utils";
 
 export default function Projects() {
-    return (
-        <main>
-            <ProjectGroupLinks selectedTag="webdesign" />
-            <ProjectList selectedTag="webdesign" />
-        </main>
-    )
+    redirect(`/projects/${uniqueTags[0]}`)
 }

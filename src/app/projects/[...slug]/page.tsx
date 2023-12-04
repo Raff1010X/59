@@ -1,13 +1,11 @@
 import projects from "@/data/projects.json";
 import { Project } from "@/components/project/projectItem/projectItem";
-
 import Link from "next/link";
 import ProjectList from "@/components/project/projectList/projectList"
 import { ProjectGroupLinks } from "@/components/project/projectGroupLinks/projectGroupLinks";
+import { uniqueTags } from "@/components/project/utils";
 
 export const generateStaticParams = () => {
-    const tags = projects.map((project: Project) => project.tag);
-    const uniqueTags = tags.filter((tag, index, array) => array.indexOf(tag) === index);
     const tagSlug = uniqueTags.map(tag => ({ slug: [tag] }));
     const projectSlug = projects.map(project => ({ slug: [project.tag, project.id] }))
     return [...tagSlug, ...projectSlug];
