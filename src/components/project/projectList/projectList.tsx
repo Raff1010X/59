@@ -4,7 +4,6 @@ import style from './projectList.module.css';
 import ProjectItem from '../projectItem/projectItem';
 import { Project } from '../projectItem/projectItem';
 import projects from '@/data/projects.json';
-import { ProjectGroupLinks } from '../projectGroupLinks/projectGroupLinks';
 
 interface ProjectListProps {
     className?: string;

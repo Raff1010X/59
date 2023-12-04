@@ -19,7 +19,7 @@ export type Project = {
     tag: string;
 };
 
-export default function ProjectItem(props: { project: Project; }) {
+export default function ProjectItem(props: { project: Project }) {
     const { project } = props;
     const ref = useRef<HTMLAnchorElement>(null);
     const scroll = useScroll({ ref });

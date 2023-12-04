@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation"
 import { uniqueTags } from "@/components/project/utils";
 
-export default function Projects() {
-    redirect(`/projects/${uniqueTags[0]}`)
-}
+const ProjectPage = () => redirect(`/projects/${uniqueTags[0]}`);
+
+export default ProjectPage;
