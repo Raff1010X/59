@@ -9,14 +9,17 @@ export const generateStaticParams = () => {
 };
 
 export default function Project({ params }: { params: { slug: string[] } }) {
-    const { slug } = params;
+    const [selectedTag, projectId] = params.slug;
 
     return (
-        <div>
-            <ProjectGroupLinks selectedTag={slug[0]} />
-            {slug[1] && <ProjectView projectId={slug[1]} />}
-            {slug[1] && <ProjectLink projectId={slug[1]} text="next project" />}
-            {!slug[1] && <ProjectList selectedTag={slug[0]} />}
-        </div>
+        <main>
+            <ProjectGroupLinks selectedTag={selectedTag} />
+            {projectId
+                ? <>
+                    <ProjectView projectId={projectId} />
+                    <ProjectLink projectId={projectId} text="next project" />
+                </>
+                : <ProjectList selectedTag={selectedTag} />}
+        </main>
     )
 }

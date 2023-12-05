@@ -2,3 +2,17 @@
 @import '_colors.css';
 @import '_variables.css';
 @import '_animations.css';
+
+
+body {
+    width: 100%;
+    max-width: var(--full-width);
+    margin: 0 auto;
+}
+
+.container_medium {
+    width: 100%;
+    max-width: var(--med-width);
+    margin: 0 auto;
+    padding: 0 var(--padding);
+}

@@ -5,7 +5,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: var(--max-width);
     margin-top: min(10vw, 100px);
     margin-bottom: min(10vw, 100px);
     margin-left: auto;
@@ -14,8 +13,8 @@
 
 .video {
     position: absolute;
-    width: 100%;
-    max-width: var(--max-width);
+    width: calc(100% - 2 * var(--padding));
+    max-width: calc(var(--med-width) - 2 * var(--padding));
     aspect-ratio: 16/9;
     height: auto;
     z-index: -1;
@@ -24,7 +23,6 @@
 .image {
     position: relative;
     width: 100%;
-    max-width: var(--max-width);
     aspect-ratio: 16/9;
     height: auto;
 }
@@ -61,11 +59,6 @@
 
 .hide {
     opacity: 0;
-}
-@media (max-width: 1430px) {
-    .image, .video {
-        width: calc(100% - var(--padding) * 2);
-    }
 }
 
 @media (max-width: 400px) {

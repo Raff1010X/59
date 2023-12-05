@@ -1,10 +1,8 @@
 .bottom {
-    width: 100%;
     min-height: 100px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: var(--max-width);
 }
 
 .cookies {
@@ -12,7 +10,6 @@
     font-size: 14px;
     font-family: var(--font-galano-bold);
     color: var(--color-text);
-    padding-left: var(--padding);
 }
 
 .link {
@@ -36,12 +33,6 @@
     padding-left: 60px;
 }
 
-@media (min-width: 1470px) {
-    .cookies {
-        padding-left: 0;
-    }
-}
-
 @media (max-width: 768px) {
     .bottom {
         flex-direction: column;
@@ -52,6 +43,6 @@
 
     .copyright {
         width: 67%;
-        padding-left: var(--padding);
+        padding-left: 0;
     }
 }

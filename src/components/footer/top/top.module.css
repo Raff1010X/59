@@ -1,16 +1,13 @@
 .top {
-    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    max-width: var(--max-width);
     flex-wrap: wrap;
 }
 
 .address {
     min-width: 33%;
-    padding-left: var(--padding);
     padding-top: 100px;
     padding-bottom: 100px;
 }
@@ -29,13 +26,7 @@
     border-left: 1px solid var(--color-secondary);
 }
 
-@media (min-width: 1470px) {
-    .address {
-        padding-left: 0;
-    }
-}
-
-@media (max-width: 961px) {
+@media (max-width: 1050px) {
 
     .address {
         min-width: 50%;
@@ -49,7 +40,7 @@
         width: 100%;
         border-left: none;
         height: auto;
-        padding: 2vw 0 30px var(--padding);
+        padding: 2vw 0 30px 0;
         gap: 30px;
     }
 
@@ -69,7 +60,6 @@
  
     .navLinks {
         width: 100%;
-        padding-left: var(--padding);
         padding-bottom: 30px;
         padding-top: 30px;
         max-height: 330px;

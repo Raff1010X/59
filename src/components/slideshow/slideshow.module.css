@@ -1,5 +1,4 @@
 .wrapper {
-    width: min(100%, 1920px);
     height: calc(100vh - var(--navbar-height-max));
     max-height: 1080px;
     margin: 0 auto;

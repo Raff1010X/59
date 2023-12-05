@@ -19,7 +19,7 @@ export default function BannerNum(props: BannerNumProps) {
     useAnimate({ ref: ref, className: style.animate });
 
     return (
-        <div className={`${style.wrapper} ${className && className}`}>
+        <div className={`container_medium ${style.wrapper} ${className && className}`}>
 
             <div className={style.numbers}>
                 <div className={style.numberWrapper} ref={ref}>

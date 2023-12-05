@@ -6,7 +6,7 @@ import NavLinks from './navLinks/navLinks';
 import Address from './address/address';
 
 export default function Top() {
-    return <div className={style.top}>
+    return <div className={`container_medium ${style.top}`}>
         <Address className={style.address} />
         <NavLinks className={style.navLinks} />
         <SocialLinks data={data} className={style.socialLinks} />

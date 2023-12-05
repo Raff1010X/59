@@ -18,7 +18,7 @@ export default function ClientsLogos(props: ClientsLogosProps) {
     }, []);
 
     return (
-        <div className={`${style.wrapper} ${className && className}`}>
+        <div className={`container_medium ${style.wrapper} ${className && className}`}>
             {clientsLogosPaths.map((image, index) => (
                 <Image
                     className={style.image}

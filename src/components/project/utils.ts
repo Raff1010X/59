@@ -15,6 +15,23 @@ export const getNextProject = (currentProject: Project): Project => {
     return filteredProjects[nextIndex];
 }
 
+// Zwraca slugi tagów w formacie [tag].
 export const tagSlug = uniqueTags.map(tag => ({ slug: [tag] }));
 
+// Zwraca slugi projektów w formacie [tag, id].
 export const projectSlug = projects.map(project => ({ slug: [project.tag, project.id] }))
+
+// Grupuje projekty według ich tagów.
+export const projectsGroupedByTag = projects.reduce((groups, project) => {
+    (groups[project.tag] = groups[project.tag] || []).push(project);
+    return groups;
+}, {} as { [key: string]: Project[] });
+
+// Zwraca obiekt zawierający projekty do wyświetlenia wg. wybranego tagu
+export const projectsToShow: { [key: string]: Project[] } = {
+    all: projects,
+    selected: projects.filter(project => project.selected),
+    ...projectsGroupedByTag
+};
+
+

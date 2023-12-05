@@ -7,7 +7,7 @@ import style from './projectShowAll.module.css'
 export const ProjectShowAll = () => {
 
     return (
-        <div className={style.wrapper}>
+        <div className={`container_medium ${style.wrapper}`}>
             <div className={style.header}>
                 <p className={style.title}>
                     wybrane projekty

@@ -7,7 +7,6 @@
     align-items: center;
     gap: min(10vw, 200px);
     pointer-events: none;
-    max-width: 1920px;
     margin: auto;
 }
 

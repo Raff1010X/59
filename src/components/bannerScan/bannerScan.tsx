@@ -17,7 +17,7 @@ export default function BannerScan(props: BannerScanProps) {
     useAnimate({ ref, className: style.animate });
 
     return (
-        <div className={`${style.wrapper} ${className && className}`}>
+        <div className={`container_medium ${style.wrapper} ${className && className}`}>
 
             <Radar className={style.radar}/>
 

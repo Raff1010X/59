@@ -64,7 +64,7 @@ export default function Navbar() {
         <>
             <div className={style.spacer} />
             <nav ref={divRef} className={style.navbar}>
-                <div className={style.wrapper}>
+                <div className={`container_medium ${style.wrapper}`}>
                     <Link href="/" className={style.logo}>
                         <Image src={logo} alt="logo" width="133" height="55" priority={false} unoptimized/>
                     </Link>

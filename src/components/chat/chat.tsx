@@ -19,7 +19,7 @@ export default function Chat(props: ChatProps) {
     const router = useRouter()
 
     return (
-        <div className={`${styles.wrapper} ${className && className}`}>
+        <div className={`container_medium ${styles.wrapper} ${className && className}`}>
             <SVG />
             {header.map((item, index) => {
                 return (

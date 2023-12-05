@@ -11,7 +11,7 @@ export const ProjectGroupLinks = (props: ProjectgGroupLinksProps) => {
     const { selectedTag } = props;
 
     return (
-        <div className={style.wrapper}>
+        <div className={`container_medium ${style.wrapper}`}>
             <p className={style.title}>
                 portfolio
             </p>

@@ -4,9 +4,6 @@
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    width: 100%;
-    max-width: var(--max-width);
-    margin: 0 auto;
     height: min(100vh, 100vw);
     min-height: 400px;
     max-height: 800px;

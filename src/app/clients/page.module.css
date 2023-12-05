@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     width: 90%;
-    max-width: var(--max-width);
+    max-width: var(--med-width);
     min-height: min(45vh, 600px);
     margin: 0 auto;
     padding: min(10vw, 140px);

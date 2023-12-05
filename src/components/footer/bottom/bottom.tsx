@@ -3,7 +3,7 @@ import Link from 'next/link'
 import style from './bottom.module.css'
 
 export default function Bottom() {
-    return <div className={style.bottom}>
+    return <div className={`container_medium ${style.bottom}`}>
 
     <div className={style.cookies}>
         <Link href='/cookies' className={style.link}>

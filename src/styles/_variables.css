@@ -1,7 +1,8 @@
 :root {
     --navbar-height-max: 90px;
     --navbar-height-min: 62px;
-    --max-width: 1430px;
+    --full-width: 1920px;
+    --med-width: 1500px;
     --padding: 30px;
     --font-size-xxl: max(min(20vw, 500px), 150px);
     --font-size-xl: max(min(5vw, 90px), 25px);
