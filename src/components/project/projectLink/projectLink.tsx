@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getCurrentProject, getNextProject } from "@/components/project/utils";
-// import style from "./projectLink.module.css";
+import style from "./projectLink.module.css";
+import Arrow from "@/components/arrow/arrow";
 
 interface ProjectLinkProps {
     projectId: string;
@@ -14,9 +15,16 @@ export default function ProjectLink(params: ProjectLinkProps) {
     const nextProject = getNextProject(currentProject);
 
     return (
-        <Link href={`/projects/${nextProject.tag}/${nextProject.id}`}>
-            <p>{nextProject.name}</p>
-            <p>{text}</p>
-        </Link>
+        <div className={`container_medium ${style.wrapper}`}>
+            <Link href={`/projects/${nextProject.tag}/${nextProject.id}`} className={style.link}>
+                <p className={style.name}>{nextProject.name}</p>
+                <div className={style.text}>
+                    <div>{text}</div>
+                    <div className={style.linkArrowBackground}>
+                        <Arrow className={style.arrow} />
+                    </div>
+                </div>
+            </Link>
+        </div>
     )
 }

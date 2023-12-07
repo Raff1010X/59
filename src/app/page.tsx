@@ -36,7 +36,7 @@ export default function Home() {
       BLOG
        */}
 
-      <Chat className={style.chat}
+      <Chat
         header={['porozmawiajmy', 'o Twoim projekcie']}
         text={['Potrzebujesz doradztwa ekspertów od digital marketingu?']}
         button='bezpłatna konsultacja'

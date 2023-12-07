@@ -42,7 +42,7 @@ export default function Navbar() {
         let previousScrollPosition = 0;
 
         const handleScroll = () => {
-            if (window.innerWidth > 960 || open) {
+            if (window.innerWidth > 988 || open) {
                 divRef.current.classList.remove(style.navbarScrolled)
                 return;
             }
@@ -65,8 +65,12 @@ export default function Navbar() {
             <div className={style.spacer} />
             <nav ref={divRef} className={style.navbar}>
                 <div className={`container_medium ${style.wrapper}`}>
-                    <Link href="/" className={style.logo}>
-                        <Image src={logo} alt="logo" width="133" height="55" priority={false} unoptimized/>
+                    <Link
+                        href="/"
+                        className={style.logo}
+                        onClick={handleCloseClick}
+                    >
+                        <Image src={logo} alt="logo" width="133" height="55" priority={false} unoptimized />
                     </Link>
                     <div className={`${style.menu} ${open ? style.menuOpen : ''}`}>
                         <ul className={style.list}>

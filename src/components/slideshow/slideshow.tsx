@@ -28,6 +28,13 @@ export default function Slideshow(props: SlideshowProps) {
         sync(['showArrowBackground', 'showNumber', 'moveArrowBackground'])
     }, [])
 
+    const scrollDown = () => {
+        window.scrollTo({
+            top: Math.min(window.innerHeight, window.innerWidth * 12/16) - 60,
+            behavior: 'smooth'
+        })
+    }
+
     const images = data.map((slide, index) =>
         <Image
             key={index}
@@ -86,7 +93,7 @@ export default function Slideshow(props: SlideshowProps) {
                 <Arrow />
             </Button>
 
-            <div className={style.scroll}>
+            <div className={style.scroll} onClick={scrollDown}>
                 <Arrow className={style.scrollArrow} />
             </div>
 

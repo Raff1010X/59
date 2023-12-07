@@ -17,6 +17,7 @@ export type Project = {
     selected: boolean;
     media?: string[];
     tag: string;
+    scope?: string[];
 };
 
 export default function ProjectItem(props: { project: Project }) {

@@ -78,7 +78,7 @@
 }
 
 .logo {
-    padding: 3px 10px 0px 10px;
+    padding: 3px 10px 0 0;
     margin-right: 20px;
 }
 
@@ -241,13 +241,13 @@
     }
 }
 
-@media (min-width: 960px) {
+@media (min-width: 988px) {
     .burger {
         display: none;
     }
 }
 
-@media (max-width: 960px) {
+@media (max-width: 988px) {
     .spacer {
         height: var(--navbar-height-min);
     }
