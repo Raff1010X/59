@@ -30,7 +30,7 @@ export default function Slideshow(props: SlideshowProps) {
 
     const scrollDown = () => {
         window.scrollTo({
-            top: Math.min(window.innerHeight, window.innerWidth * 12/16) - 60,
+            top: Math.min(window.innerHeight, window.innerWidth * 12/16),
             behavior: 'smooth'
         })
     }

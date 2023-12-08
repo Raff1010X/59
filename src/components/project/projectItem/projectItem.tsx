@@ -31,7 +31,7 @@ export default function ProjectItem(props: { project: Project }) {
 
     return (
         <Link
-            href={`/projects/${project.tag}/${project.id}`}
+            href={`/projects/${encodeURIComponent(project.tag)}/${project.id}`}
             ref={ref}
             className={style.item}
             style={{
@@ -60,7 +60,7 @@ export default function ProjectItem(props: { project: Project }) {
             )}
             <div className={style.overlay}>
                 <div className={style.name}>{project.name}</div>
-                <div className={style.description}>{project.description}</div>
+                <div className={style.description}>{project.shortDescription}</div>
                 <div className={style.link}>
                     zobacz projekt
                     <div className={style.linkArrowBackground}>

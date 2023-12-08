@@ -2,11 +2,13 @@
     {
         "id": "1",
         "name": "Project 1",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "shortDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "aspectRatio": 1.666,
         "image": "/images/projects/1.webp",
         "tag": "webdesign",
-        "selected": false
+        "selected": false,
+        "scope": ["Back-end", "Front-End", "UI design", "UX design", "Print", "Animation", "Video", "WordPress", "Branding", "Copy", "Design", "Logo"]
     },
     {
         "id": "2",
@@ -14,7 +16,7 @@
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "aspectRatio": 1,
         "image": "/images/projects/2.webp",
-        "tag": "animation",
+        "tag": "3d & animation",
         "selected": false
     },
     {
@@ -50,7 +52,7 @@
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "aspectRatio": 1.666,
         "image": "/images/projects/6.webp",
-        "tag": "animation",
+        "tag": "3d & animation",
         "selected": false
     },
     {
@@ -86,7 +88,7 @@
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "aspectRatio": 1,
         "image": "/images/projects/10.webp",
-        "tag": "animation",
+        "tag": "3d & animation",
         "selected": true
     },
     {
@@ -149,7 +151,7 @@
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "aspectRatio": 1,
         "image": "/images/projects/2.webp",
-        "tag": "animation",
+        "tag": "3d & animation",
         "selected": true
     },
     {
@@ -158,7 +160,7 @@
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "aspectRatio": 1,
         "image": "/images/projects/2.webp",
-        "tag": "animation",
+        "tag": "3d & animation",
         "selected": true
     },
     {
