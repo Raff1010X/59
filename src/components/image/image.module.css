@@ -9,13 +9,14 @@
 }
 
 .image, .blur {
-    position: absolute;
+    position: relative;
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
 .blur {
+    position: absolute;
     animation: lighten 1s ease-in-out alternate infinite;
     border: 1px solid white;
     transform: scale(1.01);
