@@ -15,8 +15,8 @@ export const getNextProject = (currentProject: Project): Project => {
     return filteredProjects[nextIndex];
 }
 
-const tagSlug = uniqueTags.map(tag => ({ slug: [encodeURIComponent(tag)] }));
-const projectSlug = projects.map(project => ({ slug: [encodeURIComponent(project.tag), project.id] }))
+const tagSlug = uniqueTags.map(tag => ({ slug: [tag] }));
+const projectSlug = projects.map(project => ({ slug: [project.tag, project.id] }))
 
 // Zwraca slugi tagów i projektów w formacie [tag] lub [tag, id]
 export const slug = [...tagSlug, ...projectSlug];

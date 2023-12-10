@@ -3,15 +3,15 @@
         "name": "oferta",
         "path": "/services",
         "submenus": [
-            { "name": "web design", "path": "/services/webdesign" },
-            { "name": "3d & animation", "path": "/services/animation" },
+            { "name": "web design", "path": "/services/web_design" },
+            { "name": "3d & animation", "path": "/services/3d_&_animation" },
             { "name": "branding", "path": "/services/branding" },
-            { "name": "marketing developera", "path": "/services/marketing" }
+            { "name": "marketing developera", "path": "/services/marketing_developera" }
         ]
     },
     {
         "name": "realizacje",
-        "path": "/projects/webdesign"
+        "path": "/projects/web_design"
     },
     {
         "name": "o nas",

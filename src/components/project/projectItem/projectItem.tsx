@@ -31,7 +31,7 @@ export default function ProjectItem(props: { project: Project }) {
 
     return (
         <Link
-            href={`/projects/${encodeURIComponent(project.tag)}/${project.id}`}
+            href={`/projects/${project.tag}/${project.id}`}
             ref={ref}
             className={style.item}
             style={{

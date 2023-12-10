@@ -28,7 +28,7 @@ export default function ProjectView(params: { projectId: string }) {
                                     key={index}
                                     src={`/images/scope/${scope}.webp`}
                                     alt={scope}
-                                    width={50}
+                                    width={100}
                                     className={style.scopeImage}
                                 />
                                 <p className={style.scopeText}>{scope}</p>
@@ -42,8 +42,9 @@ export default function ProjectView(params: { projectId: string }) {
                     <Image
                         key={index}
                         src={image}
-                        alt={currentProject.name}
+                        alt=""
                         width={1000}
+                        className={style.image}
                     />
                 ))}
             </div>

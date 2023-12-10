@@ -16,7 +16,7 @@ export default function ProjectLink(params: ProjectLinkProps) {
 
     return (
         <div className={`container_medium ${style.wrapper}`}>
-            <Link href={`/projects/${encodeURIComponent(nextProject.tag)}/${nextProject.id}`} className={style.link}>
+            <Link href={`/projects/${nextProject.tag}/${nextProject.id}`} className={style.link}>
                 <p className={style.name}>{nextProject.name}</p>
                 <div className={style.text}>
                     <div>{text}</div>

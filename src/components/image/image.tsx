@@ -22,6 +22,7 @@ const Image = React.forwardRef((props: ImageProps, ref: React.Ref<HTMLDivElement
     const { src, alt, className, width, style, onClick, blur = true, size = 2 } = props;
 
     const divBlur = useRef<HTMLImageElement>(null);
+    const imgRef = useRef<HTMLImageElement>(null);
 
     let srcFileName = src.replace(/\.[^/.]+$/, "");
     let blurDataURL = findImageBase64(srcFileName);
@@ -44,12 +45,16 @@ const Image = React.forwardRef((props: ImageProps, ref: React.Ref<HTMLDivElement
     }
 
     useEffect(() => {
-        if (divBlur.current)
+        if (divBlur.current ) 
             divBlur.current.style.opacity = '0';
     }, []);
 
+
     return (
-        <div ref={ref} className={`${styles.wrapper} ${className && className}`} style={style}>
+        <div ref={ref} 
+        className={`${styles.wrapper} ${className && className}`} 
+        style={style}
+        >
             <img
                 src={srcBase}
                 alt={alt}
@@ -58,6 +63,7 @@ const Image = React.forwardRef((props: ImageProps, ref: React.Ref<HTMLDivElement
                 loading="lazy"
                 className={styles.image}
                 onClick={onClick}
+                ref={imgRef}
             />
             {
                 blur &&
@@ -68,7 +74,7 @@ const Image = React.forwardRef((props: ImageProps, ref: React.Ref<HTMLDivElement
                         transition: 'opacity 0.5s',
                         opacity: '1',
                     }}
-                    alt={''}
+                    alt=''
                 />
             }
         </ div>

@@ -17,12 +17,12 @@ export const ProjectGroupLinks = (props: ProjectgGroupLinksProps) => {
             </p>
             <div className={style.buttons}>
                 {uniqueTags.map((tag) => (
-                    <Link href={`/projects/${encodeURIComponent(tag)}`} key={tag} >
+                    <Link href={`/projects/${tag}`} key={tag} >
                         <Button
                             selected={selectedTag === tag}
                             className={style.button}
                         >
-                            {tag}
+                            {tag.replace(/_/g, ' ')}
                         </Button>
                     </Link>
                 ))}
