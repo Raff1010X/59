@@ -15,7 +15,7 @@ export type Project = {
     image?: string;
     video?: string;
     selected: boolean;
-    media?: string[];
+    media?: string[] | string[][];
     tag: string;
     scope?: string[];
 };

@@ -38,15 +38,45 @@ export default function ProjectView(params: { projectId: string }) {
                 }
             </div>
             <div className={style.images}>
-                {currentProject.media && currentProject.media.map((image, index) => (
-                    <Image
-                        key={index}
-                        src={image}
-                        alt=""
-                        width={1000}
-                        className={style.image}
-                    />
-                ))}
+                {currentProject.media && currentProject.media.map((image, index) => {
+                    if (Array.isArray(image)) {
+                        return (
+                            // two image slider component
+                            <div key={index} className={style.imageWrapper}>
+                                {image.map((item, index) => (
+                                    <Image
+                                        key={index}
+                                        src={item}
+                                        alt=""
+                                        width={1000}
+                                        className={style.image}
+                                    />
+                                ))}
+                            </div>
+                        )
+                    }
+
+                    if (image.includes(".webp")) {
+                        return <Image
+                            key={index}
+                            src={image}
+                            alt=""
+                            width={1000}
+                            className={style.image}
+                        />
+                    }
+                    if (image.includes(".mp4")) {
+                        return <video
+                            key={index}
+                            src={image}
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            className={style.video}
+                        />
+                    }
+                })}
             </div>
         </section>
     )
