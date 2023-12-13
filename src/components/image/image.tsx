@@ -16,10 +16,11 @@ interface ImageProps {
     size?: number; // size of image on screen: 1-full, 2-half, 3-third, 4-quarter of the screen
     blur?: boolean; // show blur image
     onClick?: () => void;
+    onResize?: () => void;
 }
 
 const Image = React.forwardRef((props: ImageProps, ref: React.Ref<HTMLDivElement>) => {
-    const { src, alt, className, width, style, onClick, blur = true, size = 2 } = props;
+    const { src, alt, className, width, style, onClick, blur = true, size = 2, onResize } = props;
 
     const divBlur = useRef<HTMLImageElement>(null);
     const imgRef = useRef<HTMLImageElement>(null);
@@ -54,6 +55,7 @@ const Image = React.forwardRef((props: ImageProps, ref: React.Ref<HTMLDivElement
         <div ref={ref} 
         className={`${styles.wrapper} ${className && className}`} 
         style={style}
+        onClick={onResize}
         >
             <img
                 src={srcBase}

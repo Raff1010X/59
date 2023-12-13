@@ -1,6 +1,7 @@
 import { getCurrentProject } from "@/components/project/utils";
 import style from "./projectView.module.css";
 import Image from "@/components/image/image";
+import Images from "./images";
 
 export default function ProjectView(params: { projectId: string }) {
     const { projectId } = params;
@@ -38,45 +39,36 @@ export default function ProjectView(params: { projectId: string }) {
                 }
             </div>
             <div className={style.images}>
-                {currentProject.media && currentProject.media.map((image, index) => {
-                    if (Array.isArray(image)) {
-                        return (
-                            // two image slider component
-                            <div key={index} className={style.imageWrapper}>
-                                {image.map((item, index) => (
-                                    <Image
-                                        key={index}
-                                        src={item}
-                                        alt=""
-                                        width={1000}
-                                        className={style.image}
-                                    />
-                                ))}
-                            </div>
-                        )
-                    }
+                {currentProject.media && 
+                    <Images media={currentProject.media} />
+                
+                
+                // currentProject.media.map((image, index) => {
 
-                    if (image.includes(".webp")) {
-                        return <Image
-                            key={index}
-                            src={image}
-                            alt=""
-                            width={1000}
-                            className={style.image}
-                        />
-                    }
-                    if (image.includes(".mp4")) {
-                        return <video
-                            key={index}
-                            src={image}
-                            autoPlay
-                            muted
-                            loop
-                            playsInline
-                            className={style.video}
-                        />
-                    }
-                })}
+                //     if (image.includes(".webp")) {
+                //         return <Image
+                //             key={index}
+                //             src={image}
+                //             alt=""
+                //             width={1000}
+                //             className={style.image}
+                //         />
+                //     }
+
+                //     if (image.includes(".mp4")) {
+                //         return <video
+                //             key={index}
+                //             src={image}
+                //             autoPlay
+                //             muted
+                //             loop
+                //             playsInline
+                //             className={style.video}
+                //         />
+                //     }
+
+                // })
+                }
             </div>
         </section>
     )
