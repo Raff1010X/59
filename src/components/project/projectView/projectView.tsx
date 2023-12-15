@@ -1,7 +1,7 @@
 import { getCurrentProject } from "@/components/project/utils";
 import style from "./projectView.module.css";
 import Image from "@/components/image/image";
-import Images from "./images";
+import Images from "@/components/images/images";
 
 export default function ProjectView(params: { projectId: string }) {
     const { projectId } = params;
@@ -39,35 +39,35 @@ export default function ProjectView(params: { projectId: string }) {
                 }
             </div>
             <div className={style.images}>
-                {currentProject.media && 
-                    <Images media={currentProject.media} />
-                
-                
-                // currentProject.media.map((image, index) => {
+                {currentProject.media && currentProject.media.map((image, index) => {
 
-                //     if (image.includes(".webp")) {
-                //         return <Image
-                //             key={index}
-                //             src={image}
-                //             alt=""
-                //             width={1000}
-                //             className={style.image}
-                //         />
-                //     }
+                        if (Array.isArray(image)) {
+                            return <Images key={index} media={image} />
+                        }
 
-                //     if (image.includes(".mp4")) {
-                //         return <video
-                //             key={index}
-                //             src={image}
-                //             autoPlay
-                //             muted
-                //             loop
-                //             playsInline
-                //             className={style.video}
-                //         />
-                //     }
+                        if (image.includes(".webp")) {
+                            return <Image
+                                key={index}
+                                src={image}
+                                alt=""
+                                width={1000}
+                                className={style.image}
+                            />
+                        }
 
-                // })
+                        if (image.includes(".mp4")) {
+                            return <video
+                                key={index}
+                                src={image}
+                                autoPlay
+                                muted
+                                loop
+                                playsInline
+                                className={style.video}
+                            />
+                        }
+
+                    })
                 }
             </div>
         </section>

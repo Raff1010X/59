@@ -9,7 +9,7 @@
         "tag": "web_design",
         "selected": false,
         "scope": ["Back-end", "Front-end", "UI design", "UX design", "Print", "Animation", "Video", "WordPress", "Branding", "Copy", "Design", "Logo"],
-        "media": [ "/images/projects/1.webp", "/images/projects/1.webp", "/images/projects/1.webp"]
+        "media": [ ["/images/projects/1.webp", "/images/projects/1.webp"], "/videos/demo.mp4", "/images/projects/1.webp"]
     },
     {
         "id": "2",

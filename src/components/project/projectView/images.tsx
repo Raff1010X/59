@@ -1,3 +1,4 @@
+// not used in the project
 "use client"
 import Image from '@/components/image/image';
 import React, { useState } from 'react';
